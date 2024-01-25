@@ -6,7 +6,8 @@ using MediatR;
 
 namespace Application.Common.Behaviours;
 
-public class AuthorizationBehavior<TRequest, TResponse>
+public class 
+    AuthorizationBehavior<TRequest, TResponse>
     : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IAuthorizeRequest<TResponse>
     where TResponse : IErrorOr

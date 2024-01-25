@@ -3,6 +3,10 @@ using Application.Common.Interfaces;
 using Domain.Roles;
 using Domain.Users;
 using Infrastructure.Common.Persistence;
+using Infrastructure.Security;
+using Infrastructure.Security.CurrentUserProvider;
+using Infrastructure.Security.TokenGenerator;
+using Infrastructure.Security.TokenValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +21,15 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        
+       return services
+               .AddHttpContextAccessor()
+               .AddAuthorization()
+               .AddAuthentication(configuration)
+               .AddPersistence(configuration);
+    }
+
+    private static IServiceCollection AddPersistence(this IServiceCollection services,IConfiguration configuration)
+    {
         services.AddDbContext<CartDbContext>(options =>
         {
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
@@ -29,29 +41,30 @@ public static class DependencyInjection
         services.AddIdentity<User, Role>()
             .AddEntityFrameworkStores<CartDbContext>()
             .AddDefaultTokenProviders();
-        services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-
-
-            .AddJwtBearer(options =>
-            {
-                options.SaveToken = true;
-                options.RequireHttpsMetadata = false;
-
-                options.TokenValidationParameters = new TokenValidationParameters()
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidAudience = configuration["JWT:ValidAudience"],
-                    ValidIssuer = configuration["JWT:ValidIssuer"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"]))
-                };
-            });
+       
         services.AddScoped<ICartDbContext>(provider => provider.GetRequiredService<CartDbContext>());
+        return services;
+    }
+
+    private static IServiceCollection AddAuthorization(this IServiceCollection services)
+    {
+        services.AddScoped<IAuthorizationService, AuthorizationService>();
+        services.AddScoped<ICurrentUserProvider, CurrentUserProvider>();
+
+        return services;
+    }
+
+    private static IServiceCollection AddAuthentication(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.Section));
+
+        services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
+
+        services
+            .ConfigureOptions<JwtBearerTokenValidationConfiguration>()
+            .AddAuthentication(defaultScheme: JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer();
+
         return services;
     }
 }

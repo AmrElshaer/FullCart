@@ -9,34 +9,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Application/Common/Behaviours/AuthorizationBehavior.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Common/Behaviours/ValidationBehaviour.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Common/Interfaces/IAuthorizationService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Common/Interfaces/ICartDbContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/DependencyInjection.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Security/AuthorizeAttribute.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Security/IAuthorizeRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Roles/Role.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Roles/Roles.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Users/Address.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Users/Admin.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Users/Customer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Users/Email.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Users/User.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Users/UserType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContextInitializer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Users/Persistence/AdminConfigurations.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Users/Persistence/CustomerConfigurations.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Common/Interfaces/ICurrentUserProvider.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Common/Interfaces/IJwtTokenGenerator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Common/models/CurrentUser.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Security/AuthorizationService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Security/CurrentUserProvider/CurrentUserProvider.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtSettings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtTokenGenerator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Security/TokenValidation/JwtBearerTokenValidationConfiguration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Application.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Common/BaseAuditableEntity.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Common/BaseEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Common/BaseEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Domain.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FullCart.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Behaviours/AuthorizationBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Behaviours/AuthorizationBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Security/IAuthorizeRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Security/IAuthorizeRequest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FullCart.API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,6 +32,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Application/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
@@ -123,8 +112,17 @@
       <workItem from="1706040905762" duration="799000" />
       <workItem from="1706072800769" duration="4389000" />
       <workItem from="1706080138774" duration="35000" />
-      <workItem from="1706167168511" duration="14095000" />
+      <workItem from="1706167168511" duration="14538000" />
+      <workItem from="1706188334090" duration="3884000" />
     </task>
+    <task id="LOCAL-00001" summary="init architecture">
+      <created>1706186905525</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1706186905525</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,5 +131,7 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="init architecture" />
+    <option name="LAST_COMMIT_MESSAGE" value="init architecture" />
   </component>
 </project>
