@@ -90,3 +90,8 @@ public abstract class BaseEntity<TId>: IComparable, IComparable<BaseEntity<TId>>
         _domainEvents.Clear();
     }
 }
+
+public abstract class Entity : BaseEntity<Guid>
+{
+    
+}
