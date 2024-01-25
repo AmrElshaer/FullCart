@@ -9,7 +9,7 @@ public class Customer:Entity
 
     public Address? Address { get; private set; }
 
-    private Customer(Guid id,Address? address)
+    public Customer(Guid id,Address address)
     {
         Id = id;
         Address = address;

@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using Application.Common.Interfaces;
 using Application.Common.models;
+using Domain.Users;
 using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.JsonWebTokens;
 
@@ -14,7 +15,7 @@ public class CurrentUserProvider : ICurrentUserProvider
     {
         _httpContextAccessor = httpContextAccessor;
     }
-    public CurrentUser GetCurrentUser()
+    public UserDto GetCurrentUser()
     {
         if (_httpContextAccessor.HttpContext is null)
         {
@@ -22,12 +23,11 @@ public class CurrentUserProvider : ICurrentUserProvider
         }
 
         var id = Guid.Parse(GetSingleClaimValue("id"));
+        var userType= GetSingleClaimValue("userType");
         var roles = GetClaimValues(ClaimTypes.Role);
-        var firstName = GetSingleClaimValue(JwtRegisteredClaimNames.Name);
-        var lastName = GetSingleClaimValue(ClaimTypes.Surname);
         var email = GetSingleClaimValue(ClaimTypes.Email);
 
-        return new CurrentUser(id, firstName, lastName, email, roles);
+        return new UserDto(id, email, userType,roles);
     }
 
     private List<string> GetClaimValues(string claimType) =>

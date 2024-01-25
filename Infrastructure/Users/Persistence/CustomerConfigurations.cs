@@ -17,9 +17,17 @@ public class CustomerConfigurations: IEntityTypeConfiguration<Customer>
         builder.OwnsOne(c => c.Address,
             ownBuilder =>
             {
-                ownBuilder.Property(p => p.City).HasColumnName(nameof(Address.City));
-                ownBuilder.Property(p => p.State).HasColumnName(nameof(Address.State));
-                ownBuilder.Property(p => p.Street).HasColumnName(nameof(Address.Street));
+                ownBuilder.Property(p => p.City)
+                    .HasColumnName(nameof(Address.City))
+                    .HasColumnType("nvarchar(50)");
+
+                ownBuilder.Property(p => p.State)
+                    .HasColumnName(nameof(Address.State))
+                    .HasColumnType("nvarchar(50)");
+
+                ownBuilder.Property(p => p.Street)
+                    .HasColumnName(nameof(Address.Street))
+                    .HasColumnType("nvarchar(50)");
             });
     }
 }

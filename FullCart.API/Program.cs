@@ -16,6 +16,5 @@ app.UseCors(policyBuilder =>
     policyBuilder.AllowAnyOrigin()
         .AllowAnyHeader()
         .AllowAnyMethod());
-app.MapGet("/", () => "Hello World!");
-
+app.MapControllers();
 app.Run();

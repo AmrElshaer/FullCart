@@ -8,4 +8,7 @@ public interface ICartDbContext
      DbSet<Admin> Admins { get; set; }
 
      DbSet<Customer> Customers { get; set; }
+     
+     DbSet<User> Users { get; set; }
+     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

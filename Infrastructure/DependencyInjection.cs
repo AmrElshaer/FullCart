@@ -25,7 +25,8 @@ public static class DependencyInjection
                .AddHttpContextAccessor()
                .AddAuthorization()
                .AddAuthentication(configuration)
-               .AddPersistence(configuration);
+               .AddPersistence(configuration)
+               .AddServices();
     }
 
     private static IServiceCollection AddPersistence(this IServiceCollection services,IConfiguration configuration)
@@ -50,6 +51,13 @@ public static class DependencyInjection
     {
         services.AddScoped<IAuthorizationService, AuthorizationService>();
         services.AddScoped<ICurrentUserProvider, CurrentUserProvider>();
+
+        return services;
+    }
+
+    private static IServiceCollection AddServices(this IServiceCollection services)
+    {
+        services.AddTransient<IIdentityService, IIdentityService>();
 
         return services;
     }

@@ -7,10 +7,8 @@ public interface IJwtTokenGenerator
     string GenerateToken
     (
         Guid id,
-        string firstName,
-        string lastName,
         string email,
-        UserType userType,
+        string userType,
         List<string> roles
     );
 }
