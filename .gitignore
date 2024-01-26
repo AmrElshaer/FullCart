@@ -405,6 +405,7 @@ FodyWeavers.xsd
 .idea
 /.idea/.idea.FullCart.API/.idea/
 /.idea/
+.idea.FullCart.API/
 ##
 ## Visual studio for Mac
 ##
