@@ -11,9 +11,9 @@ public class FileAppService:IFileAppService
         return  Task.FromResult($"{type}-{Guid.NewGuid()}");
     }
 
-    public Task DeleteFileAsync(FileType type, string fileName)
+    public async Task DeleteFileAsync(FileType type, string fileName)
     {
-        throw new NotImplementedException();
+       await  Task.CompletedTask;
     }
 
     public Task<Stream> GetFileAsync(FileType type, string fileName)

@@ -16,5 +16,9 @@ public class Category:Entity
         FileName = fileName;
     }
 
-   
+    public void Update(CategoryName name, CategoryFileName fileName)
+    {
+        Name = name;
+        FileName = fileName;
+    }
 }

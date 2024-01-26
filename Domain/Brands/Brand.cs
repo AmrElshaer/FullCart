@@ -16,5 +16,9 @@ public class Brand:Entity
         FileName = fileName;
     }
 
-   
+    public void Update(BrandName name, BrandFileName fileName)
+    {
+        Name = name;
+        FileName = fileName;
+    }
 }

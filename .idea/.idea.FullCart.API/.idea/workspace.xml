@@ -8,40 +8,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/efCoreCommonOptions.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/efCoreDialogsState.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Brands/Persistence/BrandConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Categories/Persistence/CategoryConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20240126081620_Initial.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20240126081620_Initial.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/CartDbContextModelSnapshot.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Orders/Persistence/OrderConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Products/Persistence/ProductConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Services/FileAppService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IFileAppService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/IFileAppService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Customers/Commands/CreateCustomer/CreateCustomerCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Customers/Commands/CreateCustomer/CreateCustomerCommand.cs" afterDir="false" />
+    <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="add migration">
+      <change afterPath="$PROJECT_DIR$/Application/Brands/Commands/CreateBrand/CreateBrandCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Brands/Commands/CreateBrand/CreateBrandCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Brands/Commands/DeleteBrand/DeleteBrandCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Brands/Commands/UpdateBrand/UpdateBrandCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Brands/Commands/UpdateBrand/UpdateBrandCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Brands/Queries/GetBrandByIdQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Brands/Queries/GetBrandsListQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Categories/Commands/CreateCategory/CreateCategoryCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Categories/Commands/CreateCategory/CreateCategoryCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Categories/Commands/DeleteCategory/DeleteCategoryCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Categories/Commands/UpdateCategory/UpdateCategoryCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Categories/Commands/UpdateCategory/UpdateCategoryCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Categories/Queries/GetCategoriesListQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Categories/Queries/GetCategoryByIdQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FullCart.API/Controllers/BrandController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FullCart.API/Controllers/CategoryController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FullCart.API/Models/CreateBrandRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FullCart.API/Models/CreateCategoryRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FullCart.API/Models/UpdateBrandRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FullCart.API/Models/UpdateCategoryRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/ICartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/ICartDbContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/Brands/Brand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Brands/Brand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Brands/BrandFileName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Brands/BrandFileName.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Brands/BrandName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Brands/BrandName.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/Categories/Category.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Categories/Category.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Categories/CategoryFileName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Categories/CategoryFileName.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Categories/CategoryName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Categories/CategoryName.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Orders/Order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Orders/Order.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Orders/OrderItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Orders/OrderItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Orders/OrderItemQuantity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Orders/OrderItemQuantity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Products/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Products/Product.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Products/ProductDescription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Products/ProductDescription.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Products/ProductFileName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Products/ProductFileName.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Products/ProductName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Products/ProductName.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Products/ProductPrice.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Products/ProductPrice.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Users/Address.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Users/Address.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Users/Customer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Users/Customer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Users/Email.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Users/Email.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Users/Persistence/CustomerConfigurations.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Users/Persistence/CustomerConfigurations.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Services/FileAppService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Services/FileAppService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +128,7 @@
       <workItem from="1706080138774" duration="35000" />
       <workItem from="1706167168511" duration="14538000" />
       <workItem from="1706188334090" duration="18287000" />
-      <workItem from="1706253934136" duration="3540000" />
+      <workItem from="1706253934136" duration="9308000" />
     </task>
     <task id="LOCAL-00001" summary="init architecture">
       <created>1706186905525</created>
@@ -166,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706212861905</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add migration">
+      <created>1706257550804</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1706257550804</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,7 +178,8 @@
     <MESSAGE value="update AuthorizationBehavior.cs" />
     <MESSAGE value="add create customer , generate tokens" />
     <MESSAGE value="add order , category ,brand" />
-    <option name="LAST_COMMIT_MESSAGE" value="add order , category ,brand" />
+    <MESSAGE value="add migration" />
+    <option name="LAST_COMMIT_MESSAGE" value="add migration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
