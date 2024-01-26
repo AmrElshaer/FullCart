@@ -403,7 +403,8 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 .idea
-.idea/.idea.FullCart.API/.idea
+/.idea/.idea.FullCart.API/.idea/
+/.idea/
 ##
 ## Visual studio for Mac
 ##
