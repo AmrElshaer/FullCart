@@ -5,7 +5,8 @@ namespace Domain.Products;
 
 public class ProductFileName:ValueObject
 {
-    public string FileName { get; private set; }
+    public string FileName { get; private set; }= default!;
+    private ProductFileName(){}
 
     private ProductFileName(string description)
     {

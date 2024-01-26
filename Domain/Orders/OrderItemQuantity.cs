@@ -7,6 +7,11 @@ public class OrderItemQuantity:ValueObject
 {
     public int Quantity { get; private set; }
 
+    private OrderItemQuantity()
+    {
+        
+    }
+
     private OrderItemQuantity(int quantity)
     {
         Quantity = quantity;

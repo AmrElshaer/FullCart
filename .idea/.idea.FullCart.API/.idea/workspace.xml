@@ -9,21 +9,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Application/Common/Interfaces/ICurrentUserProvider.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Common/Interfaces/IJwtTokenGenerator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Common/models/CurrentUser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Security/AuthorizationService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Security/CurrentUserProvider/CurrentUserProvider.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtSettings.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtTokenGenerator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Security/TokenValidation/JwtBearerTokenValidationConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/efCoreCommonOptions.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/efCoreDialogsState.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Brands/Persistence/BrandConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Categories/Persistence/CategoryConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20240126081620_Initial.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20240126081620_Initial.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/CartDbContextModelSnapshot.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Orders/Persistence/OrderConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Products/Persistence/ProductConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Services/FileAppService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Behaviours/AuthorizationBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Behaviours/AuthorizationBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Security/IAuthorizeRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Security/IAuthorizeRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FullCart.API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IFileAppService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/IFileAppService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Customers/Commands/CreateCustomer/CreateCustomerCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Customers/Commands/CreateCustomer/CreateCustomerCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Brands/Brand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Brands/Brand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Brands/BrandFileName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Brands/BrandFileName.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Brands/BrandName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Brands/BrandName.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Categories/Category.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Categories/Category.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Categories/CategoryFileName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Categories/CategoryFileName.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Categories/CategoryName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Categories/CategoryName.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Orders/Order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Orders/Order.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Orders/OrderItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Orders/OrderItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Orders/OrderItemQuantity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Orders/OrderItemQuantity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Products/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Products/Product.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Products/ProductDescription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Products/ProductDescription.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Products/ProductFileName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Products/ProductFileName.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Products/ProductName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Products/ProductName.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Products/ProductPrice.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Products/ProductPrice.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Users/Address.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Users/Address.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Users/Customer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Users/Customer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Users/Email.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Users/Email.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Users/Persistence/CustomerConfigurations.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Users/Persistence/CustomerConfigurations.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +55,11 @@
     <option name="projectConfigVersion" value="5" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/c6f90e6c68e04825a83e9310c4ef45e0b400/0b/879fe2dd/ErrorOr`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/c6f90e6c68e04825a83e9310c4ef45e0b400/5d/ab1795fc/Error.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/37a954845b52703c5cce1aacf8fa1292378878e82bf68c4c4b5effc447316e9/IdentityUser.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Application/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/FullCart/FullCart.API/Domain/Users/Address.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectId" id="2bN1pPkHKYhpud8bgBFuxqoc2sU" />
@@ -113,7 +135,8 @@
       <workItem from="1706072800769" duration="4389000" />
       <workItem from="1706080138774" duration="35000" />
       <workItem from="1706167168511" duration="14538000" />
-      <workItem from="1706188334090" duration="3884000" />
+      <workItem from="1706188334090" duration="18287000" />
+      <workItem from="1706253934136" duration="3540000" />
     </task>
     <task id="LOCAL-00001" summary="init architecture">
       <created>1706186905525</created>
@@ -122,7 +145,28 @@
       <option name="project" value="LOCAL" />
       <updated>1706186905525</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update AuthorizationBehavior.cs">
+      <created>1706192274536</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1706192274536</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add create customer , generate tokens">
+      <created>1706203876151</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1706203876151</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add order , category ,brand">
+      <created>1706212861905</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1706212861905</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +176,28 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="init architecture" />
-    <option name="LAST_COMMIT_MESSAGE" value="init architecture" />
+    <MESSAGE value="update AuthorizationBehavior.cs" />
+    <MESSAGE value="add create customer , generate tokens" />
+    <MESSAGE value="add order , category ,brand" />
+    <option name="LAST_COMMIT_MESSAGE" value="add order , category ,brand" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure/Security/CurrentUserProvider/CurrentUserProvider.cs</url>
+          <line>18</line>
+          <properties documentPath="E:\FullCart\FullCart.API\Infrastructure\Security\CurrentUserProvider\CurrentUserProvider.cs" initialLine="18" containingFunctionPresentation="Method 'GetCurrentUser'">
+            <startOffsets>
+              <option value="555" />
+            </startOffsets>
+            <endOffsets>
+              <option value="556" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

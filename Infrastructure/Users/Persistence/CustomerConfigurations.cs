@@ -11,7 +11,7 @@ public class CustomerConfigurations: IEntityTypeConfiguration<Customer>
         builder.ToTable("Customers");
         builder.HasOne(c => c.User)
             .WithOne(u => u.Customer)
-            .HasForeignKey<Admin>(c => c.Id)
+            .HasForeignKey<Customer>(c => c.Id)
             .OnDelete(DeleteBehavior.Cascade);
 
         builder.OwnsOne(c => c.Address,

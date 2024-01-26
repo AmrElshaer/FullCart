@@ -17,6 +17,11 @@ public class Order:Entity
 
     public Customer Customer { get; set; } = default!;
 
+    private Order()
+    {
+        
+    }
+
     public Order(Guid id,Guid customerId,IReadOnlyList<OrderItem> items)
     {
         Id = id;

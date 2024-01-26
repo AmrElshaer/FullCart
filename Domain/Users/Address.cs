@@ -7,18 +7,23 @@ public class Address:ValueObject
 {
    
 
-    public string? Street { get; private set; } 
-    public string City { get; private set; } 
-    public string? State { get; private set; }
+    public string Street { get; private set; } = default!;
+    public string City { get; private set; } = default!;
+    public string State { get; private set; }= default!;
 
-    private Address(string city,string? street,string? state)
+    private Address()
+    {
+        
+    }
+
+    private Address(string city,string street,string state)
     {
         Street = street;
         City = city;
         State = state;
     }
 
-    public static ErrorOr<Address> Create(string city,string? street,string? state)
+    public static ErrorOr<Address> Create(string city,string street,string state)
     {
         if (string.IsNullOrWhiteSpace(city))
         {

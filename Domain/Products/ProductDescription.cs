@@ -5,7 +5,8 @@ namespace Domain.Products;
 
 public class ProductDescription:ValueObject
 {
-    public string Description { get; private set; }
+    public string Description { get; private set; } = default!;
+    private ProductDescription(){}
 
     private ProductDescription(string description)
     {

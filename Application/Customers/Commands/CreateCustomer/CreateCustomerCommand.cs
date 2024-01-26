@@ -25,8 +25,8 @@ public class CreateCustomerCommand:IRequest<ErrorOr.ErrorOr<Guid>>
 
     public string Password { get; init; } = default!;
 
-    public string? Street { get; init; }
+    public string Street { get; init; }= default!;
 
     public string City { get; init; } = default!;
-    public string? State { get; init; }
+    public string State { get; init; }= default!;
 }

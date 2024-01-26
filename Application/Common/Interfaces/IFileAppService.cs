@@ -10,5 +10,5 @@ public interface IFileAppService
     Task DeleteFileAsync(FileType type, string fileName);
 
     Task<Stream> GetFileAsync(FileType type, string fileName);
-    public Task<string> UploadFileAsync(FileType type, IFormFile file, DirectoryType directory);
+     Task<string> UploadFileAsync(FileType type, IFormFile file, DirectoryType directory);
 }

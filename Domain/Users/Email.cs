@@ -6,7 +6,12 @@ namespace Domain.Users;
 
 public class Email:ValueObject
 {
-    public string Value { get; private set; }
+    public string Value { get; private set; }= default!;
+
+    private Email()
+    {
+        
+    }
 
     private Email(string value) { Value = value; }
 

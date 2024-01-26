@@ -4,11 +4,12 @@ namespace Domain.Brands;
 
 public class Brand:Entity
 {
-    public BrandName Name { get; private set; }
+    public BrandName Name { get; private set; } = default!;
 
-    public BrandFileName FileName { get; private set; } 
-
-    private Brand(Guid id,BrandName name,BrandFileName fileName)
+    public BrandFileName FileName { get; private set; } = default!;
+   
+    private Brand(){}
+    public Brand(Guid id,BrandName name,BrandFileName fileName)
     {
         Id = id;
         Name = name;

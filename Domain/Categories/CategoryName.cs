@@ -5,8 +5,12 @@ namespace Domain.Categories;
 
 public class CategoryName:ValueObject
 {
-    public string Name { get; private set; }
+    public string Name { get; private set; }= default!;
 
+    private CategoryName()
+    {
+        
+    }
     private CategoryName(string name)
     {
         Name = name;

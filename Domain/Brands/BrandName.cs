@@ -5,7 +5,12 @@ namespace Domain.Brands;
 
 public class BrandName:ValueObject
 {
-    public string Name { get; private set; }
+    public string Name { get; private set; }= default!;
+
+    private BrandName()
+    {
+        
+    }
 
     private BrandName(string name)
     {

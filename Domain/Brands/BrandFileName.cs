@@ -5,7 +5,12 @@ namespace Domain.Brands;
 
 public class BrandFileName:ValueObject
 {
-    public string FileName { get; private set; }
+    public string FileName { get; private set; }= default!;
+
+    private BrandFileName()
+    {
+        
+    }
 
     private BrandFileName(string fileName)
     {

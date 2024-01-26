@@ -1,5 +1,4 @@
-﻿using System.Text;
-using Application.Common.Interfaces;
+﻿using Application.Common.Interfaces;
 using Domain.Roles;
 using Domain.Users;
 using Infrastructure.Common.Persistence;
@@ -7,13 +6,13 @@ using Infrastructure.Security;
 using Infrastructure.Security.CurrentUserProvider;
 using Infrastructure.Security.TokenGenerator;
 using Infrastructure.Security.TokenValidation;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Infrastructure;
 
@@ -57,8 +56,8 @@ public static class DependencyInjection
 
     private static IServiceCollection AddServices(this IServiceCollection services)
     {
-        services.AddTransient<IIdentityService, IIdentityService>();
-
+        services.AddTransient<IIdentityService, IdentityService>();
+        services.AddTransient<IFileAppService, FileAppService>();
         return services;
     }
 

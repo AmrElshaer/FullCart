@@ -7,6 +7,11 @@ public class ProductPrice:ValueObject
 {
     public decimal Price { get; private set; }
 
+    private ProductPrice()
+    {
+        
+    }
+
     private ProductPrice(decimal price)
     {
         Price = price;
