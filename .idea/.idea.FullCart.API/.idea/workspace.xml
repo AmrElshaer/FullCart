@@ -8,33 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="add migration">
-      <change afterPath="$PROJECT_DIR$/Application/Brands/Commands/CreateBrand/CreateBrandCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Brands/Commands/CreateBrand/CreateBrandCommandHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Brands/Commands/DeleteBrand/DeleteBrandCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Brands/Commands/UpdateBrand/UpdateBrandCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Brands/Commands/UpdateBrand/UpdateBrandCommandHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Brands/Queries/GetBrandByIdQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Brands/Queries/GetBrandsListQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Categories/Commands/CreateCategory/CreateCategoryCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Categories/Commands/CreateCategory/CreateCategoryCommandHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Categories/Commands/DeleteCategory/DeleteCategoryCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Categories/Commands/UpdateCategory/UpdateCategoryCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Categories/Commands/UpdateCategory/UpdateCategoryCommandHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Categories/Queries/GetCategoriesListQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Categories/Queries/GetCategoryByIdQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FullCart.API/Controllers/BrandController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FullCart.API/Controllers/CategoryController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FullCart.API/Models/CreateBrandRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FullCart.API/Models/CreateCategoryRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FullCart.API/Models/UpdateBrandRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FullCart.API/Models/UpdateCategoryRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/ICartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/ICartDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Brands/Brand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Brands/Brand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Categories/Category.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Categories/Category.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Services/FileAppService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Services/FileAppService.cs" afterDir="false" />
-    </list>
+    <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,6 +25,7 @@
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/c6f90e6c68e04825a83e9310c4ef45e0b400/5d/ab1795fc/Error.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/37a954845b52703c5cce1aacf8fa1292378878e82bf68c4c4b5effc447316e9/IdentityUser.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Application/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/FullCart/FullCart.API/Domain/Brands/Brand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/FullCart/FullCart.API/Domain/Users/Address.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -128,7 +103,7 @@
       <workItem from="1706080138774" duration="35000" />
       <workItem from="1706167168511" duration="14538000" />
       <workItem from="1706188334090" duration="18287000" />
-      <workItem from="1706253934136" duration="9308000" />
+      <workItem from="1706253934136" duration="10064000" />
     </task>
     <task id="LOCAL-00001" summary="init architecture">
       <created>1706186905525</created>
@@ -165,7 +140,42 @@
       <option name="project" value="LOCAL" />
       <updated>1706257550804</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add controllers">
+      <created>1706303966532</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1706303966532</updated>
+    </task>
+    <task id="LOCAL-00007" summary="update ignore file">
+      <created>1706304151900</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1706304151900</updated>
+    </task>
+    <task id="LOCAL-00008" summary="update">
+      <created>1706304217019</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1706304217019</updated>
+    </task>
+    <task id="LOCAL-00009" summary="add idea folder in ignore">
+      <created>1706304457188</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1706304457188</updated>
+    </task>
+    <task id="LOCAL-00010" summary="update">
+      <created>1706304678855</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1706304678855</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,7 +189,11 @@
     <MESSAGE value="add create customer , generate tokens" />
     <MESSAGE value="add order , category ,brand" />
     <MESSAGE value="add migration" />
-    <option name="LAST_COMMIT_MESSAGE" value="add migration" />
+    <MESSAGE value="add controllers" />
+    <MESSAGE value="update ignore file" />
+    <MESSAGE value="add idea folder in ignore" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
