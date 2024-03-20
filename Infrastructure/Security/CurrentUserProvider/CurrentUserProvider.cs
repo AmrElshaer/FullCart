@@ -2,6 +2,7 @@
 using Application.Common.Interfaces;
 using Application.Common.models;
 using Domain.Users;
+using ErrorOr;
 using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.JsonWebTokens;
 
@@ -15,11 +16,16 @@ public class CurrentUserProvider : ICurrentUserProvider
     {
         _httpContextAccessor = httpContextAccessor;
     }
-    public UserDto GetCurrentUser()
+    public UserDto  GetCurrentUser()
     {
         if (_httpContextAccessor.HttpContext is null)
         {
             throw new NullReferenceException();
+        }
+
+        if (_httpContextAccessor.HttpContext.User.Identity is not { IsAuthenticated: true } )
+        {
+            throw new UnauthorizedAccessException();
         }
 
         var id = Guid.Parse(GetSingleClaimValue("id"));
@@ -40,4 +46,6 @@ public class CurrentUserProvider : ICurrentUserProvider
         _httpContextAccessor.HttpContext!.User.Claims
             .Single(claim => claim.Type == claimType)
             .Value;
+
+   
 }

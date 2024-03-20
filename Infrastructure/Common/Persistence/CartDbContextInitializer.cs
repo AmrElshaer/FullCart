@@ -65,15 +65,17 @@ public class CartDbContextInitializer
 
     private async Task TrySeedAsync()
     {
-        // Default roles
-        var administratorRole = new Role(Roles.Admin);
 
-        if (_roleManager.Roles.All(r => r.Name != administratorRole.Name))
+        var rolesToAdd = Roles.GetRoles()
+            .Except(await _roleManager.Roles.Select(r => r.Name).ToListAsync())
+            .ToList();
+        foreach (var role in rolesToAdd)
         {
-            await _roleManager.CreateAsync(administratorRole);
+            await _roleManager.CreateAsync(new Role(role));
         }
-
-        var adminEmail = Email.Create("administrator@localhost");
+       
+        var administratorRole = new Role(Roles.Admin);
+        var adminEmail = Email.Create("administrator@localhost.com");
         var adminId = Guid.NewGuid();
         var administrator = User.Create(adminId,adminEmail.Value,UserType.Admin);
 

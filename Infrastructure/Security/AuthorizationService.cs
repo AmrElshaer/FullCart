@@ -20,8 +20,6 @@ public class AuthorizationService
     {
         var currentUser = _currentUserProvider.GetCurrentUser();
 
-        
-
         if (requiredRoles.Except(currentUser.Roles).Any())
         {
             return Error.Unauthorized(description: "User is missing required roles for taking this action");

@@ -1,5 +1,7 @@
 ﻿using Domain.Brands;
 using Domain.Categories;
+using Domain.Orders;
+using Domain.Products;
 using Domain.Users;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,5 +15,7 @@ public interface ICartDbContext
      DbSet<Category>  Categories { get; set; }
       DbSet<Brand> Brands { get; set; }
      DbSet<User> Users { get; set; }
+     DbSet<Order> Orders { get; set; }
+     DbSet<Product> Products { get; set; }
      Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

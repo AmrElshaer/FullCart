@@ -2,6 +2,8 @@
 using Application.Common.Interfaces;
 using Domain.Brands;
 using Domain.Categories;
+using Domain.Orders;
+using Domain.Products;
 using Domain.Roles;
 using Domain.Users;
 using Microsoft.AspNetCore.Identity;
@@ -34,6 +36,10 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>,ICar
     public DbSet<Category> Categories { get; set; } = default!;
 
     public DbSet<Brand> Brands { get; set; } = default!;
+
+    public DbSet<Order> Orders { get; set; } = default!;
+
+    public DbSet<Product> Products { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

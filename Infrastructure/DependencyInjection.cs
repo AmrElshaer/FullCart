@@ -43,6 +43,7 @@ public static class DependencyInjection
             .AddDefaultTokenProviders();
        
         services.AddScoped<ICartDbContext>(provider => provider.GetRequiredService<CartDbContext>());
+        services.AddScoped<CartDbContextInitializer>();
         return services;
     }
 
@@ -64,13 +65,15 @@ public static class DependencyInjection
     private static IServiceCollection AddAuthentication(this IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.Section));
-
+        
+       
+      
         services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
 
-        services
-            .ConfigureOptions<JwtBearerTokenValidationConfiguration>()
-            .AddAuthentication(defaultScheme: JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer();
+        // services
+        //     .ConfigureOptions<JwtBearerTokenValidationConfiguration>()
+        //     .AddAuthentication(defaultScheme: JwtBearerDefaults.AuthenticationScheme)
+        //     .AddJwtBearer();
 
         return services;
     }

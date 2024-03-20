@@ -8,7 +8,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="update" />
+    <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Application/Common/Errors/ProductErrors.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Orders/Queries/GetOrderById/GetOrderByIdQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FullCart.API/Controllers/OrderController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Behaviours/ValidationBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Behaviours/ValidationBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/ICartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/ICartDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/ICurrentUserProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/ICurrentUserProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Roles/Roles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Roles/Roles.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API/Controllers/TokenController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Controllers/TokenController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContextInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContextInitializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Security/AuthorizationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Security/AuthorizationService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Security/CurrentUserProvider/CurrentUserProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Security/CurrentUserProvider/CurrentUserProvider.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,12 +40,16 @@
     <option name="projectConfigVersion" value="5" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/4b252a5db079443689d8e7fc52382cac3ff10/f4/2458bf85/HttpServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/c6f90e6c68e04825a83e9310c4ef45e0b400/0b/879fe2dd/ErrorOr`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/c6f90e6c68e04825a83e9310c4ef45e0b400/5d/ab1795fc/Error.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/1c5ae7aa27a87d65dd39429e7e28c412409121c9aed3db8bf37e366e77ed4a/HttpContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/37a954845b52703c5cce1aacf8fa1292378878e82bf68c4c4b5effc447316e9/IdentityUser.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/575c31ecc35a636b6f962cb71d53992552941a18982aae1c8e6c16305cc3761b/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/6518e12429e640b855e84dbcb556279a6dcdecc0f25132fcbc5510f956f771e7/CallSiteFactory.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/b9139e63615f434419f750917a67741a77467f1f478dcf836ddd3c78b8d837d/RoleManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/c765e47ec58cf89220cd5779fc5cce70b01abab88edf4ed2b5deaba1244c610/IValidator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Application/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/FullCart/FullCart.API/Domain/Brands/Brand.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/FullCart/FullCart.API/Domain/Users/Address.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectId" id="2bN1pPkHKYhpud8bgBFuxqoc2sU" />
@@ -48,6 +71,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -103,7 +127,13 @@
       <workItem from="1706080138774" duration="35000" />
       <workItem from="1706167168511" duration="14538000" />
       <workItem from="1706188334090" duration="18287000" />
-      <workItem from="1706253934136" duration="10064000" />
+      <workItem from="1706253934136" duration="10621000" />
+      <workItem from="1707322939896" duration="734000" />
+      <workItem from="1707557417144" duration="35000" />
+      <workItem from="1708082648504" duration="17460000" />
+      <workItem from="1708162043059" duration="1320000" />
+      <workItem from="1708180365156" duration="1329000" />
+      <workItem from="1708848023651" duration="26000" />
     </task>
     <task id="LOCAL-00001" summary="init architecture">
       <created>1706186905525</created>
@@ -175,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706304678855</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="update">
+      <created>1706304722642</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1706304722642</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,18 +237,49 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Infrastructure/Security/CurrentUserProvider/CurrentUserProvider.cs</url>
-          <line>18</line>
-          <properties documentPath="E:\FullCart\FullCart.API\Infrastructure\Security\CurrentUserProvider\CurrentUserProvider.cs" initialLine="18" containingFunctionPresentation="Method 'GetCurrentUser'">
+          <line>19</line>
+          <properties documentPath="E:\FullCart\FullCart.API\Infrastructure\Security\CurrentUserProvider\CurrentUserProvider.cs" initialLine="19" containingFunctionPresentation="Method 'GetCurrentUser'">
             <startOffsets>
-              <option value="555" />
+              <option value="571" />
             </startOffsets>
             <endOffsets>
-              <option value="556" />
+              <option value="572" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="1" />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure/Security/CurrentUserProvider/CurrentUserProvider.cs</url>
+          <line>26</line>
+          <properties documentPath="E:\FullCart\FullCart.API\Infrastructure\Security\CurrentUserProvider\CurrentUserProvider.cs" initialLine="26" containingFunctionPresentation="Method 'GetCurrentUser'">
+            <startOffsets>
+              <option value="798" />
+            </startOffsets>
+            <endOffsets>
+              <option value="799" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Application/Common/Behaviours/ValidationBehaviour.cs</url>
+          <line>18</line>
+          <properties documentPath="E:\FullCart\FullCart.API\Application\Common\Behaviours\ValidationBehaviour.cs" initialLine="15" containingFunctionPresentation="Constructor 'ValidationBehavior'">
+            <startOffsets>
+              <option value="445" />
+            </startOffsets>
+            <endOffsets>
+              <option value="446" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Type#System.Security.Claims.ClaimsPrincipal" memberName="Identity" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

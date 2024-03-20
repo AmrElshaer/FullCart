@@ -1,6 +1,10 @@
-﻿namespace Application.Common.Errors;
+﻿using ErrorOr;
 
-public class ProductErrors
+namespace Application.Common.Errors;
+
+public static class ProductErrors
 {
-    
+    public static Func<IReadOnlyList<Guid>,Error> NotFoundProducts =notFoundProductsIds=> Error.Validation(
+        code: "Products.NotFound",
+        description: $"Can't find products that have this ids {string.Join(',',notFoundProductsIds)}");
 }

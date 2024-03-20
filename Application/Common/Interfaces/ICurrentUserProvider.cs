@@ -4,5 +4,5 @@ namespace Application.Common.Interfaces;
 
 public interface ICurrentUserProvider
 {
-    UserDto GetCurrentUser();
+    UserDto  GetCurrentUser();
 }
