@@ -1,12 +1,15 @@
-﻿using Application.Common.Interfaces;
+﻿using Application.Common.Commands;
+using Application.Common.Interfaces;
 using Domain.Roles;
 using Domain.Users;
+using Infrastructure.Common;
 using Infrastructure.Common.Persistence;
 using Infrastructure.Security;
 using Infrastructure.Security.CurrentUserProvider;
 using Infrastructure.Security.TokenGenerator;
 using Infrastructure.Security.TokenValidation;
 using Infrastructure.Services;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -59,6 +62,21 @@ public static class DependencyInjection
     {
         services.AddTransient<IIdentityService, IdentityService>();
         services.AddTransient<IFileAppService, FileAppService>();
+        services.AddTransient<IDomainEventDispatcher, DomainEventDispatcher>();
+        builder.RegisterAssemblyTypes(typeof(PaymentCreatedNotification).GetTypeInfo().Assembly)
+              .AsClosedTypesOf(typeof(IDomainEventNotification<>)).InstancePerDependency();
+
+        builder.RegisterGenericDecorator(
+            typeof(DomainEventsDispatcherNotificationHandlerDecorator<>),
+            typeof(INotificationHandler<>));
+
+        builder.RegisterGenericDecorator(
+            typeof(UnitOfWorkCommandHandlerDecorator<>),
+            typeof(ICommandHandler<>));
+
+        builder.RegisterGenericDecorator(
+            typeof(UnitOfWorkCommandHandlerWithResultDecorator<,>),
+            typeof(ICommandHandler<,>));
         return services;
     }
 

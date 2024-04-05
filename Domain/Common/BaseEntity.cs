@@ -8,10 +8,10 @@ public abstract class BaseEntity<TId>: IComparable, IComparable<BaseEntity<TId>>
     
     public  TId Id { get; protected set; } = default!;
 
-    private readonly List<BaseEvent> _domainEvents = new();
+    private readonly List<DomainEvent> _domainEvents = new();
 
     [NotMapped]
-    public IReadOnlyCollection<BaseEvent> DomainEvents => _domainEvents.AsReadOnly();
+    public IReadOnlyCollection<DomainEvent> DomainEvents => _domainEvents.AsReadOnly();
     protected BaseEntity()
     {
     }
@@ -75,12 +75,12 @@ public abstract class BaseEntity<TId>: IComparable, IComparable<BaseEntity<TId>>
     {
         return CompareTo(other as BaseEntity<TId>);
     }
-    public void AddDomainEvent(BaseEvent domainEvent)
+    public void AddDomainEvent(DomainEvent domainEvent)
     {
         _domainEvents.Add(domainEvent);
     }
 
-    public void RemoveDomainEvent(BaseEvent domainEvent)
+    public void RemoveDomainEvent(DomainEvent domainEvent)
     {
         _domainEvents.Remove(domainEvent);
     }

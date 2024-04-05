@@ -2,7 +2,9 @@
 using Application.Common.Interfaces;
 using Domain.Brands;
 using Domain.Categories;
+using Domain.Common;
 using Domain.Orders;
+using Domain.Payments;
 using Domain.Products;
 using Domain.Roles;
 using Domain.Users;
@@ -26,8 +28,13 @@ public abstract class ApplicationIdentityDbContext<TUser, TRole, TKey> : Identit
 
 public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>,ICartDbContext
 {
-    public CartDbContext(DbContextOptions<CartDbContext> options)
-        : base(options) { }
+    private readonly IDomainEventDispatcher _domainEventDispatcher;
+
+    public CartDbContext(DbContextOptions<CartDbContext> options,IDomainEventDispatcher domainEventDispatcher)
+        : base(options)
+    {
+        this._domainEventDispatcher = domainEventDispatcher;
+    }
 
     public DbSet<Admin> Admins { get; set; } = default!;
 
@@ -40,6 +47,7 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>,ICar
     public DbSet<Order> Orders { get; set; } = default!;
 
     public DbSet<Product> Products { get; set; } = default!;
+    public DbSet<Payment> Payments { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -47,6 +55,11 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>,ICar
 
         base.OnModelCreating(builder);
     }
-    
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        await _domainEventDispatcher.Dispatch();
+        return await base.SaveChangesAsync(cancellationToken);
+    }
+
 }
 

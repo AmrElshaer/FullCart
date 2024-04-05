@@ -1,4 +1,5 @@
 ﻿using Domain.Common;
+using Domain.Orders.Events;
 using Domain.Users;
 
 namespace Domain.Orders;
@@ -29,6 +30,11 @@ public class Order:Entity
         TotalPrice = items.Sum(i => i.ProductPrice.Price);
         CustomerId = customerId;
        _items.AddRange(items);
+        AddDomainEvent(new OrderPlacedEvent()
+        {
+            OrderId = id,
+            CustomerId = customerId,
+        });
        
     }
     
