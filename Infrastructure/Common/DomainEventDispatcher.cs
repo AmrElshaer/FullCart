@@ -9,11 +9,13 @@ namespace Infrastructure.Common
     {
         private readonly IMediator _publisher;
         private readonly CartDbContext _cartDbContext;
+        private readonly IServiceProvider _serviceProvider;
 
-        public DomainEventDispatcher(IMediator publisher, CartDbContext cartDbContext)
+        public DomainEventDispatcher(IMediator publisher, CartDbContext cartDbContext, IServiceProvider serviceProvider)
         {
-            this._publisher = publisher;
+            _publisher = publisher;
             _cartDbContext = cartDbContext;
+            _serviceProvider = serviceProvider;
         }
 
         private async Task PublishDomainEventsAsync()
@@ -23,7 +25,7 @@ namespace Infrastructure.Common
                 .Where(po => po.DomainEvents.Any())
                 .ToArray();
 
-            var integrationEvents = new List<INotification>();
+            var integrationEvents = new Queue<INotification>();
 
             foreach (var entity in domainEventEntities)
             {
@@ -33,20 +35,24 @@ namespace Infrastructure.Common
 
                     if (integrationEvent is not null)
                     {
-                        integrationEvents.Add(integrationEvent);
+                        var handlerType = typeof(INotificationHandler<>).MakeGenericType(integrationEvent.GetType());
+
+                        var integrationEventHandler = _serviceProvider.GetService(handlerType);
+
+                        if (integrationEventHandler is not null)
+                        {
+                            integrationEvents.Enqueue(integrationEvent);
+                        }
                     }
 
                     await _publisher.Publish(domainEvent);
                 }
             }
 
-            var tasks = integrationEvents
-                .Select(async (domainEvent) =>
-                {
-                    await _publisher.Publish(domainEvent);
-                });
-
-            await Task.WhenAll(tasks);
+            while (integrationEvents.TryDequeue(out var integrationEvent))
+            {
+                await _publisher.Publish(integrationEvent);
+            }
         }
 
         private static INotification? CreateDomainEventNotification(IDomainEvent domainEvent)

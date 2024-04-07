@@ -29,11 +29,13 @@ public abstract class ApplicationIdentityDbContext<TUser, TRole, TKey> : Identit
 public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICartDbContext
 {
     private readonly IMediator _mediator;
+    private readonly IServiceProvider _serviceProvider;
 
-    public CartDbContext(DbContextOptions<CartDbContext> options, IMediator mediator)
+    public CartDbContext(DbContextOptions<CartDbContext> options, IMediator mediator, IServiceProvider serviceProvider)
         : base(options)
     {
         _mediator = mediator;
+        _serviceProvider = serviceProvider;
     }
 
     public DbSet<Admin> Admins { get; set; } = default!;
@@ -64,7 +66,7 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
             .Where(po => po.DomainEvents.Any())
             .ToArray();
 
-        var integrationEvents = new List<INotification>();
+        var integrationEvents = new Queue<INotification>();
 
         foreach (var entity in domainEventEntities)
         {
@@ -74,7 +76,14 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
 
                 if (integrationEvent is not null)
                 {
-                    integrationEvents.Add(integrationEvent);
+                    var handlerType = typeof(INotificationHandler<>).MakeGenericType(integrationEvent.GetType());
+
+                    var integrationEventHandler = _serviceProvider.GetService(handlerType);
+
+                    if (integrationEventHandler is not null)
+                    {
+                        integrationEvents.Enqueue(integrationEvent);
+                    }
                 }
 
                 await _mediator.Publish(domainEvent, cancellationToken);
@@ -83,13 +92,10 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
 
         var result = await base.SaveChangesAsync(cancellationToken);
 
-        var tasks = integrationEvents
-            .Select(async (domainEvent) =>
-            {
-                await _mediator.Publish(domainEvent, cancellationToken);
-            });
-
-        await Task.WhenAll(tasks);
+        while (integrationEvents.TryDequeue(out var integrationEvent))
+        {
+            await _mediator.Publish(integrationEvent, cancellationToken);
+        }
 
         return result;
     }
