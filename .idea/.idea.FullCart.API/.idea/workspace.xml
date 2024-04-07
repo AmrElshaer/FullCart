@@ -9,24 +9,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Application/Common/Errors/ProductErrors.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommandHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Orders/Queries/GetOrderById/GetOrderByIdQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FullCart.API/Controllers/OrderController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Common/Behaviours/DispatchingIntegrationEventDecorator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Common/Extensions/ImplementationTypeSelectorExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/aws.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/aws.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Behaviours/ValidationBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Behaviours/ValidationBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Application.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/ICartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/ICartDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/ICurrentUserProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/ICurrentUserProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Roles/Roles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Roles/Roles.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FullCart.API/Controllers/TokenController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Controllers/TokenController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FullCart.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FullCart.API/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IDomainEventDispatcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/IDomainEventDispatcher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/OrderPlacedDomainEventHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/OrderPlacedDomainEventHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Common/BaseEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Common/BaseEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API/Controllers/ApiControllerBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Controllers/ApiControllerBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/DomainEventDispatcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/DomainEventDispatcher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/DomainEventsDispatcherNotificationHandlerDecorator.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContextInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContextInitializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/SaveChangeCommandHandlerDecorator.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Security/AuthorizationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Security/AuthorizationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Security/CurrentUserProvider/CurrentUserProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Security/CurrentUserProvider/CurrentUserProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/CartDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/CartDbContextModelSnapshot.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +45,7 @@
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/4b252a5db079443689d8e7fc52382cac3ff10/f4/2458bf85/HttpServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/c6f90e6c68e04825a83e9310c4ef45e0b400/0b/879fe2dd/ErrorOr`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/c6f90e6c68e04825a83e9310c4ef45e0b400/5d/ab1795fc/Error.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/1af51483c9bf18871cce649b9f966dd7be686536f998c33bba3c5fc4adea4a0/Task.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/1c5ae7aa27a87d65dd39429e7e28c412409121c9aed3db8bf37e366e77ed4a/HttpContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/37a954845b52703c5cce1aacf8fa1292378878e82bf68c4c4b5effc447316e9/IdentityUser.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/575c31ecc35a636b6f962cb71d53992552941a18982aae1c8e6c16305cc3761b/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
@@ -134,6 +137,7 @@
       <workItem from="1708162043059" duration="1320000" />
       <workItem from="1708180365156" duration="1329000" />
       <workItem from="1708848023651" duration="26000" />
+      <workItem from="1712402556632" duration="17503000" />
     </task>
     <task id="LOCAL-00001" summary="init architecture">
       <created>1706186905525</created>
@@ -262,17 +266,121 @@
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/Common/Behaviours/ValidationBehaviour.cs</url>
-          <line>18</line>
-          <properties documentPath="E:\FullCart\FullCart.API\Application\Common\Behaviours\ValidationBehaviour.cs" initialLine="15" containingFunctionPresentation="Constructor 'ValidationBehavior'">
+          <url>file://$PROJECT_DIR$/Domain/Orders/Order.cs</url>
+          <line>26</line>
+          <properties documentPath="E:\FullCart\FullCart.API\Domain\Orders\Order.cs" initialLine="26" containingFunctionPresentation="Constructor 'Order'">
             <startOffsets>
-              <option value="445" />
+              <option value="569" />
             </startOffsets>
             <endOffsets>
-              <option value="446" />
+              <option value="570" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="16" />
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommandHandler.cs</url>
+          <line>20</line>
+          <properties documentPath="E:\FullCart\FullCart.API\Application\Orders\Commands\CreateOrder\CreateOrderCommandHandler.cs" initialLine="20" containingFunctionPresentation="Method 'Handle'">
+            <startOffsets>
+              <option value="725" />
+            </startOffsets>
+            <endOffsets>
+              <option value="726" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Application/Common/Behaviours/DispatchingIntegrationEventDecorator.cs</url>
+          <line>18</line>
+          <properties documentPath="E:\FullCart\FullCart.API\Application\Common\Behaviours\DispatchingIntegrationEventDecorator.cs" initialLine="17" containingFunctionPresentation="Method 'Handle'">
+            <startOffsets>
+              <option value="668" />
+            </startOffsets>
+            <endOffsets>
+              <option value="669" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs</url>
+          <line>71</line>
+          <properties documentPath="E:\FullCart\FullCart.API\Infrastructure\Common\Persistence\CartDbContext.cs" initialLine="68" containingFunctionPresentation="Method 'DispatchDomainEvents'">
+            <startOffsets>
+              <option value="2322" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2323" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure/Common/DomainEventDispatcher.cs</url>
+          <line>31</line>
+          <properties documentPath="E:\FullCart\FullCart.API\Infrastructure\Common\DomainEventDispatcher.cs" initialLine="31" containingFunctionPresentation="Method 'Dispatch'">
+            <startOffsets>
+              <option value="1062" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1111" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/OrderPlacedDomainEventHandler.cs</url>
+          <line>23</line>
+          <properties documentPath="E:\FullCart\FullCart.API\Application\Orders\Commands\CreateOrder\OrderPlacedDomainEventHandler.cs" initialLine="22" containingFunctionPresentation="Method 'Handle'">
+            <startOffsets>
+              <option value="693" />
+            </startOffsets>
+            <endOffsets>
+              <option value="694" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/OrderPlacedDomainEventHandler.cs</url>
+          <line>18</line>
+          <properties documentPath="E:\FullCart\FullCart.API\Application\Orders\Commands\CreateOrder\OrderPlacedDomainEventHandler.cs" initialLine="17" containingFunctionPresentation="Constructor 'OrderPlacedDomainEventHandler'">
+            <startOffsets>
+              <option value="527" />
+            </startOffsets>
+            <endOffsets>
+              <option value="528" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Application/Common/Behaviours/DispatchingIntegrationEventDecorator.cs</url>
+          <line>13</line>
+          <properties documentPath="E:\FullCart\FullCart.API\Application\Common\Behaviours\DispatchingIntegrationEventDecorator.cs" initialLine="12" containingFunctionPresentation="Constructor 'DispatchingIntegrationEventDecorator'">
+            <startOffsets>
+              <option value="519" />
+            </startOffsets>
+            <endOffsets>
+              <option value="520" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/OrderPlacedDomainEventHandler.cs</url>
+          <line>40</line>
+          <properties documentPath="E:\FullCart\FullCart.API\Application\Orders\Commands\CreateOrder\OrderPlacedDomainEventHandler.cs" initialLine="46" containingFunctionPresentation="Method 'Handle'">
+            <startOffsets>
+              <option value="1292" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1293" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

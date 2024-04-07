@@ -8,6 +8,7 @@ using Domain.Payments;
 using Domain.Products;
 using Domain.Roles;
 using Domain.Users;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -29,12 +30,14 @@ public abstract class ApplicationIdentityDbContext<TUser, TRole, TKey> : Identit
 public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>,ICartDbContext
 {
     private readonly IDomainEventDispatcher _domainEventDispatcher;
+    private readonly IMediator _mediator;
 
-    public CartDbContext(DbContextOptions<CartDbContext> options,IDomainEventDispatcher domainEventDispatcher)
+    public CartDbContext(DbContextOptions<CartDbContext> options,IDomainEventDispatcher domainEventDispatcher,IMediator mediator)
         : base(options)
     {
         this._domainEventDispatcher = domainEventDispatcher;
-    }
+        _mediator = mediator;
+    }   
 
     public DbSet<Admin> Admins { get; set; } = default!;
 
@@ -57,9 +60,30 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>,ICar
     }
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        await _domainEventDispatcher.Dispatch();
+        await PreSaveChanges();
         return await base.SaveChangesAsync(cancellationToken);
     }
+    private async Task PreSaveChanges()
+    {
+        await DispatchDomainEvents();
+    }
 
+    public async Task DispatchDomainEvents()
+    {
+        var domainEventEntities = ChangeTracker.Entries<Entity>()
+            .Select(po => po.Entity)
+            .Where(po => po.DomainEvents.Any())
+            .ToArray();
+
+        foreach (var entity in domainEventEntities)
+        {
+            while (entity.DomainEvents.TryTake(out var dev))
+            {
+                await _mediator.Publish(dev);
+                await _domainEventDispatcher.Dispatch(dev);
+            }
+               
+        }
+    }
 }
 

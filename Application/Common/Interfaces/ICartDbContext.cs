@@ -20,4 +20,5 @@ public interface ICartDbContext
      DbSet<Product> Products { get; set; }
     DbSet<Payment> Payments { get; set; }
      Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+     Task DispatchDomainEvents();
 }

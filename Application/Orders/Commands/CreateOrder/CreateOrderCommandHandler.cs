@@ -24,7 +24,9 @@ internal class CreateOrderCommandHandler:IRequestHandler<CreateOrderCommand,Erro
         {
             return orderItems.Errors;
         }
-        var order = new Order(Guid.NewGuid(),_currentUserProvider.GetCurrentUser().Id,orderItems.Value);
+
+        var userId = new Guid("2595EC47-708A-4698-8C5B-011971400F2B");
+        var order = new Order(Guid.NewGuid(),userId,orderItems.Value);
         await _db.Orders.AddAsync(order, cancellationToken);
         await _db.SaveChangesAsync(cancellationToken);
 

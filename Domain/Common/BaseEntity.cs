@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Concurrent;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Common;
 
@@ -8,10 +9,10 @@ public abstract class BaseEntity<TId>: IComparable, IComparable<BaseEntity<TId>>
     
     public  TId Id { get; protected set; } = default!;
 
-    private readonly List<DomainEvent> _domainEvents = new();
+    private readonly ConcurrentQueue<DomainEvent> _domainEvents = new();
 
     [NotMapped]
-    public IReadOnlyCollection<DomainEvent> DomainEvents => _domainEvents.AsReadOnly();
+    public IProducerConsumerCollection<DomainEvent> DomainEvents => _domainEvents;
     protected BaseEntity()
     {
     }
@@ -75,15 +76,12 @@ public abstract class BaseEntity<TId>: IComparable, IComparable<BaseEntity<TId>>
     {
         return CompareTo(other as BaseEntity<TId>);
     }
-    public void AddDomainEvent(DomainEvent domainEvent)
+    protected void AddDomainEvent(DomainEvent domainEvent)
     {
-        _domainEvents.Add(domainEvent);
+        _domainEvents.Enqueue(@domainEvent);
     }
 
-    public void RemoveDomainEvent(DomainEvent domainEvent)
-    {
-        _domainEvents.Remove(domainEvent);
-    }
+
 
     public void ClearDomainEvents()
     {

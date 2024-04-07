@@ -1,5 +1,7 @@
 ﻿using Application.Common.Commands;
 using Application.Common.Interfaces;
+using Domain.Common;
+using Domain.Payments.Events;
 using Domain.Roles;
 using Domain.Users;
 using Infrastructure.Common;
@@ -63,20 +65,17 @@ public static class DependencyInjection
         services.AddTransient<IIdentityService, IdentityService>();
         services.AddTransient<IFileAppService, FileAppService>();
         services.AddTransient<IDomainEventDispatcher, DomainEventDispatcher>();
-        builder.RegisterAssemblyTypes(typeof(PaymentCreatedNotification).GetTypeInfo().Assembly)
-              .AsClosedTypesOf(typeof(IDomainEventNotification<>)).InstancePerDependency();
+       // services.Decorate(typeof(INotificationHandler<>), typeof(DomainEventsDispatcherNotificationHandlerDecorator<>));
 
-        builder.RegisterGenericDecorator(
-            typeof(DomainEventsDispatcherNotificationHandlerDecorator<>),
-            typeof(INotificationHandler<>));
+        // services.Scan(scan => scan
+        //      .FromAssembliesOf(typeof(PaymentCreatedNotification))
+        //      .AddClasses(classes => classes.AssignableTo(typeof(IIntegrationEvent<>)))
+        //      .AsImplementedInterfaces()
+        //      .WithTransientLifetime());
 
-        builder.RegisterGenericDecorator(
-            typeof(UnitOfWorkCommandHandlerDecorator<>),
-            typeof(ICommandHandler<>));
-
-        builder.RegisterGenericDecorator(
-            typeof(UnitOfWorkCommandHandlerWithResultDecorator<,>),
-            typeof(ICommandHandler<,>));
+        // services.Decorate(
+        //     typeof(SaveChangeCommandHandlerDecorator<,>),
+        //     typeof(ICommandHandler<,>));
         return services;
     }
 
@@ -88,10 +87,6 @@ public static class DependencyInjection
       
         services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
 
-        // services
-        //     .ConfigureOptions<JwtBearerTokenValidationConfiguration>()
-        //     .AddAuthentication(defaultScheme: JwtBearerDefaults.AuthenticationScheme)
-        //     .AddJwtBearer();
 
         return services;
     }

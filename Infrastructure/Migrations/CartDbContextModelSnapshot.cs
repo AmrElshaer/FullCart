@@ -66,6 +66,25 @@ namespace Infrastructure.Migrations
                     b.ToTable("Orders", (string)null);
                 });
 
+            modelBuilder.Entity("Domain.Payments.Payment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("PaymentStatus")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("Payments", (string)null);
+                });
+
             modelBuilder.Entity("Domain.Products.Product", b =>
                 {
                     b.Property<Guid>("Id")
@@ -483,6 +502,15 @@ namespace Infrastructure.Migrations
                     b.Navigation("Customer");
 
                     b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("Domain.Payments.Payment", b =>
+                {
+                    b.HasOne("Domain.Orders.Order", null)
+                        .WithMany()
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Products.Product", b =>

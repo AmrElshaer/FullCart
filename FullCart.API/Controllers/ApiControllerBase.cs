@@ -11,9 +11,9 @@ namespace FullCart.API.Controllers;
 [Route("api/[controller]")]
 public class ApiController : ControllerBase
 {
-    private ISender _mediator=default!;
+    private IMediator _mediator=default!;
 
-    protected ISender Mediator => _mediator ??= HttpContext.RequestServices.GetService<ISender>();
+    protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
     protected ActionResult Problem(List<Error> errors)
     {
         if (errors.Count is 0)
