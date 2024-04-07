@@ -2,41 +2,63 @@
 using Domain.Common;
 using Infrastructure.Common.Persistence;
 using MediatR;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace Infrastructure.Common
 {
     internal class DomainEventDispatcher : IDomainEventDispatcher
     {
-        private readonly IMediator _mediator;
-        private readonly ILogger<DomainEventDispatcher> _log;
-        public DomainEventDispatcher(IMediator mediator, ILogger<DomainEventDispatcher> log)
+        private readonly IMediator _publisher;
+        private readonly CartDbContext _cartDbContext;
+
+        public DomainEventDispatcher(IMediator publisher, CartDbContext cartDbContext)
         {
-            _mediator = mediator;
-            _log = log;
+            this._publisher = publisher;
+            _cartDbContext = cartDbContext;
         }
 
-        public async Task Dispatch(IDomainEvent devent)
+        private async Task PublishDomainEventsAsync()
         {
+            var domainEventEntities = _cartDbContext.ChangeTracker.Entries<Entity>()
+                .Select(po => po.Entity)
+                .Where(po => po.DomainEvents.Any())
+                .ToArray();
 
-            var domainEventNotification = _createDomainEventNotification(devent);
-            _log.LogDebug("Dispatching Domain Event as MediatR notification.  EventType: {eventType}", devent.GetType());
-            await _mediator.Publish(domainEventNotification);
+            var integrationEvents = new List<INotification>();
+
+            foreach (var entity in domainEventEntities)
+            {
+                while (entity.DomainEvents.TryTake(out var domainEvent))
+                {
+                    var integrationEvent = CreateDomainEventNotification(domainEvent);
+
+                    if (integrationEvent is not null)
+                    {
+                        integrationEvents.Add(integrationEvent);
+                    }
+
+                    await _publisher.Publish(domainEvent);
+                }
+            }
+
+            var tasks = integrationEvents
+                .Select(async (domainEvent) =>
+                {
+                    await _publisher.Publish(domainEvent);
+                });
+
+            await Task.WhenAll(tasks);
         }
-       
-        private INotification _createDomainEventNotification(IDomainEvent domainEvent)
+
+        private static INotification? CreateDomainEventNotification(IDomainEvent domainEvent)
         {
             var genericDispatcherType = typeof(IntegrationEvent<>).MakeGenericType(domainEvent.GetType());
-            return (INotification)Activator.CreateInstance(genericDispatcherType, domainEvent);
 
+            return (INotification?) Activator.CreateInstance(genericDispatcherType, domainEvent);
+        }
+
+        public async Task Dispatch()
+        {
+            await this.PublishDomainEventsAsync();
         }
     }
 }

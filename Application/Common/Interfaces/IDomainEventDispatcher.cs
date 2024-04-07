@@ -9,6 +9,6 @@ namespace Application.Common.Interfaces
 {
     public interface IDomainEventDispatcher
     {
-        Task Dispatch(IDomainEvent devent);
+        Task Dispatch();
     }
 }

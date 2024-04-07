@@ -1,24 +1,23 @@
 ﻿using Application.Common.Interfaces;
 using MediatR;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Application.Common.Behaviours;
 
 public class DispatchingIntegrationEventDecorator<TNotification> : INotificationHandler
-   <TNotification> where TNotification : INotification
+    <TNotification> where TNotification : INotification
 {
-   private readonly ICartDbContext _dbContext;
-   private readonly INotificationHandler<TNotification> _inner;
+    private readonly INotificationHandler<TNotification> _inner;
+    private readonly IDomainEventDispatcher _domainEventDispatcher;
 
-   public DispatchingIntegrationEventDecorator(ICartDbContext dbContext, INotificationHandler<TNotification> inner)
-   {
-      _dbContext = dbContext;
-      _inner = inner;
-   }
-   public Task Handle(TNotification notification, CancellationToken cancellationToken)
-   {
-      _inner.Handle(notification, cancellationToken);
-      return  _dbContext.DispatchDomainEvents();
-      
-   }
+    public DispatchingIntegrationEventDecorator(INotificationHandler<TNotification> inner, IDomainEventDispatcher domainEventDispatcher)
+    {
+        _inner = inner;
+        _domainEventDispatcher = domainEventDispatcher;
+    }
+
+    public async Task Handle(TNotification notification, CancellationToken cancellationToken)
+    {
+        await _inner.Handle(notification, cancellationToken);
+        await _domainEventDispatcher.Dispatch();
+    }
 }

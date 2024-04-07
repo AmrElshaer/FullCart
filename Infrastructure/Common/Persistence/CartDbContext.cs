@@ -15,7 +15,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Common.Persistence;
 
-
 public abstract class ApplicationIdentityDbContext<TUser, TRole, TKey> : IdentityDbContext<
     TUser, TRole, TKey, IdentityUserClaim<TKey>, IdentityUserRole<TKey>,
     IdentityUserLogin<TKey>, IdentityRoleClaim<TKey>, IdentityUserToken<TKey>>
@@ -27,17 +26,15 @@ public abstract class ApplicationIdentityDbContext<TUser, TRole, TKey> : Identit
         : base(options) { }
 }
 
-public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>,ICartDbContext
+public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICartDbContext
 {
-    private readonly IDomainEventDispatcher _domainEventDispatcher;
     private readonly IMediator _mediator;
 
-    public CartDbContext(DbContextOptions<CartDbContext> options,IDomainEventDispatcher domainEventDispatcher,IMediator mediator)
+    public CartDbContext(DbContextOptions<CartDbContext> options, IMediator mediator)
         : base(options)
     {
-        this._domainEventDispatcher = domainEventDispatcher;
         _mediator = mediator;
-    }   
+    }
 
     public DbSet<Admin> Admins { get; set; } = default!;
 
@@ -50,6 +47,7 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>,ICar
     public DbSet<Order> Orders { get; set; } = default!;
 
     public DbSet<Product> Products { get; set; } = default!;
+
     public DbSet<Payment> Payments { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder builder)
@@ -58,32 +56,48 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>,ICar
 
         base.OnModelCreating(builder);
     }
-    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-    {
-        await PreSaveChanges();
-        return await base.SaveChangesAsync(cancellationToken);
-    }
-    private async Task PreSaveChanges()
-    {
-        await DispatchDomainEvents();
-    }
 
-    public async Task DispatchDomainEvents()
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
         var domainEventEntities = ChangeTracker.Entries<Entity>()
             .Select(po => po.Entity)
             .Where(po => po.DomainEvents.Any())
             .ToArray();
 
+        var integrationEvents = new List<INotification>();
+
         foreach (var entity in domainEventEntities)
         {
-            while (entity.DomainEvents.TryTake(out var dev))
+            while (entity.DomainEvents.TryTake(out var domainEvent))
             {
-                await _mediator.Publish(dev);
-                await _domainEventDispatcher.Dispatch(dev);
+                var integrationEvent = CreateDomainEventNotification(domainEvent);
+
+                if (integrationEvent is not null)
+                {
+                    integrationEvents.Add(integrationEvent);
+                }
+
+                await _mediator.Publish(domainEvent, cancellationToken);
             }
-               
         }
+
+        var result = await base.SaveChangesAsync(cancellationToken);
+
+        var tasks = integrationEvents
+            .Select(async (domainEvent) =>
+            {
+                await _mediator.Publish(domainEvent, cancellationToken);
+            });
+
+        await Task.WhenAll(tasks);
+
+        return result;
+    }
+
+    private static INotification? CreateDomainEventNotification(IDomainEvent domainEvent)
+    {
+        var genericDispatcherType = typeof(IntegrationEvent<>).MakeGenericType(domainEvent.GetType());
+
+        return (INotification?) Activator.CreateInstance(genericDispatcherType, domainEvent);
     }
 }
-

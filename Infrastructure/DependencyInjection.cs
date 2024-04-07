@@ -1,7 +1,4 @@
-﻿using Application.Common.Commands;
-using Application.Common.Interfaces;
-using Domain.Common;
-using Domain.Payments.Events;
+﻿using Application.Common.Interfaces;
 using Domain.Roles;
 using Domain.Users;
 using Infrastructure.Common;
@@ -9,10 +6,7 @@ using Infrastructure.Common.Persistence;
 using Infrastructure.Security;
 using Infrastructure.Security.CurrentUserProvider;
 using Infrastructure.Security.TokenGenerator;
-using Infrastructure.Security.TokenValidation;
 using Infrastructure.Services;
-using MediatR;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -25,30 +19,34 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-       return services
-               .AddHttpContextAccessor()
-               .AddAuthorization()
-               .AddAuthentication(configuration)
-               .AddPersistence(configuration)
-               .AddServices();
+        return services
+            .AddHttpContextAccessor()
+            .AddAuthorization()
+            .AddAuthentication(configuration)
+            .AddPersistence(configuration)
+            .AddServices();
     }
 
-    private static IServiceCollection AddPersistence(this IServiceCollection services,IConfiguration configuration)
+    private static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<CartDbContext>(options =>
+        //services.AddScoped<PublishDomainEventsInterceptor>();
+        services.AddDbContext<CartDbContext>((sp, options) =>
         {
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+            //  .AddInterceptors(sp.GetRequiredService<PublishDomainEventsInterceptor>());
 
             options.LogTo(Console.WriteLine, LogLevel.Information)
                 .EnableDetailedErrors()
                 .EnableSensitiveDataLogging();
         });
+
         services.AddIdentity<User, Role>()
             .AddEntityFrameworkStores<CartDbContext>()
             .AddDefaultTokenProviders();
-       
+
         services.AddScoped<ICartDbContext>(provider => provider.GetRequiredService<CartDbContext>());
         services.AddScoped<CartDbContextInitializer>();
+
         return services;
     }
 
@@ -65,7 +63,7 @@ public static class DependencyInjection
         services.AddTransient<IIdentityService, IdentityService>();
         services.AddTransient<IFileAppService, FileAppService>();
         services.AddTransient<IDomainEventDispatcher, DomainEventDispatcher>();
-       // services.Decorate(typeof(INotificationHandler<>), typeof(DomainEventsDispatcherNotificationHandlerDecorator<>));
+        // services.Decorate(typeof(INotificationHandler<>), typeof(DomainEventsDispatcherNotificationHandlerDecorator<>));
 
         // services.Scan(scan => scan
         //      .FromAssembliesOf(typeof(PaymentCreatedNotification))
@@ -82,11 +80,8 @@ public static class DependencyInjection
     private static IServiceCollection AddAuthentication(this IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.Section));
-        
-       
-      
-        services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
 
+        services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
 
         return services;
     }

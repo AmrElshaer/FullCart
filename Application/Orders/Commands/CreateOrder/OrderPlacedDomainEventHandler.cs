@@ -24,7 +24,7 @@ namespace Application.Orders.Commands.CreateOrder
         {
             var newPayment = new Payment(notification.OrderId);
 
-            await this._cartDbContext.Payments.AddAsync(newPayment);
+            await this._cartDbContext.Payments.AddAsync(newPayment,cancellationToken);
         }
     }
     public class OrderPlacedIntegrationEventHandler : INotificationHandler<IntegrationEvent<OrderPlacedEvent>>
