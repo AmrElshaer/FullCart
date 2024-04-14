@@ -35,6 +35,7 @@ public class Order:Entity
             OrderId = id,
             CustomerId = customerId,
         });
+        AddIntegrationEvent(new OrderPlacedIntegrationEvent(id));
        
     }
     

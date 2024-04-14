@@ -28,6 +28,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Common\Interceptors\" />
       <Folder Include="Migrations\" />
     </ItemGroup>
 

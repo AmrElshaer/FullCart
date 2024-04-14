@@ -10,9 +10,12 @@ public abstract class BaseEntity<TId>: IComparable, IComparable<BaseEntity<TId>>
     public  TId Id { get; protected set; } = default!;
 
     private readonly ConcurrentQueue<DomainEvent> _domainEvents = new();
+    private readonly ConcurrentQueue<IntegrationEvent> _integrationEvents = new();
 
     [NotMapped]
     public IProducerConsumerCollection<DomainEvent> DomainEvents => _domainEvents;
+    [NotMapped]
+    public IProducerConsumerCollection<IntegrationEvent> IntegrationEvents => _integrationEvents;
     protected BaseEntity()
     {
     }
@@ -80,13 +83,11 @@ public abstract class BaseEntity<TId>: IComparable, IComparable<BaseEntity<TId>>
     {
         _domainEvents.Enqueue(@domainEvent);
     }
-
-
-
-    public void ClearDomainEvents()
+    protected void AddIntegrationEvent(IntegrationEvent integrationEvent)
     {
-        _domainEvents.Clear();
+        _integrationEvents.Enqueue(integrationEvent);
     }
+    
 }
 
 public abstract class Entity : BaseEntity<Guid>

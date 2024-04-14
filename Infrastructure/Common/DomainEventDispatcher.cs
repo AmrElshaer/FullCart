@@ -25,42 +25,30 @@ namespace Infrastructure.Common
                 .Where(po => po.DomainEvents.Any())
                 .ToArray();
 
-            var integrationEvents = new Queue<INotification>();
+           
 
             foreach (var entity in domainEventEntities)
             {
                 while (entity.DomainEvents.TryTake(out var domainEvent))
                 {
-                    var integrationEvent = CreateDomainEventNotification(domainEvent);
-
-                    if (integrationEvent is not null)
-                    {
-                        var handlerType = typeof(INotificationHandler<>).MakeGenericType(integrationEvent.GetType());
-
-                        var integrationEventHandler = _serviceProvider.GetService(handlerType);
-
-                        if (integrationEventHandler is not null)
-                        {
-                            integrationEvents.Enqueue(integrationEvent);
-                        }
-                    }
-
                     await _publisher.Publish(domainEvent);
                 }
             }
 
-            while (integrationEvents.TryDequeue(out var integrationEvent))
+            var integrationEventsEntities=_cartDbContext.ChangeTracker.Entries<Entity>()
+                .Select(po => po.Entity)
+                .Where(po => po.IntegrationEvents.Any())
+                .ToArray();
+
+            foreach (var entity in integrationEventsEntities)
             {
-                await _publisher.Publish(integrationEvent);
+                while (entity.IntegrationEvents.TryTake(out var integrationEvent))
+                {
+                    await _publisher.Publish(integrationEvent);
+                }
             }
         }
 
-        private static INotification? CreateDomainEventNotification(IDomainEvent domainEvent)
-        {
-            var genericDispatcherType = typeof(IntegrationEvent<>).MakeGenericType(domainEvent.GetType());
-
-            return (INotification?) Activator.CreateInstance(genericDispatcherType, domainEvent);
-        }
 
         public async Task Dispatch()
         {

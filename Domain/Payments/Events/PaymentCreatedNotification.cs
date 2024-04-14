@@ -1,24 +1,12 @@
-﻿using Domain.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
+using Domain.Common;
 
 namespace Domain.Payments.Events
 {
-    public class PaymentCreatedNotification : IntegrationEvent<PaymentCreatedEvent>
+    public class PaymentCreatedNotification : IntegrationEvent
     {
         public Guid PaymentId { get; }
-
-        public PaymentCreatedNotification(PaymentCreatedEvent domainEvent) : base(domainEvent)
-        {
-            this.PaymentId = domainEvent.PaymentId;
-        }
-
-        [JsonConstructor]
-        public PaymentCreatedNotification(Guid paymentId) : base(null)
+        public PaymentCreatedNotification(Guid paymentId) 
         {
             this.PaymentId = paymentId;
         }

@@ -2,12 +2,6 @@
 using Domain.Orders.Events;
 using Domain.Payments;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Common;
 
 namespace Application.Orders.Commands.CreateOrder
 {
@@ -24,10 +18,11 @@ namespace Application.Orders.Commands.CreateOrder
         {
             var newPayment = new Payment(notification.OrderId);
 
-            await this._cartDbContext.Payments.AddAsync(newPayment,cancellationToken);
+            await this._cartDbContext.Payments.AddAsync(newPayment, cancellationToken);
         }
     }
-    public class OrderPlacedIntegrationEventHandler : INotificationHandler<IntegrationEvent<OrderPlacedEvent>>
+
+    public class OrderPlacedIntegrationEventHandler : INotificationHandler<OrderPlacedIntegrationEvent>
     {
         private readonly ICartDbContext _cartDbContext;
 
@@ -36,10 +31,9 @@ namespace Application.Orders.Commands.CreateOrder
             _cartDbContext = cartDbContext;
         }
 
-
-        public async Task Handle(IntegrationEvent<OrderPlacedEvent> notification, CancellationToken cancellationToken)
+        public async Task Handle(OrderPlacedIntegrationEvent notification, CancellationToken cancellationToken)
         {
-           await Task.CompletedTask;
+            await Task.CompletedTask;
         }
     }
 }

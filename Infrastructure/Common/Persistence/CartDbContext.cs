@@ -4,6 +4,7 @@ using Domain.Brands;
 using Domain.Categories;
 using Domain.Common;
 using Domain.Orders;
+using Domain.Orders.Events;
 using Domain.Payments;
 using Domain.Products;
 using Domain.Roles;
@@ -28,14 +29,13 @@ public abstract class ApplicationIdentityDbContext<TUser, TRole, TKey> : Identit
 
 public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICartDbContext
 {
+    
     private readonly IMediator _mediator;
-    private readonly IServiceProvider _serviceProvider;
 
-    public CartDbContext(DbContextOptions<CartDbContext> options, IMediator mediator, IServiceProvider serviceProvider)
+    public CartDbContext(DbContextOptions<CartDbContext> options, IMediator mediator)
         : base(options)
     {
         _mediator = mediator;
-        _serviceProvider = serviceProvider;
     }
 
     public DbSet<Admin> Admins { get; set; } = default!;
@@ -65,45 +65,31 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
             .Select(po => po.Entity)
             .Where(po => po.DomainEvents.Any())
             .ToArray();
+       
 
-        var integrationEvents = new Queue<INotification>();
 
         foreach (var entity in domainEventEntities)
         {
             while (entity.DomainEvents.TryTake(out var domainEvent))
             {
-                var integrationEvent = CreateDomainEventNotification(domainEvent);
-
-                if (integrationEvent is not null)
-                {
-                    var handlerType = typeof(INotificationHandler<>).MakeGenericType(integrationEvent.GetType());
-
-                    var integrationEventHandler = _serviceProvider.GetService(handlerType);
-
-                    if (integrationEventHandler is not null)
-                    {
-                        integrationEvents.Enqueue(integrationEvent);
-                    }
-                }
-
                 await _mediator.Publish(domainEvent, cancellationToken);
             }
         }
 
         var result = await base.SaveChangesAsync(cancellationToken);
+        var integrationEventsEntities=ChangeTracker.Entries<Entity>()
+            .Select(po => po.Entity)
+            .Where(po => po.IntegrationEvents.Any())
+            .ToArray();
 
-        while (integrationEvents.TryDequeue(out var integrationEvent))
+        foreach (var entity in integrationEventsEntities)
         {
-            await _mediator.Publish(integrationEvent, cancellationToken);
+            while (entity.IntegrationEvents.TryTake(out var integrationEvent))
+            {
+                await _mediator.Publish(integrationEvent, cancellationToken);
+            }
         }
 
         return result;
-    }
-
-    private static INotification? CreateDomainEventNotification(IDomainEvent domainEvent)
-    {
-        var genericDispatcherType = typeof(IntegrationEvent<>).MakeGenericType(domainEvent.GetType());
-
-        return (INotification?) Activator.CreateInstance(genericDispatcherType, domainEvent);
     }
 }

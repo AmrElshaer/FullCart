@@ -1,11 +1,6 @@
 ﻿using Domain.Payments.Events;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Payments.Commands.CreatePayment
 {
@@ -18,11 +13,10 @@ namespace Application.Payments.Commands.CreatePayment
             _logger = logger;
         }
 
-        public async Task Handle(PaymentCreatedNotification request, CancellationToken cancellationToken)
+        public async Task Handle(PaymentCreatedNotification notification, CancellationToken cancellationToken)
         {
-            _logger.LogInformation("PaymentCreatedNotificationHandler: {request}", request);
+            _logger.LogInformation("PaymentCreatedNotificationHandler: {notification}", notification);
             await Task.CompletedTask;
         }
     }
-
 }

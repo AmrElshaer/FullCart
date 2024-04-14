@@ -21,6 +21,7 @@ namespace Domain.Payments
             OrderId = orderId;
             PaymentStatus = PaymentStatus.ToPay;
             AddDomainEvent(new PaymentCreatedEvent() { OrderId = orderId, PaymentId=Id});
+            AddIntegrationEvent(new PaymentCreatedNotification(Id));
         }
     }
 }

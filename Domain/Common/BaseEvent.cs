@@ -1,8 +1,7 @@
-﻿using MediatR;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using MediatR;
 
 namespace Domain.Common;
-
 
 public interface IDomainEvent : INotification
 {
@@ -17,25 +16,23 @@ public abstract class DomainEvent : IDomainEvent
 
     public bool IsPublished { get; set; }
 }
+
 public interface IIntegrationEvent<out TEventType> : IIntegrationEvent
 {
     TEventType DomainEvent { get; }
 }
+
 public interface IIntegrationEvent : INotification
 {
     Guid Id { get; }
 }
 
-public class IntegrationEvent<T> : IIntegrationEvent<T> where T : IDomainEvent
+public class IntegrationEvent : IIntegrationEvent
 {
-    [JsonIgnore]
-    public T DomainEvent { get; }
+    public Guid Id { get; }
 
-    public Guid Id { get;  }
-
-    public IntegrationEvent(T domainEvent)
+    protected IntegrationEvent()
     {
         this.Id = Guid.NewGuid();
-        this.DomainEvent = domainEvent;
     }
 }
