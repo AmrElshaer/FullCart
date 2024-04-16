@@ -1,14 +1,15 @@
-﻿using System.Text.Json.Serialization;
-using Domain.Common;
+﻿using Domain.Common;
 
 namespace Domain.Payments.Events
 {
     public class PaymentCreatedNotification : IntegrationEvent
     {
         public Guid PaymentId { get; }
-        public PaymentCreatedNotification(Guid paymentId) 
+
+        public PaymentCreatedNotification(Guid paymentId)
         {
-            this.PaymentId = paymentId;
+            PaymentId = paymentId;
+            Type = IntegrationEventConstants.PaymentConstant.PaymentCreated;
         }
     }
 }

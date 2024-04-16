@@ -21,19 +21,4 @@ namespace Application.Orders.Commands.CreateOrder
             await this._cartDbContext.Payments.AddAsync(newPayment, cancellationToken);
         }
     }
-
-    public class OrderPlacedIntegrationEventHandler : INotificationHandler<OrderPlacedIntegrationEvent>
-    {
-        private readonly ICartDbContext _cartDbContext;
-
-        public OrderPlacedIntegrationEventHandler(ICartDbContext cartDbContext)
-        {
-            _cartDbContext = cartDbContext;
-        }
-
-        public async Task Handle(OrderPlacedIntegrationEvent notification, CancellationToken cancellationToken)
-        {
-            await Task.CompletedTask;
-        }
-    }
 }

@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using MediatR;
+﻿using MediatR;
 
 namespace Domain.Common;
 
@@ -25,14 +24,13 @@ public interface IIntegrationEvent<out TEventType> : IIntegrationEvent
 public interface IIntegrationEvent : INotification
 {
     Guid Id { get; }
+
+    string Type { get; }
 }
 
 public class IntegrationEvent : IIntegrationEvent
 {
-    public Guid Id { get; }
+    public Guid Id { get; } = Guid.NewGuid();
 
-    protected IntegrationEvent()
-    {
-        this.Id = Guid.NewGuid();
-    }
+    public string Type { get; init; } = default!;
 }

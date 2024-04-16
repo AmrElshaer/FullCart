@@ -1,6 +1,8 @@
 ﻿using Application.Common.Interfaces;
+using Application.Orders.Commands.CreateOrder;
 using Domain.Roles;
 using Domain.Users;
+using DotNetCore.CAP;
 using Infrastructure.Common;
 using Infrastructure.Common.Persistence;
 using Infrastructure.Security;
@@ -12,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Savorboard.CAP.InMemoryMessageQueue;
 
 namespace Infrastructure;
 
@@ -24,7 +27,7 @@ public static class DependencyInjection
             .AddAuthorization()
             .AddAuthentication(configuration)
             .AddPersistence(configuration)
-            .AddServices();
+            .AddServices(configuration);
     }
 
     private static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
@@ -58,7 +61,7 @@ public static class DependencyInjection
         return services;
     }
 
-    private static IServiceCollection AddServices(this IServiceCollection services)
+    private static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddTransient<IIdentityService, IdentityService>();
         services.AddTransient<IFileAppService, FileAppService>();
@@ -74,6 +77,30 @@ public static class DependencyInjection
         // services.Decorate(
         //     typeof(SaveChangeCommandHandlerDecorator<,>),
         //     typeof(ICommandHandler<,>));
+        services.AddCap(capOptions =>
+        {
+            capOptions.UseSqlServer(options =>
+            {
+                options.ConnectionString = configuration.GetConnectionString("DefaultConnection");
+                options.Schema = "outbox";
+            });
+
+            capOptions.UseInMemoryMessageQueue();
+
+            capOptions.UseDashboard(dashboardOptions =>
+            {
+                dashboardOptions.PathMatch = "/cap";
+            });
+        });
+
+        services.Scan(scan =>
+        {
+            scan.FromAssemblies(typeof(OrderPlacedIntegrationEventHandler).Assembly)
+                .AddClasses(filter => filter.AssignableTo<ICapSubscribe>())
+                .AsSelf()
+                .WithTransientLifetime();
+        });
+
         return services;
     }
 

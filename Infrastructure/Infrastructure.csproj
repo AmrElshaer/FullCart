@@ -7,29 +7,32 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="DotNetCore.CAP" Version="8.1.0" />
-      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.26" />
-      <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.26" />
-      <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
-      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.26" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.26" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.26" />
-		<PackageReference Include="MediatR" Version="12.2.0" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.26">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
-      <PackageReference Include="Scrutor" Version="4.2.2" />
+        <PackageReference Include="DotNetCore.CAP" Version="6.2.1"/>
+        <PackageReference Include="DotNetCore.CAP.Dashboard" Version="6.2.1"/>
+        <PackageReference Include="DotNetCore.CAP.SqlServer" Version="6.2.1"/>
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.26"/>
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.26"/>
+        <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.26"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.26"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.26"/>
+        <PackageReference Include="MediatR" Version="12.2.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.26">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Savorboard.CAP.InMemoryMessageQueue" Version="6.0.0"/>
+        <PackageReference Include="Scrutor" Version="4.2.2"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Application\Application.csproj" />
-      <ProjectReference Include="..\Domain\Domain.csproj" />
+        <ProjectReference Include="..\Application\Application.csproj"/>
+        <ProjectReference Include="..\Domain\Domain.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Common\Interceptors\" />
-      <Folder Include="Migrations\" />
+        <Folder Include="Common\Interceptors\"/>
+        <Folder Include="Migrations\"/>
     </ItemGroup>
 
 </Project>
