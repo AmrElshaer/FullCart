@@ -5,6 +5,7 @@ using Domain.Brands;
 using Domain.Categories;
 using Domain.Common;
 using Domain.Orders;
+using Domain.Outbox;
 using Domain.Payments;
 using Domain.Products;
 using Domain.Roles;
@@ -16,6 +17,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 
 namespace Infrastructure.Common.Persistence;
 
@@ -56,6 +58,8 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
 
     public DbSet<Payment> Payments { get; set; } = default!;
 
+    public DbSet<OutboxMessage> OutboxMessages { get; set; } = default!;
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
@@ -72,7 +76,8 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
 
         var integrationEventsEntities = ChangeTracker.Entries<Entity>()
             .Select(po => po.Entity)
-            .Where(po => po.IntegrationEvents.Any());
+            .Where(po => po.IntegrationEvents.Any())
+            .ToArray();
 
         // ReSharper disable once PossibleMultipleEnumeration
         if (domainEventEntities.Length == 0 && integrationEventsEntities.ToArray().Length == 0)
@@ -80,37 +85,28 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
             return await base.SaveChangesAsync(cancellationToken);
         }
 
-        if (Database.CurrentTransaction is not null) // the transaction commit and rollback is managed outside
+        foreach (var entity in domainEventEntities)
         {
-            await PublishDomainEventsAsync(domainEventEntities, cancellationToken);
-            var saveChangesResult = await base.SaveChangesAsync(cancellationToken);
-            // ReSharper disable once PossibleMultipleEnumeration
-            await PublishIntegrationEvents(integrationEventsEntities.ToArray(), Database.CurrentTransaction, cancellationToken);
-
-            return saveChangesResult;
+            while (entity.DomainEvents.TryTake(out var domainEvent))
+            {
+                await _mediator.Publish(domainEvent);
+            }
         }
-
-        await using var transaction = await Database.BeginTransactionAsync(isolationLevel: IsolationLevel.ReadCommitted,
-            cancellationToken: cancellationToken);
-
-        try
+       
+        foreach (var entity in integrationEventsEntities)
         {
-            await PublishDomainEventsAsync(domainEventEntities, cancellationToken);
-            // ReSharper disable once PossibleMultipleEnumeration
-            await PublishIntegrationEvents(integrationEventsEntities.ToArray(), transaction, cancellationToken);
-
-            var result = await base.SaveChangesAsync(cancellationToken);
-         
-            await transaction.CommitAsync(cancellationToken);
-
-            return result;
+            while (entity.IntegrationEvents.TryTake(out var integrationEvent))
+            {
+                var data = JsonConvert.SerializeObject(integrationEvent);
+                var outboxMessage = new OutboxMessage(
+                    integrationEvent.OccurredOn,
+                    data);
+                this.OutboxMessages.Add(outboxMessage);
+            }
+               
+              
         }
-        catch (Exception)
-        {
-            await transaction.RollbackAsync(cancellationToken);
-
-            throw;
-        }
+        return await base.SaveChangesAsync(cancellationToken);
     }
 
     private async Task PublishIntegrationEvents(Entity[] integrationEventsEntities, IDbContextTransaction transaction, CancellationToken cancellationToken)

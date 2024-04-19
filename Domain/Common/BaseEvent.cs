@@ -25,12 +25,16 @@ public interface IIntegrationEvent : INotification
 {
     Guid Id { get; }
 
+    public DateTime OccurredOn { get; }
+
     string Type { get; }
 }
 
 public class IntegrationEvent : IIntegrationEvent
 {
     public Guid Id { get; } = Guid.NewGuid();
+
+    public DateTime OccurredOn { get; }=DateTime.Now;
 
     public string Type { get; init; } = default!;
 }

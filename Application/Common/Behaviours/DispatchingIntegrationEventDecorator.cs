@@ -7,17 +7,17 @@ public class DispatchingIntegrationEventDecorator<TNotification> : INotification
     <TNotification> where TNotification : INotification
 {
     private readonly INotificationHandler<TNotification> _inner;
-    private readonly IDomainEventDispatcher _domainEventDispatcher;
+    private readonly IEventDispatcher _eventDispatcher;
 
-    public DispatchingIntegrationEventDecorator(INotificationHandler<TNotification> inner, IDomainEventDispatcher domainEventDispatcher)
+    public DispatchingIntegrationEventDecorator(INotificationHandler<TNotification> inner, IEventDispatcher eventDispatcher)
     {
         _inner = inner;
-        _domainEventDispatcher = domainEventDispatcher;
+        _eventDispatcher = eventDispatcher;
     }
 
     public async Task Handle(TNotification notification, CancellationToken cancellationToken)
     {
         await _inner.Handle(notification, cancellationToken);
-        await _domainEventDispatcher.Dispatch();
+        await _eventDispatcher.Dispatch();
     }
 }

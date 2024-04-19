@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Common.Interfaces
 {
-    public interface IDomainEventDispatcher
+    public interface IEventDispatcher
     {
         Task Dispatch();
     }
