@@ -18,6 +18,7 @@ public class OrderPlacedIntegrationEventHandler : ICapSubscribe
     public async Task HandleAsync(OrderPlacedIntegrationEvent notification)
     {
         _logger.LogInformation("order placed {@Notification}", notification);
+        await Task.Delay(2000);
         await Task.CompletedTask;
     }
 }

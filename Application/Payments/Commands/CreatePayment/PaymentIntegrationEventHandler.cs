@@ -18,6 +18,7 @@ namespace Application.Payments.Commands.CreatePayment
         public async Task HandleAsync(PaymentCreatedNotification notification)
         {
             _logger.LogInformation("PaymentCreatedNotificationHandler: {@Notification}", notification);
+            await Task.Delay(2000);
             await Task.CompletedTask;
         }
     }

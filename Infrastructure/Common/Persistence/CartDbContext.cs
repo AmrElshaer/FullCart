@@ -96,9 +96,11 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
         try
         {
             await PublishDomainEventsAsync(domainEventEntities, cancellationToken);
-            var result = await base.SaveChangesAsync(cancellationToken);
             // ReSharper disable once PossibleMultipleEnumeration
             await PublishIntegrationEvents(integrationEventsEntities.ToArray(), transaction, cancellationToken);
+
+            var result = await base.SaveChangesAsync(cancellationToken);
+         
             await transaction.CommitAsync(cancellationToken);
 
             return result;
