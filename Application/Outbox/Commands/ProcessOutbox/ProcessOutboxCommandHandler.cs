@@ -1,5 +1,6 @@
 ﻿using Application.Common.Interfaces;
 using Dapper;
+using Domain.Common;
 using Domain.Outbox;
 using MediatR;
 using Newtonsoft.Json;
@@ -24,15 +25,15 @@ namespace Application.Outbox.Commands.ProcessOutbox
 
             const string sql = "SELECT " +
                 "[OutboxMessage].[Id], " +
-                "[OutboxMessage].[Type], " +
-                "[OutboxMessage].[Data] " +
-                "FROM [app].[OutboxMessages] AS [OutboxMessage] " +
+                "[OutboxMessage].[Data], " +
+                "[OutboxMessage].[Type]" +
+                "FROM [OutboxMessages] AS [OutboxMessage] " +
                 "WHERE [OutboxMessage].[ProcessedDate] IS NULL";
 
             var messages = await connection.QueryAsync<OutboxMessage>(sql);
             var messagesList = messages.AsList();
 
-            const string sqlUpdateProcessedDate = "UPDATE [app].[OutboxMessages] " +
+            const string sqlUpdateProcessedDate = "UPDATE [OutboxMessages] " +
                 "SET [ProcessedDate] = @Date " +
                 "WHERE [Id] = @Id";
 
@@ -40,8 +41,10 @@ namespace Application.Outbox.Commands.ProcessOutbox
             {
                 foreach (var message in messagesList)
                 {
-                    var request = JsonConvert.DeserializeObject(message.Data);
-
+                    ArgumentNullException.ThrowIfNull(message.Type);
+                    var type = typeof(OutboxMessage).Assembly.GetType(message.Type);
+                    var request = JsonConvert.DeserializeObject(message.Data, type) as IntegrationEvent;
+                    ArgumentNullException.ThrowIfNull(request);
                     await this._mediator.Publish(request, cancellationToken);
 
                     await connection.ExecuteAsync(sqlUpdateProcessedDate, new

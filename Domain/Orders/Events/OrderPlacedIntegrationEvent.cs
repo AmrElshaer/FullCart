@@ -9,6 +9,5 @@ public class OrderPlacedIntegrationEvent : IntegrationEvent
     public OrderPlacedIntegrationEvent(Guid orderId)
     {
         OrderId = orderId;
-        Type = IntegrationEventConstants.OrderConstant.OrderPlaced;
     }
 }

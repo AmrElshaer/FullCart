@@ -1,11 +1,12 @@
 ﻿using Domain.Common;
 using Domain.Orders.Events;
 using DotNetCore.CAP;
+using MediatR;
 using Microsoft.Extensions.Logging;
 
 namespace Application.Orders.Commands.CreateOrder;
 
-public class OrderPlacedIntegrationEventHandler : ICapSubscribe
+public class OrderPlacedIntegrationEventHandler : INotificationHandler<OrderPlacedIntegrationEvent>
 {
     private readonly ILogger<OrderPlacedIntegrationEventHandler> _logger;
 
@@ -14,8 +15,9 @@ public class OrderPlacedIntegrationEventHandler : ICapSubscribe
         _logger = logger;
     }
 
-    [CapSubscribe(IntegrationEventConstants.OrderConstant.OrderPlaced)]
-    public async Task HandleAsync(OrderPlacedIntegrationEvent notification)
+   
+
+    public async Task Handle(OrderPlacedIntegrationEvent notification, CancellationToken cancellationToken)
     {
         _logger.LogInformation("order placed {@Notification}", notification);
         await Task.Delay(2000);

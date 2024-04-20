@@ -87,7 +87,6 @@ public static class DependencyInjection
      
         services.AddTransient<IIdentityService, IdentityService>();
         services.AddTransient<IFileAppService, FileAppService>();
-        services.AddTransient<IEventDispatcher, EventDispatcher>();
 
         services.Scan(scan =>
         {

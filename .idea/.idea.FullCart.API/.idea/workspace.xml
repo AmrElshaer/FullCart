@@ -8,21 +8,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/Application/Common/Interfaces/ISqlConnectionFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Outbox/Commands/ProcessOutbox/ProcessOutboxCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Outbox/Commands/ProcessOutbox/ProcessOutboxCommandHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Outbox/OutboxMessage.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/SqlConnectionFactory.cs" afterDir="false" />
+    <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Application.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Common/Behaviours/DispatchingIntegrationEventDecorator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Behaviours/DispatchingIntegrationEventDecorator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IDomainEventDispatcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/IEventDispatcher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/ICartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/ICartDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IEventDispatcher.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/OrderPlacedIntegrationEventHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/OrderPlacedIntegrationEventHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Outbox/Commands/ProcessOutbox/ProcessOutboxCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Outbox/Commands/ProcessOutbox/ProcessOutboxCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Payments/Commands/CreatePayment/PaymentIntegrationEventHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Payments/Commands/CreatePayment/PaymentIntegrationEventHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/Common/BaseEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Common/BaseEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/DomainEventDispatcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/EventDispatcher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Orders/Events/OrderPlacedIntegrationEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Orders/Events/OrderPlacedIntegrationEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Outbox/OutboxMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Outbox/OutboxMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Payments/Events/PaymentCreatedNotification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Payments/Events/PaymentCreatedNotification.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/EventDispatcher.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/CartDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/CartDbContextModelSnapshot.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,11 +62,8 @@
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/dacef0f717805c6ba640c76e4a97412f8cd928713d6afde79da974ca8d7ef/ImplementationTypeFilter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/f1b14a055e8b8bd5ca49ab3c78a6e5d9b1faf6531ce3b1e53c4419a2ac3b1/IDbConnection.Extensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/f4bc324a395d24ed12db75b0a81536b642509aa14825bf114d9b7c934e2b/Mediator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/cart-backend/FullCart/Application/Orders/Commands/CreateOrder/OrderPlacedIntegrationEventHandler.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/cart-backend/FullCart/Application/Payments/Commands/CreatePayment/PaymentIntegrationEventHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Application/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/cart-backend/FullCart/Infrastructure/Common/DomainEventDispatcher.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/cart-backend/FullCart/Infrastructure/Common/Persistence/CartDbContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/cart-backend/FullCart/Domain/Common/BaseEvent.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectId" id="2bN1pPkHKYhpud8bgBFuxqoc2sU" />
@@ -90,7 +88,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "rider.code.cleanup.on.save": "true",
     "rider.code.cleanup.on.save.profile": "Custom: Talabeyah",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -164,7 +162,8 @@
       <workItem from="1713207831463" duration="7000" />
       <workItem from="1713209739651" duration="3346000" />
       <workItem from="1713288807580" duration="9831000" />
-      <workItem from="1713539732555" duration="12182000" />
+      <workItem from="1713539732555" duration="15341000" />
+      <workItem from="1713611361741" duration="8787000" />
     </task>
     <task id="LOCAL-00001" summary="init architecture">
       <created>1706186905525</created>
@@ -278,7 +277,21 @@
       <option name="project" value="LOCAL" />
       <updated>1713548387611</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="add OutboxMessage.cs">
+      <created>1713559708352</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1713559708352</updated>
+    </task>
+    <task id="LOCAL-00018" summary="add migration">
+      <created>1713559871978</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1713559871978</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,14 +304,15 @@
     <MESSAGE value="update AuthorizationBehavior.cs" />
     <MESSAGE value="add create customer , generate tokens" />
     <MESSAGE value="add order , category ,brand" />
-    <MESSAGE value="add migration" />
     <MESSAGE value="add controllers" />
     <MESSAGE value="update ignore file" />
     <MESSAGE value="add idea folder in ignore" />
     <MESSAGE value="migraiton payment" />
     <MESSAGE value="update integration events" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="add OutboxMessage.cs" />
+    <MESSAGE value="add migration" />
+    <option name="LAST_COMMIT_MESSAGE" value="add migration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -322,25 +336,6 @@
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/Payments/Commands/CreatePayment/PaymentIntegrationEventHandler.cs</url>
-          <line>19</line>
-          <properties documentPath="D:\Projects\cart-backend\FullCart\Application\Payments\Commands\CreatePayment\PaymentCreatedNotificationHandler.cs" initialLine="17" containingFunctionPresentation="Method 'Handle'" />
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs</url>
-          <line>70</line>
-          <properties documentPath="D:\Projects\cart-backend\FullCart\Infrastructure\Common\Persistence\CartDbContext.cs" initialLine="65" containingFunctionPresentation="Method 'SaveChangesAsync'">
-            <startOffsets>
-              <option value="2325" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2326" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="64" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Application/Common/Behaviours/AuthorizationBehavior.cs</url>
           <line>24</line>
           <properties documentPath="D:\Projects\cart-backend\FullCart\Application\Common\Behaviours\AuthorizationBehavior.cs" initialLine="24" containingFunctionPresentation="Method 'Handle'">
@@ -354,17 +349,17 @@
           <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/OrderPlacedIntegrationEventHandler.cs</url>
-          <line>18</line>
-          <properties documentPath="D:\Projects\cart-backend\FullCart\Application\Orders\Commands\CreateOrder\OrderPlacedIntegrationEventHandler.cs" initialLine="18" containingFunctionPresentation="Method 'HandleAsync'">
+          <url>file://$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs</url>
+          <line>64</line>
+          <properties documentPath="D:\Projects\cart-backend\FullCart\Infrastructure\Common\Persistence\CartDbContext.cs" initialLine="70" containingFunctionPresentation="Method 'SaveChangesAsync'">
             <startOffsets>
-              <option value="590" />
+              <option value="2023" />
             </startOffsets>
             <endOffsets>
-              <option value="591" />
+              <option value="2024" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="68" />
+          <option name="timeStamp" value="79" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

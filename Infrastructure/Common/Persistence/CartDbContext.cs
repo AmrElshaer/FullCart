@@ -1,5 +1,4 @@
-﻿using System.Data;
-using System.Reflection;
+﻿using System.Reflection;
 using Application.Common.Interfaces;
 using Domain.Brands;
 using Domain.Categories;
@@ -10,13 +9,10 @@ using Domain.Payments;
 using Domain.Products;
 using Domain.Roles;
 using Domain.Users;
-using DotNetCore.CAP;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 
 namespace Infrastructure.Common.Persistence;
@@ -35,13 +31,11 @@ public abstract class ApplicationIdentityDbContext<TUser, TRole, TKey> : Identit
 public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICartDbContext
 {
     private readonly IMediator _mediator;
-    private readonly ICapPublisher _integrationEventPublisher;
 
-    public CartDbContext(DbContextOptions<CartDbContext> options, IMediator mediator, ICapPublisher integrationEventPublisher)
+    public CartDbContext(DbContextOptions<CartDbContext> options, IMediator mediator)
         : base(options)
     {
         _mediator = mediator;
-        _integrationEventPublisher = integrationEventPublisher;
     }
 
     public DbSet<Admin> Admins { get; set; } = default!;
@@ -69,70 +63,45 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
+        await DispatchEvents(cancellationToken);
+
+        return await base.SaveChangesAsync(cancellationToken);
+    }
+
+    public async Task DispatchEvents(CancellationToken cancellationToken=default)
+    {
         var domainEventEntities = ChangeTracker.Entries<Entity>()
             .Select(po => po.Entity)
             .Where(po => po.DomainEvents.Any())
             .ToArray();
+
+        foreach (var entity in domainEventEntities)
+        {
+            while (entity.DomainEvents.TryTake(out var domainEvent))
+            {
+                await _mediator.Publish(domainEvent, cancellationToken);
+            }
+        }
 
         var integrationEventsEntities = ChangeTracker.Entries<Entity>()
             .Select(po => po.Entity)
             .Where(po => po.IntegrationEvents.Any())
             .ToArray();
 
-        // ReSharper disable once PossibleMultipleEnumeration
-        if (domainEventEntities.Length == 0 && integrationEventsEntities.ToArray().Length == 0)
-        {
-            return await base.SaveChangesAsync(cancellationToken);
-        }
-
-        foreach (var entity in domainEventEntities)
-        {
-            while (entity.DomainEvents.TryTake(out var domainEvent))
-            {
-                await _mediator.Publish(domainEvent);
-            }
-        }
-       
         foreach (var entity in integrationEventsEntities)
         {
             while (entity.IntegrationEvents.TryTake(out var integrationEvent))
             {
+                var type = integrationEvent.GetType().FullName;
+                ArgumentNullException.ThrowIfNull(type);
                 var data = JsonConvert.SerializeObject(integrationEvent);
+
                 var outboxMessage = new OutboxMessage(
                     integrationEvent.OccurredOn,
+                    type,
                     data);
+
                 this.OutboxMessages.Add(outboxMessage);
-            }
-               
-              
-        }
-        return await base.SaveChangesAsync(cancellationToken);
-    }
-
-    private async Task PublishIntegrationEvents(Entity[] integrationEventsEntities, IDbContextTransaction transaction, CancellationToken cancellationToken)
-    {
-        if (integrationEventsEntities.Length == 0)
-        {
-            return;
-        }
-        _integrationEventPublisher.Transaction.Value = ActivatorUtilities.CreateInstance<SqlServerCapTransaction>(_integrationEventPublisher.ServiceProvider).Begin(transaction);
-
-        foreach (var entity in integrationEventsEntities)
-        {
-            while (entity.IntegrationEvents.TryTake(out var integrationEvent))
-            {
-                await _integrationEventPublisher.PublishAsync(integrationEvent.Type, integrationEvent, cancellationToken: cancellationToken);
-            }
-        }
-    }
-
-    private async Task PublishDomainEventsAsync(Entity[] domainEventEntities, CancellationToken cancellationToken)
-    {
-        foreach (var entity in domainEventEntities)
-        {
-            while (entity.DomainEvents.TryTake(out var domainEvent))
-            {
-                await _mediator.Publish(domainEvent, cancellationToken);
             }
         }
     }

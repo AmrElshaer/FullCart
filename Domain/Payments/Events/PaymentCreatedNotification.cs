@@ -9,7 +9,6 @@ namespace Domain.Payments.Events
         public PaymentCreatedNotification(Guid paymentId)
         {
             PaymentId = paymentId;
-            Type = IntegrationEventConstants.PaymentConstant.PaymentCreated;
         }
     }
 }
