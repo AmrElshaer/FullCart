@@ -8,18 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FullCart.API/Controllers/ApiControllerBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Controllers/ApiControllerBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FullCart.API/Controllers/OrderController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Controllers/OrderController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FullCart.API/Controllers/TokenController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Controllers/TokenController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FullCart.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FullCart.API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtTokenGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtTokenGenerator.cs" afterDir="false" />
-    </list>
+    <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,6 +52,7 @@
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/f4bc324a395d24ed12db75b0a81536b642509aa14825bf114d9b7c934e2b/Mediator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Projects/cart-backend/FullCart/Application/Orders/Commands/CreateOrder/CreateOrderCommandHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Application/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/cart-backend/FullCart/FullCart.API/Controllers/ApiControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Projects/cart-backend/FullCart/FullCart.API/Controllers/ApiControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Projects/cart-backend/FullCart/FullCart.API/Controllers/OrderController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Projects/cart-backend/FullCart/FullCart.API/Controllers/TokenController.cs" root0="SKIP_HIGHLIGHTING" />
@@ -170,7 +160,7 @@
       <workItem from="1713539732555" duration="15341000" />
       <workItem from="1713611361741" duration="10160000" />
       <workItem from="1713725535707" duration="8066000" />
-      <workItem from="1714041980898" duration="11218000" />
+      <workItem from="1714041980898" duration="11475000" />
     </task>
     <task id="LOCAL-00001" summary="init architecture">
       <created>1706186905525</created>
@@ -305,7 +295,14 @@
       <option name="project" value="LOCAL" />
       <updated>1713629090047</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="update payment">
+      <created>1714143789005</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1714143789005</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,23 +324,12 @@
     <MESSAGE value="add OutboxMessage.cs" />
     <MESSAGE value="add migration" />
     <MESSAGE value="enhancement" />
-    <option name="LAST_COMMIT_MESSAGE" value="enhancement" />
+    <MESSAGE value="update payment" />
+    <option name="LAST_COMMIT_MESSAGE" value="update payment" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Infrastructure/Security/CurrentUserProvider/CurrentUserProvider.cs</url>
-          <line>19</line>
-          <properties documentPath="E:\FullCart\FullCart.API\Infrastructure\Security\CurrentUserProvider\CurrentUserProvider.cs" initialLine="19" containingFunctionPresentation="Method 'GetCurrentUser'" />
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Infrastructure/Security/CurrentUserProvider/CurrentUserProvider.cs</url>
-          <line>26</line>
-          <properties documentPath="E:\FullCart\FullCart.API\Infrastructure\Security\CurrentUserProvider\CurrentUserProvider.cs" initialLine="26" containingFunctionPresentation="Method 'GetCurrentUser'" />
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommandHandler.cs</url>
           <line>20</line>
