@@ -1,14 +1,17 @@
 ﻿using Application.Orders.Commands.CreateOrder;
 using Application.Orders.Queries.GetOrderById;
 using Domain.Orders;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
 namespace FullCart.API.Controllers;
 
-public class OrderController:ApiController
+public class OrderController : ApiController
 {
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<Order>> Get(Guid id)
-        => (await Mediator.Send(new GetOrderByIdQuery(id))).Match(Ok, Problem); 
+        => (await Mediator.Send(new GetOrderByIdQuery(id))).Match(Ok, Problem);
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult<Guid>> CreateOrder(CreateOrderCommand command)
         => (await Mediator.Send(command)).Match(r=>Ok(r), Problem);

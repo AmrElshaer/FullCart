@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FullCart.API.Controllers;
 
-public class TokenController:ApiController
+public class TokenController : ApiController
 {
     [HttpPost("generate-token")]
     public async Task<ActionResult<GenerateTokenResponse>> GenerateToken(GenerateTokenQuery query)

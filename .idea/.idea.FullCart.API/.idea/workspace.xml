@@ -10,20 +10,15 @@
   <component name="ChangeListManager">
     <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Behaviours/DispatchingIntegrationEventDecorator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Behaviours/DispatchingIntegrationEventDecorator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/ICartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/ICartDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IEventDispatcher.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/OrderPlacedIntegrationEventHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/OrderPlacedIntegrationEventHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Outbox/Commands/ProcessOutbox/ProcessOutboxCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Outbox/Commands/ProcessOutbox/ProcessOutboxCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Payments/Commands/CreatePayment/PaymentIntegrationEventHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Payments/Commands/CreatePayment/PaymentIntegrationEventHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Common/BaseEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Common/BaseEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Orders/Events/OrderPlacedIntegrationEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Orders/Events/OrderPlacedIntegrationEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Outbox/OutboxMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Outbox/OutboxMessage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Payments/Events/PaymentCreatedNotification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Payments/Events/PaymentCreatedNotification.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/EventDispatcher.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API/Controllers/ApiControllerBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Controllers/ApiControllerBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API/Controllers/OrderController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Controllers/OrderController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API/Controllers/TokenController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Controllers/TokenController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/CartDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/CartDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtTokenGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtTokenGenerator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,12 +38,16 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/e4918c8ac7be482996b82eec990f156d11200/d5/bd31b98a/INotificationHandler`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/ebcbbff16f5948f0a091dfb556d6158e3feb0/ba/012ea427/HttpServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/148e2c145f65f91481f138f2bccab58bb3a682d9dad5cfcab21ebdd4906885/IDataStorage.SqlServer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/1a67883bffb4224a1545e27ffc5230c0388b8f34d9ac445a7a129f2625ad34/ICapTransaction.Base.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/1eb6a07a562480b436b2d2c56e589c9474fd3bbf69911308f96b886309e6592/ServiceTypeSelector.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/2b291c8babf9ed2145e625bb60f855a7ffaece99420b1a9294aba2431caf17e/ICapPublisher.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/42794acf9c224fece37166245d579235973727b16c1931c5ccd329df39ad78/ConfigurationBinder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/484917e236e092d5ce76c5f373993d21fb07a86c2912aaaec5db139b77ac48/SwaggerGenServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/575c31ecc35a636b6f962cb71d53992552941a18982aae1c8e6c16305cc3761b/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/5b78aa32b8e6943c5302aab60a6c846344cc3daaea41ebfe85aacbeb15d6e/IImplementationTypeFilter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/5bc503682ccb17c6b67d35e1c2743fe4073145d18f3c5385c99b422301115/AuthenticationServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/76bab7fdca73e5bf90644d1f89624f85b5d880814d2d678e33812a344acd4031/IDataStorage.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/7b6ea139934c115b310cf97b34fd084697eddcc1d16aac8b933bcf127ab4f/LifetimeSelector.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/93d5a97120fd7d2ede21bb43e59330cf5d295dc785d47bde49dd8d743b65c8ae/IDataStorage.cs" root0="SKIP_HIGHLIGHTING" />
@@ -62,8 +61,14 @@
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/dacef0f717805c6ba640c76e4a97412f8cd928713d6afde79da974ca8d7ef/ImplementationTypeFilter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/f1b14a055e8b8bd5ca49ab3c78a6e5d9b1faf6531ce3b1e53c4419a2ac3b1/IDbConnection.Extensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/f4bc324a395d24ed12db75b0a81536b642509aa14825bf114d9b7c934e2b/Mediator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/cart-backend/FullCart/Application/Orders/Commands/CreateOrder/CreateOrderCommandHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Application/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/cart-backend/FullCart/Domain/Common/BaseEvent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/cart-backend/FullCart/FullCart.API/Controllers/ApiControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/cart-backend/FullCart/FullCart.API/Controllers/OrderController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/cart-backend/FullCart/FullCart.API/Controllers/TokenController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/cart-backend/FullCart/FullCart.API/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/cart-backend/FullCart/Infrastructure/DependencyInjection.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/cart-backend/FullCart/Infrastructure/Security/TokenGenerator/JwtTokenGenerator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectId" id="2bN1pPkHKYhpud8bgBFuxqoc2sU" />
@@ -75,33 +80,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "XThreadsFramesViewSplitterKey": "0.6133652",
-    "git-widget-placeholder": "add-outbox",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "rider.code.cleanup.on.save": "true",
-    "rider.code.cleanup.on.save.profile": "Custom: Talabeyah",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.4319809&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;add-outbox&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;rider.code.cleanup.on.save&quot;: &quot;true&quot;,
+    &quot;rider.code.cleanup.on.save.profile&quot;: &quot;Custom: Talabeyah&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "sqlserver.localdb"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlserver.localdb&quot;
     ],
-    "rider.external.source.directories": [
-      "C:\\Users\\Lenovo\\AppData\\Local\\JetBrains\\Shared\\vAny\\DecompilerCache",
-      "C:\\Users\\Lenovo\\AppData\\Local\\JetBrains\\Shared\\vAny\\SourcesCache",
-      "C:\\Users\\Lenovo\\AppData\\Local\\Symbols\\src"
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\Lenovo\\AppData\\Local\\JetBrains\\Shared\\vAny\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Lenovo\\AppData\\Local\\JetBrains\\Shared\\vAny\\SourcesCache&quot;,
+      &quot;C:\\Users\\Lenovo\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.FullCart.API">
     <configuration name="FullCart.API" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" />
@@ -163,7 +168,9 @@
       <workItem from="1713209739651" duration="3346000" />
       <workItem from="1713288807580" duration="9831000" />
       <workItem from="1713539732555" duration="15341000" />
-      <workItem from="1713611361741" duration="8787000" />
+      <workItem from="1713611361741" duration="10160000" />
+      <workItem from="1713725535707" duration="8066000" />
+      <workItem from="1714041980898" duration="11218000" />
     </task>
     <task id="LOCAL-00001" summary="init architecture">
       <created>1706186905525</created>
@@ -291,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1713559871978</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="enhancement">
+      <created>1713629090047</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1713629090047</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,7 +326,8 @@
     <MESSAGE value="update" />
     <MESSAGE value="add OutboxMessage.cs" />
     <MESSAGE value="add migration" />
-    <option name="LAST_COMMIT_MESSAGE" value="add migration" />
+    <MESSAGE value="enhancement" />
+    <option name="LAST_COMMIT_MESSAGE" value="enhancement" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -349,17 +364,17 @@
           <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs</url>
-          <line>64</line>
-          <properties documentPath="D:\Projects\cart-backend\FullCart\Infrastructure\Common\Persistence\CartDbContext.cs" initialLine="70" containingFunctionPresentation="Method 'SaveChangesAsync'">
+          <url>file://$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommandHandler.cs</url>
+          <line>32</line>
+          <properties documentPath="D:\Projects\cart-backend\FullCart\Application\Orders\Commands\CreateOrder\CreateOrderCommandHandler.cs" initialLine="32" containingFunctionPresentation="Method 'Handle'">
             <startOffsets>
-              <option value="2023" />
+              <option value="974" />
             </startOffsets>
             <endOffsets>
-              <option value="2024" />
+              <option value="995" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="79" />
+          <option name="timeStamp" value="86" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

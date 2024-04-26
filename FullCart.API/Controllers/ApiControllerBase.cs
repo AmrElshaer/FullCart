@@ -1,19 +1,18 @@
-﻿#nullable disable
-using ErrorOr;
+﻿using ErrorOr;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace FullCart.API.Controllers;
 
-
 [ApiController]
 [Route("api/[controller]")]
 public class ApiController : ControllerBase
 {
-    private IMediator _mediator=default!;
+    private IMediator _mediator = default!;
 
     protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
+
     protected ActionResult Problem(List<Error> errors)
     {
         if (errors.Count is 0)

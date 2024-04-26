@@ -1,21 +1,23 @@
 ﻿using System.Reflection;
+using System.Text;
 using Application.Common.Interfaces;
 using Application.Orders.Commands.CreateOrder;
 using Domain.Roles;
 using Domain.Users;
 using DotNetCore.CAP;
-using Infrastructure.Common;
 using Infrastructure.Common.Persistence;
 using Infrastructure.Outbox;
 using Infrastructure.Security;
 using Infrastructure.Security.CurrentUserProvider;
 using Infrastructure.Security.TokenGenerator;
 using Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Quartz;
 using Savorboard.CAP.InMemoryMessageQueue;
 
@@ -35,8 +37,9 @@ public static class DependencyInjection
 
     private static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("DefaultConnection");
-        //services.AddScoped<PublishDomainEventsInterceptor>();
+        var connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new ArgumentNullException("configuration.GetConnectionString(\"DefaultConnection\")");
+
+//services.AddScoped<PublishDomainEventsInterceptor>();
         services.AddDbContext<CartDbContext>((sp, options) =>
         {
             options.UseSqlServer(connectionString);
@@ -55,6 +58,31 @@ public static class DependencyInjection
 
         services.AddScoped<ICartDbContext>(provider => provider.GetRequiredService<CartDbContext>());
         services.AddScoped<CartDbContextInitializer>();
+        var jwtSettings = configuration.GetSection(JwtSettings.Section).Get<JwtSettings>();
+        ArgumentNullException.ThrowIfNull(jwtSettings);
+
+        services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+
+// Adding Jwt Bearer
+            .AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.RequireHttpsMetadata = false;
+
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidAudience = jwtSettings.Audience,
+                    ValidIssuer = jwtSettings.Issuer,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret))
+                };
+            });
 
         return services;
     }
@@ -84,7 +112,7 @@ public static class DependencyInjection
         {
             options.WaitForJobsToComplete = true;
         });
-     
+
         services.AddTransient<IIdentityService, IdentityService>();
         services.AddTransient<IFileAppService, FileAppService>();
 
