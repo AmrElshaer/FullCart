@@ -1,4 +1,5 @@
-﻿using Application.Common.Interfaces;
+﻿using System.Text;
+using Application.Common.Interfaces;
 using Application.Orders.Commands.CreateOrder;
 using Domain.Roles;
 using Domain.Users;
@@ -9,11 +10,13 @@ using Infrastructure.Security;
 using Infrastructure.Security.CurrentUserProvider;
 using Infrastructure.Security.TokenGenerator;
 using Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Savorboard.CAP.InMemoryMessageQueue;
 
 namespace Infrastructure;
@@ -49,7 +52,29 @@ public static class DependencyInjection
 
         services.AddScoped<ICartDbContext>(provider => provider.GetRequiredService<CartDbContext>());
         services.AddScoped<CartDbContextInitializer>();
+        var jwtSettings = configuration.GetSection(JwtSettings.Section).Get<JwtSettings>();
+        ArgumentNullException.ThrowIfNull(jwtSettings);
 
+        services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.RequireHttpsMetadata = false;
+
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidAudience = jwtSettings.Audience,
+                    ValidIssuer = jwtSettings.Issuer,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret))
+                };
+            });
         return services;
     }
 
@@ -66,17 +91,6 @@ public static class DependencyInjection
         services.AddTransient<IIdentityService, IdentityService>();
         services.AddTransient<IFileAppService, FileAppService>();
         services.AddTransient<IDomainEventDispatcher, DomainEventDispatcher>();
-        // services.Decorate(typeof(INotificationHandler<>), typeof(DomainEventsDispatcherNotificationHandlerDecorator<>));
-
-        // services.Scan(scan => scan
-        //      .FromAssembliesOf(typeof(PaymentCreatedNotification))
-        //      .AddClasses(classes => classes.AssignableTo(typeof(IIntegrationEvent<>)))
-        //      .AsImplementedInterfaces()
-        //      .WithTransientLifetime());
-
-        // services.Decorate(
-        //     typeof(SaveChangeCommandHandlerDecorator<,>),
-        //     typeof(ICommandHandler<,>));
         services.AddCap(capOptions =>
         {
             capOptions.UseSqlServer(options =>
