@@ -24,8 +24,7 @@ public class OrderConfiguration: IEntityTypeConfiguration<Order>
             i =>
             {
                 i.WithOwner().HasForeignKey("OrderId");
-                i.Property<Guid>("Id");
-                i.HasKey("Id");
+                i.HasKey("OrderId", "ProductId");
                 
 
                 i.HasOne<Product>(i => i.Product)
