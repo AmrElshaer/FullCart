@@ -4,6 +4,7 @@ using Application.Orders.Commands.CreateOrder;
 using Domain.Roles;
 using Domain.Users;
 using DotNetCore.CAP;
+using EFCore.AuditExtensions.SqlServer;
 using Infrastructure.Common;
 using Infrastructure.Common.Persistence;
 using Infrastructure.Security;
@@ -15,6 +16,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Savorboard.CAP.InMemoryMessageQueue;
@@ -35,10 +37,12 @@ public static class DependencyInjection
 
     private static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
-        //services.AddScoped<PublishDomainEventsInterceptor>();
+        
+         
         services.AddDbContext<CartDbContext>((sp, options) =>
         {
-            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
+                .UseSqlServerAudit();
             //  .AddInterceptors(sp.GetRequiredService<PublishDomainEventsInterceptor>());
 
             options.LogTo(Console.WriteLine, LogLevel.Information)
@@ -81,7 +85,7 @@ public static class DependencyInjection
     private static IServiceCollection AddAuthorization(this IServiceCollection services)
     {
         services.AddScoped<IAuthorizationService, AuthorizationService>();
-        services.AddScoped<ICurrentUserProvider, CurrentUserProvider>();
+        services.TryAddScoped<ICurrentUserProvider, CurrentUserProvider>();
 
         return services;
     }

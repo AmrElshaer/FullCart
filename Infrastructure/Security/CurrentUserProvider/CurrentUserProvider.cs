@@ -1,10 +1,8 @@
 ﻿using System.Security.Claims;
 using Application.Common.Interfaces;
 using Application.Common.models;
-using Domain.Users;
-using ErrorOr;
+using EFCore.AuditExtensions.Common.Interceptors;
 using Microsoft.AspNetCore.Http;
-using Microsoft.IdentityModel.JsonWebTokens;
 
 namespace Infrastructure.Security.CurrentUserProvider;
 
@@ -35,6 +33,7 @@ public class CurrentUserProvider : ICurrentUserProvider
 
         return new UserDto(id, email, userType,roles);
     }
+    
 
     private List<string> GetClaimValues(string claimType) =>
         _httpContextAccessor.HttpContext!.User.Claims

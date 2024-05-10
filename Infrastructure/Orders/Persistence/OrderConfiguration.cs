@@ -1,6 +1,7 @@
 ﻿using Domain.Orders;
 using Domain.Products;
 using Domain.Users;
+using EFCore.AuditExtensions.Common.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -23,10 +24,10 @@ public class OrderConfiguration: IEntityTypeConfiguration<Order>
         builder.OwnsMany(o => o.Items,
             i =>
             {
+                
+                
                 i.WithOwner().HasForeignKey("OrderId");
                 i.HasKey("OrderId", "ProductId");
-                
-
                 i.HasOne<Product>(i => i.Product)
                     .WithMany()
                     .HasForeignKey(i => i.ProductId)
@@ -46,6 +47,12 @@ public class OrderConfiguration: IEntityTypeConfiguration<Order>
                         ownBuilder.Property(p => p.Quantity)
                             .HasColumnName(nameof(OrderItemQuantity.Quantity));
                     });
+               
+                
             });
+
+        builder.IsAudited();
     }
 }
+
+

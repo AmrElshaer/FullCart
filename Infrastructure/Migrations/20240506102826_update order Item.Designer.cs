@@ -24,70 +24,7 @@ namespace Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Domain.Audits.Audit", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("AuditMetaDataHashPrimaryKey")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("AuditMetaDataSchemaTable")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ByUser")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("DateTimeOffset")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int>("EntityState")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NewValues")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OldValues")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuditMetaDataHashPrimaryKey", "AuditMetaDataSchemaTable");
-
-                    b.ToTable("Audits", (string)null);
-                });
-
-            modelBuilder.Entity("Domain.Audits.AuditMetaData", b =>
-                {
-                    b.Property<Guid>("HashPrimaryKey")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("SchemaTable")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("DisplayName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ReadablePrimaryKey")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Schema")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Table")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("HashPrimaryKey", "SchemaTable");
-
-                    b.ToTable("AuditMetaDatas", (string)null);
-                });
+         
 
             modelBuilder.Entity("Domain.Brands.Brand", b =>
                 {
@@ -396,16 +333,7 @@ namespace Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Audits.Audit", b =>
-                {
-                    b.HasOne("Domain.Audits.AuditMetaData", "AuditMetaData")
-                        .WithMany("AuditChanges")
-                        .HasForeignKey("AuditMetaDataHashPrimaryKey", "AuditMetaDataSchemaTable")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AuditMetaData");
-                });
+            
 
             modelBuilder.Entity("Domain.Brands.Brand", b =>
                 {
@@ -796,10 +724,7 @@ namespace Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Domain.Audits.AuditMetaData", b =>
-                {
-                    b.Navigation("AuditChanges");
-                });
+          
 
             modelBuilder.Entity("Domain.Users.User", b =>
                 {
