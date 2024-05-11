@@ -9,19 +9,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Infrastructure/AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20240509173622_audit-order-migration.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20240509173622_audit-order-migration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/GlobalUsings.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/ICurrentUserProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/ICurrentUserProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FullCart.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContextInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContextInitializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/20240506102826_update order Item.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20240506102826_update order Item.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/CartDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/CartDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Orders/Persistence/OrderConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Orders/Persistence/OrderConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Security/CurrentUserProvider/CurrentUserProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Security/CurrentUserProvider/CurrentUserProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommandHandler.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,12 +51,16 @@
     <setting file="file://$PROJECT_DIR$/Domain/Orders/OrderItemQuantity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://D:/Projects/private_work/FullCart/FullCart.API/appsettings.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://D:/Projects/private_work/FullCart/Infrastructure/Migrations/20240506102826_update order Item.Designer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/private_work/FullCart/Infrastructure/Migrations/20240506102826_update order Item.Designer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Projects/private_work/FullCart/Infrastructure/Migrations/CartDbContextModelSnapshot.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Projects/private_work/FullCart/Infrastructure/Orders/Persistence/OrderConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtTokenGenerator.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
   <component name="ProjectId" id="2bN1pPkHKYhpud8bgBFuxqoc2sU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -84,12 +79,15 @@
     "XThreadsFramesViewSplitterKey": "0.38650307",
     "git-widget-placeholder": "master",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.stylelint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.stylelint": "",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "rider.code.cleanup.on.save": "true",
-    "rider.code.cleanup.on.save.profile": "Custom: Talabeyah",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "rider.code.cleanup.on.save.profile": "Built-in: Reformat & Apply Syntax Style",
+    "settings.editor.selected.configurable": "actions.on.save",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -97,9 +95,9 @@
       "sqlserver.localdb"
     ],
     "rider.external.source.directories": [
-      "C:\\Users\\Lenovo\\AppData\\Local\\JetBrains\\Shared\\vAny\\DecompilerCache",
-      "C:\\Users\\Lenovo\\AppData\\Local\\JetBrains\\Shared\\vAny\\SourcesCache",
-      "C:\\Users\\Lenovo\\AppData\\Local\\Symbols\\src"
+      "C:\\Users\\amr.elshaer\\AppData\\Local\\JetBrains\\Shared\\vAny\\DecompilerCache",
+      "C:\\Users\\amr.elshaer\\AppData\\Local\\JetBrains\\Shared\\vAny\\SourcesCache",
+      "C:\\Users\\amr.elshaer\\AppData\\Local\\Symbols\\src"
     ]
   }
 }]]></component>
@@ -164,6 +162,7 @@
       <workItem from="1713209739651" duration="3346000" />
       <workItem from="1713288807580" duration="9831000" />
       <workItem from="1713539732555" duration="4736000" />
+      <workItem from="1715377468905" duration="1689000" />
     </task>
     <task id="LOCAL-00001" summary="init architecture">
       <created>1706186905525</created>
@@ -270,7 +269,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713102186977</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="add auditing">
+      <option name="closed" value="true" />
+      <created>1715336975747</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1715336975747</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,19 +299,10 @@
     <MESSAGE value="update" />
     <MESSAGE value="update integration events" />
     <MESSAGE value="update orderItem relationship" />
-    <option name="LAST_COMMIT_MESSAGE" value="update orderItem relationship" />
+    <MESSAGE value="add auditing" />
+    <option name="LAST_COMMIT_MESSAGE" value="add auditing" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommandHandler.cs</url>
-          <line>20</line>
-          <properties documentPath="E:\FullCart\FullCart.API\Application\Orders\Commands\CreateOrder\CreateOrderCommandHandler.cs" containingFunctionPresentation="Method 'Handle'" />
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Type#System.Security.Claims.ClaimsPrincipal" memberName="Identity" />

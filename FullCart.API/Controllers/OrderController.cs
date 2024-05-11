@@ -10,6 +10,6 @@ public class OrderController:ApiController
     public async Task<ActionResult<Order>> Get(Guid id)
         => (await Mediator.Send(new GetOrderByIdQuery(id))).Match(Ok, Problem); 
     [HttpPost]
-    public async Task<ActionResult<Guid>> CreateOrder(CreateOrderCommand command)
+    public async Task<ActionResult<Guid>> CreateOrder(CreateOrder.Command command)
         => (await Mediator.Send(command)).Match(r=>Ok(r), Problem);
 }
