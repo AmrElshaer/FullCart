@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Application.Common.Interfaces;
+using Application.Common.Interfaces.Hubs;
 using Application.Orders.Commands.CreateOrder;
 using Domain.Roles;
 using Domain.Users;
@@ -7,6 +8,7 @@ using DotNetCore.CAP;
 using EFCore.AuditExtensions.SqlServer;
 using Infrastructure.Common;
 using Infrastructure.Common.Persistence;
+using Infrastructure.Hubs.OrderHub;
 using Infrastructure.Security;
 using Infrastructure.Security.CurrentUserProvider;
 using Infrastructure.Security.TokenGenerator;
@@ -119,6 +121,7 @@ public static class DependencyInjection
                 .WithTransientLifetime();
         });
 
+        services.AddTransient<IOrderHub, OrderHub>();
         return services;
     }
 

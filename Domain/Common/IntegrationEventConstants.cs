@@ -12,5 +12,7 @@ public class IntegrationEventConstants
     public static class OrderConstant
     {
         public const string OrderPlaced = $"{Events}order_placed";
+
+        public const string OrderStatusChanged = $"{Events}order_status_changed";
     }
 }

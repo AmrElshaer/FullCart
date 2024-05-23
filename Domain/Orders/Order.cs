@@ -38,5 +38,12 @@ public class Order:Entity
         AddIntegrationEvent(new OrderPlacedIntegrationEvent(id));
        
     }
-    
+    public  string ToOrderTrackingGroupId() =>
+        $"{Id}:{CustomerId}";
+
+    public void ChangeOrderStatus(OrderStatus requestOrderStatus)
+    {
+        this.Status = requestOrderStatus;
+        AddIntegrationEvent(new OrderStatusChangeIntegrationEvent(Id,Status));
+    }
 }

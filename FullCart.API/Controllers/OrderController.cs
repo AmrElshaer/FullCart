@@ -1,4 +1,5 @@
-﻿using Application.Orders.Commands.CreateOrder;
+﻿using Application.Orders.Commands.ChangeOrderStatus;
+using Application.Orders.Commands.CreateOrder;
 using Application.Orders.Queries.GetOrderById;
 using Domain.Orders;
 using Microsoft.AspNetCore.Mvc;
@@ -12,4 +13,10 @@ public class OrderController:ApiController
     [HttpPost]
     public async Task<ActionResult<Guid>> CreateOrder(CreateOrder.Command command)
         => (await Mediator.Send(command)).Match(r=>Ok(r), Problem);
+    [HttpPut("{id:guid}")]
+    public async Task<ActionResult<Guid>> EditOrder(Guid id,[FromBody] ChangeOrderStatus.Request orderStatusRequest)
+    {
+        var command = new ChangeOrderStatus.Command(id,orderStatusRequest.Status);
+        return (await Mediator.Send(command)).Match(r => Ok(r), Problem);
+    }
 }

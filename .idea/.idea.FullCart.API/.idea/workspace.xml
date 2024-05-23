@@ -9,10 +9,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Application/GlobalUsings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Hubs/IOrderHub.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Hubs/IOrderStatusHub.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Orders/Commands/ChangeOrderStatus/ChangeOrderStatus.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Orders/Commands/ChangeOrderStatus/OrderStatusChangeIntegrationEventHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Domain/Orders/Events/OrderStatusChangeIntegrationEvent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Hubs/OrderHub/OrderHub.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Hubs/OrderHub/OrderStatusHub.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommandHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Common/IntegrationEventConstants.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Common/IntegrationEventConstants.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Orders/Order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Orders/Order.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API/Controllers/OrderController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Controllers/OrderController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,9 +37,21 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AmrElshaer&quot;
+  }
+}</component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
   </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/AmrElshaer/FullCart.git&quot;,
+    &quot;accountId&quot;: &quot;5f0ff553-e7bf-4736-b6e6-b034ca7e4e26&quot;
+  }
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/369d72e190df45e89562037a676e140bc000/1f/13c51ce3/EntityTypeBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/369d72e190df45e89562037a676e140bc000/41/1adae74d/IUserProvider.cs" root0="SKIP_HIGHLIGHTING" />
@@ -37,6 +59,7 @@
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/84f5a18af2b1435cb86e09ce162e61e435f460/cb/e66d878c/OutputWindow.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/8880b0916c1c466fa286cb9e73c7c93d201420/2d/1e6c167b/PropertyEntry.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/8880b0916c1c466fa286cb9e73c7c93d201420/8d/f7ebedce/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/d8c21dc31a9243a28a5a2c213486549cf720/eb/a1f3c898/ActivatorUtilities.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/e52a0cd6cfb045e2976675032d8687587200/11/321c8ae5/UserContextInterceptor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/e52a0cd6cfb045e2976675032d8687587200/a5/c7694ca5/Installer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/6518e12429e640b855e84dbcb556279a6dcdecc0f25132fcbc5510f956f771e7/CallSiteFactory.cs" root0="SKIP_HIGHLIGHTING" />
@@ -45,22 +68,15 @@
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/efcore/b254074a09b0021d472383ea15b3bb703eae3ee3/src/EFCore/ChangeTracking/PropertyEntry.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Application/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/Order.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/private_work/FullCart/Domain/Orders/Order.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/private_work/FullCart/Domain/Orders/OrderItem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/OrderItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/OrderItemQuantity.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/private_work/FullCart/FullCart.API/appsettings.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/private_work/FullCart/Infrastructure/Migrations/20240506102826_update order Item.Designer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/private_work/FullCart/Infrastructure/Migrations/20240506102826_update order Item.Designer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/private_work/FullCart/Infrastructure/Migrations/CartDbContextModelSnapshot.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/private_work/FullCart/Infrastructure/Orders/Persistence/OrderConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtTokenGenerator.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2bN1pPkHKYhpud8bgBFuxqoc2sU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -70,37 +86,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.FullCart.API.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "XThreadsFramesViewSplitterKey": "0.38650307",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.stylelint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "rider.code.cleanup.on.save": "true",
-    "rider.code.cleanup.on.save.profile": "Built-in: Reformat & Apply Syntax Style",
-    "settings.editor.selected.configurable": "actions.on.save",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.FullCart.API.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.38650307&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;rider.code.cleanup.on.save&quot;: &quot;true&quot;,
+    &quot;rider.code.cleanup.on.save.profile&quot;: &quot;Built-in: Reformat &amp; Apply Syntax Style&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "sqlserver.localdb"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlserver.localdb&quot;
     ],
-    "rider.external.source.directories": [
-      "C:\\Users\\amr.elshaer\\AppData\\Local\\JetBrains\\Shared\\vAny\\DecompilerCache",
-      "C:\\Users\\amr.elshaer\\AppData\\Local\\JetBrains\\Shared\\vAny\\SourcesCache",
-      "C:\\Users\\amr.elshaer\\AppData\\Local\\Symbols\\src"
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\amr.elshaer\\AppData\\Local\\JetBrains\\Shared\\vAny\\DecompilerCache&quot;,
+      &quot;C:\\Users\\amr.elshaer\\AppData\\Local\\JetBrains\\Shared\\vAny\\SourcesCache&quot;,
+      &quot;C:\\Users\\amr.elshaer\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.FullCart.API">
     <configuration name="FullCart.API" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" />
@@ -163,6 +179,10 @@
       <workItem from="1713288807580" duration="9831000" />
       <workItem from="1713539732555" duration="4736000" />
       <workItem from="1715377468905" duration="1689000" />
+      <workItem from="1716034663487" duration="9191000" />
+      <workItem from="1716149075047" duration="1848000" />
+      <workItem from="1716216439552" duration="2993000" />
+      <workItem from="1716485383967" duration="2359000" />
     </task>
     <task id="LOCAL-00001" summary="init architecture">
       <created>1706186905525</created>
@@ -303,6 +323,127 @@
     <option name="LAST_COMMIT_MESSAGE" value="add auditing" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure/Hubs/OrderHub/OrderStatusHub.cs</url>
+          <line>10</line>
+          <properties documentPath="D:\Projects\private_work\FullCart\Infrastructure\Hubs\OrderHub\OrderStatusHub.cs" containingFunctionPresentation="Method 'StartTrackingOrder'">
+            <startOffsets>
+              <option value="314" />
+            </startOffsets>
+            <endOffsets>
+              <option value="380" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure/Hubs/OrderHub/OrderHub.cs</url>
+          <line>15</line>
+          <properties documentPath="D:\Projects\private_work\FullCart\Infrastructure\Hubs\OrderHub\OrderHub.cs" containingFunctionPresentation="Method 'SendOrderStatusChanged'">
+            <startOffsets>
+              <option value="450" />
+            </startOffsets>
+            <endOffsets>
+              <option value="451" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Application/Orders/Commands/ChangeOrderStatus/OrderStatusChangeIntegrationEventHandler.cs</url>
+          <line>23</line>
+          <properties documentPath="D:\Projects\private_work\FullCart\Application\Orders\Commands\ChangeOrderStatus\OrderStatusChangeIntegrationEventHandler.cs" containingFunctionPresentation="Method 'HandleAsync'">
+            <startOffsets>
+              <option value="813" />
+            </startOffsets>
+            <endOffsets>
+              <option value="814" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Domain/Orders/Order.cs</url>
+          <line>46</line>
+          <properties documentPath="D:\Projects\private_work\FullCart\Domain\Orders\Order.cs" containingFunctionPresentation="Method 'ChangeOrderStatus'">
+            <startOffsets>
+              <option value="1160" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1225" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs</url>
+          <line>116</line>
+          <properties documentPath="D:\Projects\private_work\FullCart\Infrastructure\Common\Persistence\CartDbContext.cs" containingFunctionPresentation="Method 'PublishIntegrationEvents'">
+            <startOffsets>
+              <option value="4268" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4269" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs</url>
+          <line>127</line>
+          <properties documentPath="D:\Projects\private_work\FullCart\Infrastructure\Common\Persistence\CartDbContext.cs" containingFunctionPresentation="Method 'PublishIntegrationEvents'">
+            <startOffsets>
+              <option value="4717" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4842" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Application/Payments/Commands/CreatePayment/PaymentIntegrationEventHandler.cs</url>
+          <line>18</line>
+          <properties documentPath="D:\Projects\private_work\FullCart\Application\Payments\Commands\CreatePayment\PaymentIntegrationEventHandler.cs" containingFunctionPresentation="Method 'HandleAsync'">
+            <startOffsets>
+              <option value="624" />
+            </startOffsets>
+            <endOffsets>
+              <option value="625" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Application/Orders/Commands/ChangeOrderStatus/OrderStatusChangeIntegrationEventHandler.cs</url>
+          <line>25</line>
+          <properties documentPath="D:\Projects\private_work\FullCart\Application\Orders\Commands\ChangeOrderStatus\OrderStatusChangeIntegrationEventHandler.cs" containingFunctionPresentation="Method 'HandleAsync'">
+            <startOffsets>
+              <option value="908" />
+            </startOffsets>
+            <endOffsets>
+              <option value="961" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Domain/Orders/Events/OrderStatusChangeIntegrationEvent.cs</url>
+          <line>9</line>
+          <properties documentPath="D:\Projects\private_work\FullCart\Domain\Orders\Events\OrderStatusChangeIntegrationEvent.cs" containingFunctionPresentation="Constructor 'OrderStatusChangeIntegrationEvent'">
+            <startOffsets>
+              <option value="226" />
+            </startOffsets>
+            <endOffsets>
+              <option value="240" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Type#System.Security.Claims.ClaimsPrincipal" memberName="Identity" />
