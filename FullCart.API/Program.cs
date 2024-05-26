@@ -1,17 +1,30 @@
 using System.Text;
+using System.Threading.RateLimiting;
 using Application;
 using Infrastructure;
 using Infrastructure.Common.Persistence;
 using Infrastructure.Hubs.OrderHub;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
+
+builder.Services.AddRateLimiter(l =>
+{
+    l.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+    l.AddFixedWindowLimiter(policyName: "fixed", options =>
+        {
+            options.PermitLimit = 4;
+            options.Window = TimeSpan.FromSeconds(12);
+            options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+            options.QueueLimit = 2;
+        });
+});
+
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecificOrigin",
+    options.AddPolicy(name: "AllowSpecificOrigin",
         builder =>
         {
             builder.WithOrigins("http://localhost:4200")
@@ -20,16 +33,18 @@ builder.Services.AddCors(options =>
                 .AllowCredentials();
         });
 });
+
 builder.Services.AddSignalR();
+
 builder.Services.AddSwaggerGen(c =>
 {
-    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    c.AddSecurityDefinition(name: "Bearer", new OpenApiSecurityScheme
     {
         Description = "Please enter a valid token",
         Name = "Authorization",
         Type = SecuritySchemeType.Http,
         Scheme = "Bearer",
-        BearerFormat = "JWT"
+        BearerFormat = "JWT",
     });
 
     // Define the security requirement
@@ -41,23 +56,29 @@ builder.Services.AddSwaggerGen(c =>
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
+                    Id = "Bearer",
+                },
             },
-            new string[] {}
-        }
+            new string[]
+                { }
+        },
     });
 });
+
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddInfrastructure(builder.Configuration)
     .AddApplication();
+
 var app = builder.Build();
+app.UseRateLimiter();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
     await app.InitialiseDatabaseAsync();
 }
+
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseHttpsRedirection();

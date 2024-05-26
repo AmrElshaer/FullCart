@@ -8,21 +8,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Hubs/IOrderHub.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Hubs/IOrderStatusHub.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Orders/Commands/ChangeOrderStatus/ChangeOrderStatus.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Orders/Commands/ChangeOrderStatus/OrderStatusChangeIntegrationEventHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Orders/Events/OrderStatusChangeIntegrationEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Hubs/OrderHub/OrderHub.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Hubs/OrderHub/OrderStatusHub.cs" afterDir="false" />
+    <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="add signalR for background job">
+      <change afterPath="$PROJECT_DIR$/Domain/Common/ValidationFailed.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Common/IntegrationEventConstants.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Common/IntegrationEventConstants.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Orders/Order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Orders/Order.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Application.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Brands/Commands/CreateBrand/CreateBrandCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Brands/Commands/CreateBrand/CreateBrandCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Brands/Commands/CreateBrand/CreateBrandCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Brands/Commands/CreateBrand/CreateBrandCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/ChangeOrderStatus/OrderStatusChangeIntegrationEventHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/ChangeOrderStatus/OrderStatusChangeIntegrationEventHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Brands/BrandName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Brands/BrandName.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Domain.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FullCart.API/Controllers/OrderController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Controllers/OrderController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FullCart.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FullCart.API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global.json" beforeDir="false" afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +58,7 @@
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/84f5a18af2b1435cb86e09ce162e61e435f460/cb/e66d878c/OutputWindow.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/8880b0916c1c466fa286cb9e73c7c93d201420/2d/1e6c167b/PropertyEntry.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/8880b0916c1c466fa286cb9e73c7c93d201420/8d/f7ebedce/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/c6f90e6c68e04825a83e9310c4ef45e0b400/09/014491f2/ErrorOr`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/d8c21dc31a9243a28a5a2c213486549cf720/eb/a1f3c898/ActivatorUtilities.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/e52a0cd6cfb045e2976675032d8687587200/11/321c8ae5/UserContextInterceptor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/e52a0cd6cfb045e2976675032d8687587200/a5/c7694ca5/Installer.cs" root0="SKIP_HIGHLIGHTING" />
@@ -182,7 +182,8 @@
       <workItem from="1716034663487" duration="9191000" />
       <workItem from="1716149075047" duration="1848000" />
       <workItem from="1716216439552" duration="2993000" />
-      <workItem from="1716485383967" duration="2359000" />
+      <workItem from="1716485383967" duration="7259000" />
+      <workItem from="1716739279182" duration="4156000" />
     </task>
     <task id="LOCAL-00001" summary="init architecture">
       <created>1706186905525</created>
@@ -297,7 +298,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715336975747</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="add signalR for background job">
+      <option name="closed" value="true" />
+      <created>1716566411470</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1716566411470</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,89 +329,12 @@
     <MESSAGE value="update integration events" />
     <MESSAGE value="update orderItem relationship" />
     <MESSAGE value="add auditing" />
-    <option name="LAST_COMMIT_MESSAGE" value="add auditing" />
+    <MESSAGE value="add signalR for background job" />
+    <option name="LAST_COMMIT_MESSAGE" value="add signalR for background job" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Infrastructure/Hubs/OrderHub/OrderStatusHub.cs</url>
-          <line>10</line>
-          <properties documentPath="D:\Projects\private_work\FullCart\Infrastructure\Hubs\OrderHub\OrderStatusHub.cs" containingFunctionPresentation="Method 'StartTrackingOrder'">
-            <startOffsets>
-              <option value="314" />
-            </startOffsets>
-            <endOffsets>
-              <option value="380" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Infrastructure/Hubs/OrderHub/OrderHub.cs</url>
-          <line>15</line>
-          <properties documentPath="D:\Projects\private_work\FullCart\Infrastructure\Hubs\OrderHub\OrderHub.cs" containingFunctionPresentation="Method 'SendOrderStatusChanged'">
-            <startOffsets>
-              <option value="450" />
-            </startOffsets>
-            <endOffsets>
-              <option value="451" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/Orders/Commands/ChangeOrderStatus/OrderStatusChangeIntegrationEventHandler.cs</url>
-          <line>23</line>
-          <properties documentPath="D:\Projects\private_work\FullCart\Application\Orders\Commands\ChangeOrderStatus\OrderStatusChangeIntegrationEventHandler.cs" containingFunctionPresentation="Method 'HandleAsync'">
-            <startOffsets>
-              <option value="813" />
-            </startOffsets>
-            <endOffsets>
-              <option value="814" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Domain/Orders/Order.cs</url>
-          <line>46</line>
-          <properties documentPath="D:\Projects\private_work\FullCart\Domain\Orders\Order.cs" containingFunctionPresentation="Method 'ChangeOrderStatus'">
-            <startOffsets>
-              <option value="1160" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1225" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs</url>
-          <line>116</line>
-          <properties documentPath="D:\Projects\private_work\FullCart\Infrastructure\Common\Persistence\CartDbContext.cs" containingFunctionPresentation="Method 'PublishIntegrationEvents'">
-            <startOffsets>
-              <option value="4268" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4269" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs</url>
-          <line>127</line>
-          <properties documentPath="D:\Projects\private_work\FullCart\Infrastructure\Common\Persistence\CartDbContext.cs" containingFunctionPresentation="Method 'PublishIntegrationEvents'">
-            <startOffsets>
-              <option value="4717" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4842" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Application/Payments/Commands/CreatePayment/PaymentIntegrationEventHandler.cs</url>
           <line>18</line>
@@ -415,32 +347,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/Orders/Commands/ChangeOrderStatus/OrderStatusChangeIntegrationEventHandler.cs</url>
-          <line>25</line>
-          <properties documentPath="D:\Projects\private_work\FullCart\Application\Orders\Commands\ChangeOrderStatus\OrderStatusChangeIntegrationEventHandler.cs" containingFunctionPresentation="Method 'HandleAsync'">
-            <startOffsets>
-              <option value="908" />
-            </startOffsets>
-            <endOffsets>
-              <option value="961" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Domain/Orders/Events/OrderStatusChangeIntegrationEvent.cs</url>
-          <line>9</line>
-          <properties documentPath="D:\Projects\private_work\FullCart\Domain\Orders\Events\OrderStatusChangeIntegrationEvent.cs" containingFunctionPresentation="Constructor 'OrderStatusChangeIntegrationEvent'">
-            <startOffsets>
-              <option value="226" />
-            </startOffsets>
-            <endOffsets>
-              <option value="240" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
