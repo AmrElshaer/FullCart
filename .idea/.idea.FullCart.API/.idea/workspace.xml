@@ -8,20 +8,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="add signalR for background job">
-      <change afterPath="$PROJECT_DIR$/Domain/Common/ValidationFailed.cs" afterDir="false" />
+    <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FullCart.API/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Application.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Brands/Commands/CreateBrand/CreateBrandCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Brands/Commands/CreateBrand/CreateBrandCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Brands/Commands/CreateBrand/CreateBrandCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Brands/Commands/CreateBrand/CreateBrandCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/ChangeOrderStatus/OrderStatusChangeIntegrationEventHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/ChangeOrderStatus/OrderStatusChangeIntegrationEventHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Brands/BrandName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Brands/BrandName.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Domain.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FullCart.API/Controllers/OrderController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Controllers/OrderController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API.sln" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API.sln" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FullCart.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global.json" beforeDir="false" afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,12 +59,19 @@
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/efcore/b254074a09b0021d472383ea15b3bb703eae3ee3/src/EFCore/ChangeTracking/EntityEntry.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/efcore/b254074a09b0021d472383ea15b3bb703eae3ee3/src/EFCore/ChangeTracking/Internal/InternalEntityEntry.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/efcore/b254074a09b0021d472383ea15b3bb703eae3ee3/src/EFCore/ChangeTracking/PropertyEntry.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/private_work/FullCart/Application/Brands/Commands/CreateBrand/CreateBrandCommand.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/private_work/FullCart/Application/Brands/Commands/CreateBrand/CreateBrandCommandHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/private_work/FullCart/Application/Orders/Commands/ChangeOrderStatus/OrderStatusChangeIntegrationEventHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Application/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/private_work/FullCart/Domain/Brands/BrandName.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/Order.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/OrderItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/OrderItemQuantity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/private_work/FullCart/FullCart.API/Controllers/OrderController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/private_work/FullCart/FullCart.API/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtTokenGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/private_work/FullCart/global.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -148,6 +148,44 @@
         <option name="Build" />
       </method>
     </configuration>
+    <configuration name="FullCart.API/Dockerfile" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="imageTag" value="fullcart.api" />
+          <option name="containerName" value="fullcart.api" />
+          <option name="contextFolderPath" value="D:\Projects\private_work\FullCart" />
+          <option name="portBindings">
+            <list>
+              <DockerPortBindingImpl>
+                <option name="containerPort" value="8080" />
+                <option name="hostIp" value="127.0.0.1" />
+                <option name="hostPort" value="8080" />
+              </DockerPortBindingImpl>
+            </list>
+          </option>
+          <option name="sourceFilePath" value="FullCart.API/Dockerfile" />
+        </settings>
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile" />
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -183,7 +221,8 @@
       <workItem from="1716149075047" duration="1848000" />
       <workItem from="1716216439552" duration="2993000" />
       <workItem from="1716485383967" duration="7259000" />
-      <workItem from="1716739279182" duration="4156000" />
+      <workItem from="1716739279182" duration="5288000" />
+      <workItem from="1716992414702" duration="7106000" />
     </task>
     <task id="LOCAL-00001" summary="init architecture">
       <created>1706186905525</created>
@@ -306,7 +345,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716566411470</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="add rate limter">
+      <option name="closed" value="true" />
+      <created>1716750951413</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1716750951413</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,7 +377,8 @@
     <MESSAGE value="update orderItem relationship" />
     <MESSAGE value="add auditing" />
     <MESSAGE value="add signalR for background job" />
-    <option name="LAST_COMMIT_MESSAGE" value="add signalR for background job" />
+    <MESSAGE value="add rate limter" />
+    <option name="LAST_COMMIT_MESSAGE" value="add rate limter" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
