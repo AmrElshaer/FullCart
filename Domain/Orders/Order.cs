@@ -16,6 +16,8 @@ public class Order:Entity
 
     public Guid CustomerId { get; private set; }
 
+    public DateTimeOffset CreationDate { get; private set; }
+
     public Customer Customer { get; set; } = default!;
 
     private Order()
@@ -23,12 +25,13 @@ public class Order:Entity
         
     }
 
-    public Order(Guid id,Guid customerId,IReadOnlyList<OrderItem> items)
+    public Order(Guid id,Guid customerId,IReadOnlyList<OrderItem> items,DateTimeOffset creationDate)
     {
         Id = id;
         Status = OrderStatus.Pending;
         TotalPrice = items.Sum(i => i.ProductPrice.Price);
         CustomerId = customerId;
+        CreationDate = creationDate;
        _items.AddRange(items);
         AddDomainEvent(new OrderPlacedEvent()
         {

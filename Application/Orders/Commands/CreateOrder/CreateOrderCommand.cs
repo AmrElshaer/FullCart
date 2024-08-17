@@ -2,6 +2,7 @@
 using Domain.Orders;
 using Domain.Products;
 using Microsoft.EntityFrameworkCore;
+using Polly;
 
 namespace Application.Orders.Commands.CreateOrder;
 
@@ -30,25 +31,69 @@ public class CreateOrder
     {
         private readonly ICartDbContext _db;
         private readonly ICurrentUserProvider _currentUserProvider;
+        private readonly TimeProvider _timeProvider;
 
-        public Handler(ICartDbContext db, ICurrentUserProvider currentUserProvider)
+        public Handler(ICartDbContext db, ICurrentUserProvider currentUserProvider, TimeProvider timeProvider)
         {
             _db = db;
             _currentUserProvider = currentUserProvider;
+            _timeProvider = timeProvider;
         }
 
         public async Task<ErrorOr<Guid>> Handle(Command request, CancellationToken cancellationToken)
         {
             var orderItems = await CreateOrderItems(request.Items, cancellationToken);
-
+            _db.Database.ExecuteSqlRaw("UPDATE dbo.Products SET Value = 100 WHERE Id = '34CCA2AE-2964-446E-B238-4839B86642BC'");
             if (orderItems.IsError)
                 return orderItems.Errors;
 
             var user = _currentUserProvider.GetCurrentUser();
             var userId = user.Id;
-            var order = new Order(Guid.NewGuid(), userId, orderItems.Value);
+            var order = new Order(Guid.NewGuid(), userId, orderItems.Value, _timeProvider.GetUtcNow());
             await _db.Orders.AddAsync(order, cancellationToken);
-            await _db.SaveChangesAsync(cancellationToken);
+            var retryPolicy = Policy
+                .Handle<DbUpdateConcurrencyException>()
+                .RetryAsync(5, async (exception, retryCount) =>
+                {
+                    foreach (var entry in ((DbUpdateConcurrencyException)exception).Entries)
+                    {
+                        if (entry.Entity is ProductQuantity)
+                        {
+                            var originValues = entry.OriginalValues;
+                            var productId = (Guid) originValues["ProductId"];
+                            var orderItem = orderItems.Value.FirstOrDefault(oi => oi.ProductId == productId);
+
+                            var databaseValues = await entry.GetDatabaseValuesAsync(cancellationToken);
+
+                            if (databaseValues == null)
+                            {
+                                throw new Exception("The record you attempted to update was deleted by another user.");
+                            }
+
+                            var databaseQuantity = (int) databaseValues[nameof(ProductQuantity.Value)];
+                            var newQuantity = databaseQuantity - orderItem!.Quantity.Quantity;
+
+                            if (newQuantity < 0)
+                            {
+                                throw new Exception("Insufficient product quantity.");
+                            }
+
+                            entry.CurrentValues[nameof(ProductQuantity.Value)] = newQuantity;
+                            entry.OriginalValues.SetValues(databaseValues);
+                        }
+                        else
+                        {
+                            var databaseValues = await entry.GetDatabaseValuesAsync(cancellationToken);
+                            entry.OriginalValues.SetValues(databaseValues);
+                        }
+                    }
+                });
+
+            // Execute the save operation with the retry policy
+            await retryPolicy.ExecuteAsync(async () =>
+            {
+                await _db.SaveChangesAsync(cancellationToken);
+            });
 
             return order.Id;
         }
@@ -93,7 +138,8 @@ public class CreateOrder
                     return quantity.Errors;
 
                 var product = products[i.ProductId];
-
+                var productQuantity = new ProductQuantity(i.Quantity);
+                product.UpdateQuantity(product.ProductQuantity - productQuantity); 
                 return new OrderItem(product.Id, quantity.Value, product.Price);
             };
         }

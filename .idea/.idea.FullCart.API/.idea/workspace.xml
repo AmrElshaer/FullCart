@@ -9,17 +9,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FullCart.API/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Common/Behaviours/RetryBehavior.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Domain/Products/ProductQuantity.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/BackgroundJobs/NumberOfOrdersJob.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20240717082525_AddCreationDateInOrderMigration.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20240717082525_AddCreationDateInOrderMigration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FullCart.API.sln" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Application.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/ICartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/ICartDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Orders/Order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Orders/Order.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Products/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Products/Product.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FullCart.API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/CartDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/CartDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Products/Persistence/ProductConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Products/Persistence/ProductConfiguration.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="autoShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -56,22 +70,23 @@
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/e52a0cd6cfb045e2976675032d8687587200/11/321c8ae5/UserContextInterceptor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/e52a0cd6cfb045e2976675032d8687587200/a5/c7694ca5/Installer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/6518e12429e640b855e84dbcb556279a6dcdecc0f25132fcbc5510f956f771e7/CallSiteFactory.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/7e9875aa36e6b2932d99d0606548787862b472f8907e721aea5684f17c814ba2/AsyncRetrySyntax.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/efcore/b254074a09b0021d472383ea15b3bb703eae3ee3/src/EFCore/ChangeTracking/EntityEntry.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/efcore/b254074a09b0021d472383ea15b3bb703eae3ee3/src/EFCore/ChangeTracking/Internal/InternalEntityEntry.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/efcore/b254074a09b0021d472383ea15b3bb703eae3ee3/src/EFCore/ChangeTracking/PropertyEntry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/private_work/FullCart/Application/Brands/Commands/CreateBrand/CreateBrandCommand.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/private_work/FullCart/Application/Brands/Commands/CreateBrand/CreateBrandCommandHandler.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/private_work/FullCart/Application/Orders/Commands/ChangeOrderStatus/OrderStatusChangeIntegrationEventHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/libraries/System.Linq/src/System/Linq/Select.SpeedOpt.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/libraries/System.Linq/src/System/Linq/ToCollection.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/libraries/System.Private.CoreLib/src/System/Runtime/CompilerServices/AsyncTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/libraries/System.Private.CoreLib/src/System/Threading/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/5535e31a712343a63f5d7d796cd874e563e5ac14/src/libraries/Microsoft.Extensions.DependencyInjection/src/ServiceLookup/CallSiteValidator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/5535e31a712343a63f5d7d796cd874e563e5ac14/src/libraries/Microsoft.Extensions.DependencyInjection/src/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Application/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/private_work/FullCart/Domain/Brands/BrandName.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/Order.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/OrderItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/OrderItemQuantity.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/private_work/FullCart/FullCart.API/Controllers/OrderController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/private_work/FullCart/FullCart.API/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/private_work/FullCart/Infrastructure/Products/Persistence/ProductConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtTokenGenerator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/private_work/FullCart/global.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -170,11 +185,17 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml" />
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile" />
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
       <method v="2" />
     </configuration>
     <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
@@ -223,6 +244,12 @@
       <workItem from="1716485383967" duration="7259000" />
       <workItem from="1716739279182" duration="5288000" />
       <workItem from="1716992414702" duration="7106000" />
+      <workItem from="1720284754990" duration="4257000" />
+      <workItem from="1721202496291" duration="2985000" />
+      <workItem from="1721217644301" duration="1614000" />
+      <workItem from="1722018948807" duration="1011000" />
+      <workItem from="1723206922986" duration="8497000" />
+      <workItem from="1723813477808" duration="13136000" />
     </task>
     <task id="LOCAL-00001" summary="init architecture">
       <created>1706186905525</created>
@@ -384,17 +411,43 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/Payments/Commands/CreatePayment/PaymentIntegrationEventHandler.cs</url>
-          <line>18</line>
-          <properties documentPath="D:\Projects\private_work\FullCart\Application\Payments\Commands\CreatePayment\PaymentIntegrationEventHandler.cs" containingFunctionPresentation="Method 'HandleAsync'">
+          <url>file://$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs</url>
+          <line>52</line>
+          <properties documentPath="D:\Projects\private_work\FullCart\Application\Orders\Commands\CreateOrder\CreateOrderCommand.cs" containingFunctionPresentation="Method 'Handle'">
             <startOffsets>
-              <option value="624" />
+              <option value="1951" />
             </startOffsets>
             <endOffsets>
-              <option value="625" />
+              <option value="2003" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="9" />
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs</url>
+          <line>73</line>
+          <properties documentPath="D:\Projects\private_work\FullCart\Application\Orders\Commands\CreateOrder\CreateOrderCommand.cs" containingFunctionPresentation="Lambda expression inside Method 'Handle'">
+            <startOffsets>
+              <option value="3113" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3179" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs</url>
+          <line>97</line>
+          <properties documentPath="D:\Projects\private_work\FullCart\Application\Orders\Commands\CreateOrder\CreateOrderCommand.cs" containingFunctionPresentation="Method 'Handle'">
+            <startOffsets>
+              <option value="4103" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4119" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

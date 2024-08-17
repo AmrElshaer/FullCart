@@ -14,6 +14,7 @@ using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -55,6 +56,8 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
     public DbSet<Product> Products { get; set; } = default!;
 
     public DbSet<Payment> Payments { get; set; } = default!;
+
+    public new DatabaseFacade Database => base.Database;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

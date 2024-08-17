@@ -6,6 +6,7 @@ using Domain.Roles;
 using Domain.Users;
 using DotNetCore.CAP;
 using EFCore.AuditExtensions.SqlServer;
+using Infrastructure.BackgroundJobs;
 using Infrastructure.Common;
 using Infrastructure.Common.Persistence;
 using Infrastructure.Hubs.OrderHub;
@@ -19,6 +20,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Savorboard.CAP.InMemoryMessageQueue;
@@ -51,12 +53,13 @@ public static class DependencyInjection
                 .EnableDetailedErrors()
                 .EnableSensitiveDataLogging();
         });
-
         services.AddIdentity<User, Role>()
             .AddEntityFrameworkStores<CartDbContext>()
             .AddDefaultTokenProviders();
 
         services.AddScoped<ICartDbContext>(provider => provider.GetRequiredService<CartDbContext>());
+        
+
         services.AddScoped<CartDbContextInitializer>();
         var jwtSettings = configuration.GetSection(JwtSettings.Section).Get<JwtSettings>();
         ArgumentNullException.ThrowIfNull(jwtSettings);
@@ -94,6 +97,12 @@ public static class DependencyInjection
 
     private static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
     {
+        services.Configure<HostOptions>(x =>
+        {
+            x.ServicesStartConcurrently = true;
+            x.ServicesStopConcurrently = false;
+        });
+        services.AddHostedService<NumberOfOrdersJob>();
         services.AddTransient<IIdentityService, IdentityService>();
         services.AddTransient<IFileAppService, FileAppService>();
         services.AddTransient<IDomainEventDispatcher, DomainEventDispatcher>();

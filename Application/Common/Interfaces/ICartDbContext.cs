@@ -5,6 +5,7 @@ using Domain.Payments;
 using Domain.Products;
 using Domain.Users;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Application.Common.Interfaces;
 
@@ -19,5 +20,6 @@ public interface ICartDbContext
      DbSet<Order> Orders { get; set; }
      DbSet<Product> Products { get; set; }
     DbSet<Payment> Payments { get; set; }
+     DatabaseFacade Database { get; }
      Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }
