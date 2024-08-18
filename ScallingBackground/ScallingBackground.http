@@ -1,0 +1,6 @@
+@ScallingBackground_HostAddress = http://localhost:5110
+
+GET {{ScallingBackground_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

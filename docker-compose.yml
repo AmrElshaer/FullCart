@@ -8,21 +8,53 @@
       - "5433:1433"
     networks:
       - proxybackend
-  fullcart.api:
-    image: fullcart.api
+  scallingbackground.service.one:
+    image: scallingbackground.one
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - Service_Name=scalling.service.one
     ports:
-    - 8000:8080
-    - 8001:443
+      - 8000:8080
+      - 8001:443
     build:
       context: .
-      dockerfile: FullCart.API/Dockerfile
+      dockerfile: ScallingBackground/Dockerfile
     restart: on-failure
     depends_on:
       - db
     networks:
       - proxybackend
+  scallingbackground.service.two:
+    image: scallingbackground.two
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Service_Name=scalling.service.two
+    ports:
+      - 9000:8080
+      - 9001:443
+    build:
+      context: .
+      dockerfile: ScallingBackground/Dockerfile
+    restart: on-failure
+    depends_on:
+      - db
+    networks:
+      - proxybackend
+  #  fullcart.api:
+  #    image: fullcart.api
+  #    environment:
+  #      - ASPNETCORE_ENVIRONMENT=Development
+  #    ports:
+  #    - 8000:8080
+  #    - 8001:443
+  #    build:
+  #      context: .
+  #      dockerfile: FullCart.API/Dockerfile
+  #    restart: on-failure
+  #    depends_on:
+  #      - db
+  #    networks:
+  #      - proxybackend
   #fullcart.api2:
   #  image: fullcart.api2
   #  environment:
@@ -39,6 +71,6 @@
   #  networks:
   #    - proxybackend
 networks:
-    proxybackend:
-        name: proxybackend
-        driver: bridge
+  proxybackend:
+    name: proxybackend
+    driver: bridge
