@@ -6,16 +6,18 @@
     <projectFile profileName="https">../study/ScallingBackground/ScallingBackground.csproj</projectFile>
     <projectFile profileName="FullCart.API">FullCart.API/FullCart.API.csproj</projectFile>
     <projectFile profileName="IIS Express">FullCart.API/FullCart.API.csproj</projectFile>
+    <projectFile>ScallingBackground/ScallingBackground.csproj</projectFile>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ScallingBackground/Settings/hangfire/AllowAllConnectionsFilter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Orders/Order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Orders/Order.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FullCart.API.sln" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContextInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContextInitializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScallingBackground/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScallingBackground/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScallingBackground/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ScallingBackground/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,8 +79,11 @@
     <setting file="file://$PROJECT_DIR$/Domain/Orders/Order.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/OrderItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/OrderItemQuantity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/private_work/FullCart/Infrastructure/Common/Persistence/CartDbContextInitializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtTokenGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/private_work/FullCart/ScallingBackground/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/private_work/FullCart/ScallingBackground/appsettings.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -93,43 +98,56 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.FullCart.API.executor": "Debug",
-    ".NET Launch Settings Profile.ScallingBackground: http.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "XThreadsFramesViewSplitterKey": "0.38650307",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.stylelint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "rider.code.cleanup.on.save": "true",
-    "rider.code.cleanup.on.save.profile": "Built-in: Reformat & Apply Syntax Style",
-    "settings.editor.selected.configurable": "actions.on.save",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.FullCart.API.executor&quot;: &quot;Debug&quot;,
+    &quot;.NET Launch Settings Profile.ScallingBackground: http.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.38650307&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;f/worker&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;rider.code.cleanup.on.save&quot;: &quot;true&quot;,
+    &quot;rider.code.cleanup.on.save.profile&quot;: &quot;Built-in: Reformat &amp; Apply Syntax Style&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "sqlserver.localdb"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlserver.localdb&quot;
     ],
-    "rider.external.source.directories": [
-      "C:\\Users\\amr.elshaer\\AppData\\Local\\JetBrains\\Shared\\vAny\\DecompilerCache",
-      "C:\\Users\\amr.elshaer\\AppData\\Local\\JetBrains\\Shared\\vAny\\SourcesCache",
-      "C:\\Users\\amr.elshaer\\AppData\\Local\\Symbols\\src"
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\amr.elshaer\\AppData\\Local\\JetBrains\\Shared\\vAny\\DecompilerCache&quot;,
+      &quot;C:\\Users\\amr.elshaer\\AppData\\Local\\JetBrains\\Shared\\vAny\\SourcesCache&quot;,
+      &quot;C:\\Users\\amr.elshaer\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
-  <component name="RunManager" selected="Compound.RunAll">
-    <configuration name="RunAll" type="CompoundRunConfigurationType">
-      <toRun name="FullCart.API" type="LaunchSettings" />
-      <toRun name="ScallingBackground: http" type="LaunchSettings" />
-      <method v="2" />
+}</component>
+  <component name="RunManager" selected=".NET Launch Settings Profile.ScallingBackground: http">
+    <configuration name="ScallingBackground" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/ScallingBackground/ScallingBackground.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
     </configuration>
     <configuration name="FullCart.API" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" />
@@ -256,7 +274,7 @@
       <item itemvalue=".NET Launch Settings Profile.ScallingBackground: http" />
       <item itemvalue=".NET Launch Settings Profile.ScallingBackground: https" />
       <item itemvalue=".NET Launch Settings Profile.ScallingBackground: IIS Express" />
-      <item itemvalue="Compound.RunAll" />
+      <item itemvalue=".NET Project.ScallingBackground" />
       <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       <item itemvalue="Docker.FullCart.API/Dockerfile" />
     </list>
@@ -304,6 +322,8 @@
       <workItem from="1723206922986" duration="8497000" />
       <workItem from="1723813477808" duration="16266000" />
       <workItem from="1723918538964" duration="12400000" />
+      <workItem from="1723991815191" duration="2735000" />
+      <workItem from="1724421159682" duration="672000" />
     </task>
     <task id="LOCAL-00001" summary="init architecture">
       <created>1706186905525</created>
@@ -442,7 +462,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723896074322</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="init">
+      <option name="closed" value="true" />
+      <created>1723994659186</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1723994659186</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -467,7 +495,8 @@
     <MESSAGE value="add signalR for background job" />
     <MESSAGE value="add rate limter" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -566,27 +595,13 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/../study/ScallingBackground/Jobs/OrderJob.cs</url>
           <line>41</line>
-          <properties documentPath="D:\Projects\private_work\study\ScallingBackground\Jobs\OrderJob.cs" containingFunctionPresentation="Method 'UpdateOrderStatus'">
-            <startOffsets>
-              <option value="1226" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1227" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\Projects\private_work\study\ScallingBackground\Jobs\OrderJob.cs" containingFunctionPresentation="Method 'UpdateOrderStatus'" />
           <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/../study/ScallingBackground/Jobs/OrderJob.cs</url>
           <line>38</line>
-          <properties documentPath="D:\Projects\private_work\study\ScallingBackground\Jobs\OrderJob.cs" containingFunctionPresentation="Method 'UpdateOrderStatus'">
-            <startOffsets>
-              <option value="1113" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1179" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\Projects\private_work\study\ScallingBackground\Jobs\OrderJob.cs" containingFunctionPresentation="Method 'UpdateOrderStatus'" />
           <option name="timeStamp" value="43" />
         </line-breakpoint>
       </breakpoints>

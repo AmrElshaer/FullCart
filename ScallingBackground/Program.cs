@@ -1,5 +1,3 @@
-using System.Text;
-using System.Threading.RateLimiting;
 using Application;
 using Hangfire;
 using Infrastructure;
@@ -8,6 +6,8 @@ using Infrastructure.Hubs.OrderHub;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.OpenApi.Models;
 using ScallingBackground.Jobs;
+using ScallingBackground.Settings.hangfire;
+using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
@@ -75,7 +75,7 @@ builder.Services.AddInfrastructure(builder.Configuration)
 builder.Services.AddHangfire(config =>
     config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
         .UseSimpleAssemblyNameTypeSerializer()
-        .UseDefaultTypeSerializer()
+        .UseRecommendedSerializerSettings()
         .UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddHangfireServer();
@@ -94,7 +94,11 @@ app.UseSwaggerUI();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseHangfireDashboard();
+app.UseHangfireDashboard("/hangfire", new DashboardOptions()
+{
+    Authorization = new[] { new AllowAllConnectionsFilter() },
+    IgnoreAntiforgeryToken = true
+});
 RecurringJob.AddOrUpdate<OrderJobWrapper>(
     "UpdateOrderStatus",
     job => job.UpdateOrderStatus(),
