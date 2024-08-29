@@ -8,37 +8,52 @@
       - "5433:1433"
     networks:
       - proxybackend
+  rabbitmq:
+    image: rabbitmq:latest
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - "5672:5672"  # RabbitMQ default port
+      - "15672:15672" # RabbitMQ management plugin port
+    networks:
+      - proxybackend
+
   fullcart.api:
     image: fullcart.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - PaymentConsumerConfiguration__ServiceName=ConsumerOne
     ports:
-    - 8000:8080
-    - 8001:443
+      - 8000:8080
+      - 8001:443
     build:
       context: .
       dockerfile: FullCart.API/Dockerfile
     restart: on-failure
     depends_on:
       - db
+      - rabbitmq
     networks:
       - proxybackend
-  #fullcart.api2:
-  #  image: fullcart.api2
-  #  environment:
-  #    - ASPNETCORE_ENVIRONMENT=Development
-  #  ports:
-  #  - 9000:8080
-  #  - 9001:443
-  #  build:
-  #    context: .
-  #    dockerfile: FullCart.API/Dockerfile
-  #  restart: on-failure
-  #  depends_on:
-  #    - db
-  #  networks:
-  #    - proxybackend
+  fullcart.api2:
+    image: fullcart.api2
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - PaymentConsumerConfiguration__ServiceName=ConsumerTwo
+    ports:
+      - 9000:8080
+      - 9001:443
+    build:
+      context: .
+      dockerfile: FullCart.API/Dockerfile
+    restart: on-failure
+    depends_on:
+      - db
+      - rabbitmq
+    networks:
+      - proxybackend
 networks:
-    proxybackend:
-        name: proxybackend
-        driver: bridge
+  proxybackend:
+    name: proxybackend
+    driver: bridge

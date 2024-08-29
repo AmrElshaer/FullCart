@@ -14,7 +14,7 @@ public class OrderPlacedDomainEventHandler : INotificationHandler<OrderPlacedEve
 
     public async Task Handle(OrderPlacedEvent notification, CancellationToken cancellationToken)
     {
-        var newPayment = new Payment(notification.OrderId);
+        var newPayment = new Payment(Guid.NewGuid(), notification.OrderId);
 
         await _cartDbContext.Payments.AddAsync(newPayment, cancellationToken);
     }

@@ -1,15 +1,16 @@
 ﻿using Domain.Common;
 
-namespace Domain.Payments.Events
-{
-    public class PaymentCreatedNotification : IntegrationEvent
-    {
-        public Guid PaymentId { get; }
+namespace Domain.Payments.Events;
 
-        public PaymentCreatedNotification(Guid paymentId)
-        {
-            PaymentId = paymentId;
-            Type = IntegrationEventConstants.PaymentConstant.PaymentCreated;
-        }
+public class PaymentCreatedNotification : IntegrationEvent
+{
+    public Guid PaymentId { get; }
+
+    public PaymentCreatedNotification(Guid paymentId)
+    {
+        PaymentId = paymentId;
+        Type = IntegrationEventConstants.PaymentConstant.PaymentCreated;
     }
 }
+
+public record PaymentCreated(Guid PaymentId);

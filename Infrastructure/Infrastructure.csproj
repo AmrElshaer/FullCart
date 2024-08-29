@@ -11,6 +11,8 @@
         <PackageReference Include="DotNetCore.CAP.Dashboard" Version="6.2.1"/>
         <PackageReference Include="DotNetCore.CAP.SqlServer" Version="6.2.1"/>
         <PackageReference Include="EFCore.AuditExtensions.SqlServer" Version="1.0.0"/>
+        <PackageReference Include="MassTransit.AspNetCore" Version="7.3.1"/>
+        <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.5"/>
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.26"/>
         <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.26"/>
         <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0"/>
@@ -22,6 +24,7 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0"/>
         <PackageReference Include="Savorboard.CAP.InMemoryMessageQueue" Version="6.0.0"/>
         <PackageReference Include="Scrutor" Version="4.2.2"/>
     </ItemGroup>

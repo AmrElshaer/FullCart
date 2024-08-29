@@ -43,7 +43,6 @@ public class CreateOrder
         public async Task<ErrorOr<Guid>> Handle(Command request, CancellationToken cancellationToken)
         {
             var orderItems = await CreateOrderItems(request.Items, cancellationToken);
-            _db.Database.ExecuteSqlRaw("UPDATE dbo.Products SET Value = 100 WHERE Id = '34CCA2AE-2964-446E-B238-4839B86642BC'");
             if (orderItems.IsError)
                 return orderItems.Errors;
 

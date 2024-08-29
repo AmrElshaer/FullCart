@@ -1,25 +1,30 @@
 ﻿using Domain.Common;
 using Domain.Payments.Events;
 using DotNetCore.CAP;
+using MassTransit;
 using Microsoft.Extensions.Logging;
 
-namespace Application.Payments.Commands.CreatePayment
+namespace Application.Payments.Commands.CreatePayment;
+
+public class PaymentIntegrationEventHandler : ICapSubscribe
 {
-    public class PaymentIntegrationEventHandler : ICapSubscribe
+    private readonly ILogger<PaymentIntegrationEventHandler> _logger;
+    private readonly IPublishEndpoint _publishEndpoint;
+
+    public PaymentIntegrationEventHandler
+    (
+        ILogger<PaymentIntegrationEventHandler> logger,
+        IPublishEndpoint publishEndpoint
+    )
     {
-        private readonly ILogger<PaymentIntegrationEventHandler> _logger;
+        _logger = logger;
+        _publishEndpoint = publishEndpoint;
+    }
 
-        public PaymentIntegrationEventHandler(ILogger<PaymentIntegrationEventHandler> logger)
-        {
-            _logger = logger;
-        }
-
-        [CapSubscribe(IntegrationEventConstants.PaymentConstant.PaymentCreated)]
-        public async Task HandleAsync(PaymentCreatedNotification notification)
-        {
-            _logger.LogInformation("PaymentCreatedNotificationHandler: {@Notification}", notification);
-            await Task.Delay(2000);
-            await Task.CompletedTask;
-        }
+    [CapSubscribe(IntegrationEventConstants.PaymentConstant.PaymentCreated)]
+    public async Task HandleAsync(PaymentCreatedNotification notification)
+    {
+        _logger.LogInformation(message: "PaymentCreatedNotificationHandler: {@Notification}", notification);
+        await _publishEndpoint.Publish<PaymentCreated>(new PaymentCreated(notification.PaymentId));
     }
 }

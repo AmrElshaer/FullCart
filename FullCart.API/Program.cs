@@ -1,8 +1,6 @@
-using System.Text;
 using System.Threading.RateLimiting;
 using Application;
 using Infrastructure;
-using Infrastructure.Common.Persistence;
 using Infrastructure.Hubs.OrderHub;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.OpenApi.Models;
@@ -76,7 +74,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    await app.InitialiseDatabaseAsync();
+    //await app.InitialiseDatabaseAsync();
 }
 
 app.UseSwagger();

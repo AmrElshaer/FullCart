@@ -1,7 +1,9 @@
-﻿using System.Text;
+﻿using System.Reflection;
+using System.Text;
 using Application.Common.Interfaces;
 using Application.Common.Interfaces.Hubs;
 using Application.Orders.Commands.CreateOrder;
+using Domain.Payments.Events;
 using Domain.Roles;
 using Domain.Users;
 using DotNetCore.CAP;
@@ -10,10 +12,12 @@ using Infrastructure.BackgroundJobs;
 using Infrastructure.Common;
 using Infrastructure.Common.Persistence;
 using Infrastructure.Hubs.OrderHub;
+using Infrastructure.Payments.Consumer;
 using Infrastructure.Security;
 using Infrastructure.Security.CurrentUserProvider;
 using Infrastructure.Security.TokenGenerator;
 using Infrastructure.Services;
+using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -41,8 +45,6 @@ public static class DependencyInjection
 
     private static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
-        
-         
         services.AddDbContext<CartDbContext>((sp, options) =>
         {
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
@@ -53,14 +55,14 @@ public static class DependencyInjection
                 .EnableDetailedErrors()
                 .EnableSensitiveDataLogging();
         });
+
         services.AddIdentity<User, Role>()
             .AddEntityFrameworkStores<CartDbContext>()
             .AddDefaultTokenProviders();
 
         services.AddScoped<ICartDbContext>(provider => provider.GetRequiredService<CartDbContext>());
-        
 
-        services.AddScoped<CartDbContextInitializer>();
+        services.AddHostedService<ApplyMigrationHostedService>();
         var jwtSettings = configuration.GetSection(JwtSettings.Section).Get<JwtSettings>();
         ArgumentNullException.ThrowIfNull(jwtSettings);
 
@@ -81,9 +83,10 @@ public static class DependencyInjection
                     ValidateAudience = true,
                     ValidAudience = jwtSettings.Audience,
                     ValidIssuer = jwtSettings.Issuer,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret)),
                 };
             });
+
         return services;
     }
 
@@ -102,10 +105,44 @@ public static class DependencyInjection
             x.ServicesStartConcurrently = true;
             x.ServicesStopConcurrently = false;
         });
-        services.AddHostedService<NumberOfOrdersJob>();
+
+       // services.AddHostedService<NumberOfOrdersJob>();
         services.AddTransient<IIdentityService, IdentityService>();
         services.AddTransient<IFileAppService, FileAppService>();
         services.AddTransient<IDomainEventDispatcher, DomainEventDispatcher>();
+
+        services.AddMassTransit(busConfigurator =>
+        {
+            busConfigurator.AddConsumers(Assembly.GetExecutingAssembly());
+
+            busConfigurator.AddConfigureEndpointsCallback((context, name, cfg) =>
+            {
+                cfg.UseMessageRetry(r => r.Immediate(2));
+            });
+
+            busConfigurator.UsingRabbitMq((context, busFactoryConfigurator) =>
+            {
+                busFactoryConfigurator.Host(host: "localhost", virtualHost: "/", h =>
+                {
+                    h.Username("guest");
+                    h.Password("guest");
+                });
+                busFactoryConfigurator.ReceiveEndpoint("service1-queue", e =>
+                {
+                    e.Bind<PaymentCreated>();
+            
+                    e.ConfigureConsumer<PaymentConsumer>(context);
+                });
+                busFactoryConfigurator.ReceiveEndpoint("service2-queue", e =>
+                {
+                    e.Bind<PaymentCreated>();
+            
+                    e.ConfigureConsumer<PaymentConsumer>(context);
+                });
+               // busFactoryConfigurator.ConfigureEndpoints(context);
+            });
+        });
+
         services.AddCap(capOptions =>
         {
             capOptions.UseSqlServer(options =>
@@ -131,6 +168,7 @@ public static class DependencyInjection
         });
 
         services.AddTransient<IOrderHub, OrderHub>();
+
         return services;
     }
 
