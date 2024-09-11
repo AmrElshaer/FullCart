@@ -1,0 +1,6 @@
+[*.cs] # Applies to all C# files
+dotnet_diagnostic.CA2007.severity = none
+dotnet_diagnostic.CA1849.severity = none
+dotnet_diagnostic.S6966.severity = none
+dotnet_diagnostic.S1144.severity = none
+dotnet_diagnostic.CA1062.severity = none

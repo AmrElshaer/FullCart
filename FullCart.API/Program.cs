@@ -13,13 +13,14 @@ builder.Services.AddControllers();
 builder.Services.AddRateLimiter(l =>
 {
     l.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+
     l.AddFixedWindowLimiter(policyName: "fixed", options =>
-        {
-            options.PermitLimit = 4;
-            options.Window = TimeSpan.FromSeconds(12);
-            options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
-            options.QueueLimit = 2;
-        });
+    {
+        options.PermitLimit = 4;
+        options.Window = TimeSpan.FromSeconds(12);
+        options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+        options.QueueLimit = 2;
+    });
 });
 
 builder.Services.AddCors(options =>
@@ -59,8 +60,7 @@ builder.Services.AddSwaggerGen(c =>
                     Id = "Bearer",
                 },
             },
-            new string[]
-                { }
+            Array.Empty<string>()
         },
     });
 });
@@ -72,6 +72,7 @@ builder.Services.AddInfrastructure(builder.Configuration)
 
 var app = builder.Build();
 app.UseRateLimiter();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
