@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using Application.Common.Interfaces;
+using Application.Common.Interfaces.Authentication;
 using Application.Common.models;
 using Microsoft.AspNetCore.Http;
 

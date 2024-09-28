@@ -1,4 +1,5 @@
 ﻿using Application.Common.Interfaces;
+using Application.Common.Interfaces.Event;
 using MediatR;
 
 namespace Application.Common.Behaviours;
@@ -9,7 +10,8 @@ public class DispatchingIntegrationEventDecorator<TNotification> : INotification
     private readonly INotificationHandler<TNotification> _inner;
     private readonly IDomainEventDispatcher _domainEventDispatcher;
 
-    public DispatchingIntegrationEventDecorator(INotificationHandler<TNotification> inner, IDomainEventDispatcher domainEventDispatcher)
+    public DispatchingIntegrationEventDecorator(INotificationHandler<TNotification> inner,
+        IDomainEventDispatcher domainEventDispatcher)
     {
         _inner = inner;
         _domainEventDispatcher = domainEventDispatcher;

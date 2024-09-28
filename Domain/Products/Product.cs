@@ -23,9 +23,11 @@ public class Product : Entity
     public Category Category { get; private set; } = default!;
 
     public ProductQuantity ProductQuantity { get; private set; } = default!;
-    
 
-    private Product() { }
+
+    private Product()
+    {
+    }
 
     public Product
     (
@@ -34,6 +36,7 @@ public class Product : Entity
         ProductDescription description,
         ProductPrice price,
         ProductFileName fileName,
+        ProductQuantity productQuantity,
         Guid brandId,
         Guid categoryId
     )
@@ -43,12 +46,13 @@ public class Product : Entity
         Description = description;
         Price = price;
         FileName = fileName;
+        ProductQuantity = productQuantity;
         BrandId = brandId;
         CategoryId = categoryId;
     }
 
     public void UpdateQuantity(ProductQuantity productQuantity)
     {
-        this.ProductQuantity = productQuantity;
+        ProductQuantity = productQuantity;
     }
 }

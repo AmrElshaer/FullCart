@@ -1,4 +1,6 @@
-﻿using Application.Security;
+﻿using Application.Common.Interfaces.Authentication;
+using Application.Common.Interfaces.Data;
+using Application.Security;
 using Domain.Orders;
 using Domain.Products;
 using Microsoft.EntityFrameworkCore;
@@ -43,7 +45,8 @@ public class CreateOrder
         public async Task<ErrorOr<Guid>> Handle(Command request, CancellationToken cancellationToken)
         {
             var orderItems = await CreateOrderItems(request.Items, cancellationToken);
-            _db.Database.ExecuteSqlRaw("UPDATE dbo.Products SET Value = 100 WHERE Id = '34CCA2AE-2964-446E-B238-4839B86642BC'");
+            _db.Database.ExecuteSqlRaw(
+                "UPDATE dbo.Products SET Value = 100 WHERE Id = '34CCA2AE-2964-446E-B238-4839B86642BC'");
             if (orderItems.IsError)
                 return orderItems.Errors;
 
@@ -56,27 +59,21 @@ public class CreateOrder
                 .RetryAsync(5, async (exception, retryCount) =>
                 {
                     foreach (var entry in ((DbUpdateConcurrencyException)exception).Entries)
-                    {
                         if (entry.Entity is ProductQuantity)
                         {
                             var originValues = entry.OriginalValues;
-                            var productId = (Guid) originValues["ProductId"];
+                            var productId = (Guid)originValues["ProductId"];
                             var orderItem = orderItems.Value.FirstOrDefault(oi => oi.ProductId == productId);
 
                             var databaseValues = await entry.GetDatabaseValuesAsync(cancellationToken);
 
                             if (databaseValues == null)
-                            {
                                 throw new Exception("The record you attempted to update was deleted by another user.");
-                            }
 
-                            var databaseQuantity = (int) databaseValues[nameof(ProductQuantity.Value)];
+                            var databaseQuantity = (int)databaseValues[nameof(ProductQuantity.Value)];
                             var newQuantity = databaseQuantity - orderItem!.Quantity.Quantity;
 
-                            if (newQuantity < 0)
-                            {
-                                throw new Exception("Insufficient product quantity.");
-                            }
+                            if (newQuantity < 0) throw new Exception("Insufficient product quantity.");
 
                             entry.CurrentValues[nameof(ProductQuantity.Value)] = newQuantity;
                             entry.OriginalValues.SetValues(databaseValues);
@@ -86,19 +83,16 @@ public class CreateOrder
                             var databaseValues = await entry.GetDatabaseValuesAsync(cancellationToken);
                             entry.OriginalValues.SetValues(databaseValues);
                         }
-                    }
                 });
 
             // Execute the save operation with the retry policy
-            await retryPolicy.ExecuteAsync(async () =>
-            {
-                await _db.SaveChangesAsync(cancellationToken);
-            });
+            await retryPolicy.ExecuteAsync(async () => { await _db.SaveChangesAsync(cancellationToken); });
 
             return order.Id;
         }
 
-        private async Task<ErrorOr<IReadOnlyList<OrderItem>>> CreateOrderItems(IReadOnlyList<CreateOrderItemRequest> items, CancellationToken cancellationToken)
+        private async Task<ErrorOr<IReadOnlyList<OrderItem>>> CreateOrderItems(
+            IReadOnlyList<CreateOrderItemRequest> items, CancellationToken cancellationToken)
         {
             var productsIds = items
                 .Select(i => i.ProductId)
@@ -128,7 +122,8 @@ public class CreateOrder
                 .ToList();
         }
 
-        private static Func<CreateOrderItemRequest, ErrorOr<OrderItem>> CreateOrderItem(Dictionary<Guid, Product> products)
+        private static Func<CreateOrderItemRequest, ErrorOr<OrderItem>> CreateOrderItem(
+            Dictionary<Guid, Product> products)
         {
             return i =>
             {
@@ -138,8 +133,9 @@ public class CreateOrder
                     return quantity.Errors;
 
                 var product = products[i.ProductId];
-                var productQuantity = new ProductQuantity(i.Quantity);
-                product.UpdateQuantity(product.ProductQuantity - productQuantity); 
+                var productQuantity = ProductQuantity.Create(i.Quantity);
+                if (productQuantity.IsError) return productQuantity.Errors;
+                product.UpdateQuantity(product.ProductQuantity - productQuantity.Value);
                 return new OrderItem(product.Id, quantity.Value, product.Price);
             };
         }

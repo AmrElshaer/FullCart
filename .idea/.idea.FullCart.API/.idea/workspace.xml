@@ -13,12 +13,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Directory.Build.props" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Data/IDataSeeder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Brands/Persistence/BrandDataSeeder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Categories/Persistence/CategoryDataSeeder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/Seeder/SeederExecutor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Products/Persistence/ProductDataSeeder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Roles/Persistence/RoleDataSeeder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Users/Persistence/AdminDataSeeder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Users/Persistence/CustomerDataSeeder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Users/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Users/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Brands/Commands/CreateBrand/CreateBrandCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Brands/Commands/CreateBrand/CreateBrandCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Brands/Commands/DeleteBrand/DeleteBrandCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Brands/Commands/DeleteBrand/DeleteBrandCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Brands/Commands/UpdateBrand/UpdateBrandCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Brands/Commands/UpdateBrand/UpdateBrandCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Brands/Queries/GetBrandByIdQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Brands/Queries/GetBrandByIdQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Brands/Queries/GetBrandsListQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Brands/Queries/GetBrandsListQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Categories/Commands/CreateCategory/CreateCategoryCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Categories/Commands/CreateCategory/CreateCategoryCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Categories/Commands/DeleteCategory/DeleteCategoryCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Categories/Commands/DeleteCategory/DeleteCategoryCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Categories/Commands/UpdateCategory/UpdateCategoryCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Categories/Commands/UpdateCategory/UpdateCategoryCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Categories/Queries/GetCategoriesListQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Categories/Queries/GetCategoriesListQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Categories/Queries/GetCategoryByIdQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Categories/Queries/GetCategoryByIdQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Behaviours/AuthorizationBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Behaviours/AuthorizationBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Behaviours/DispatchingIntegrationEventDecorator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Behaviours/DispatchingIntegrationEventDecorator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IAuthorizationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Authentication/IAuthorizationService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/ICartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Data/ICartDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/ICurrentUserProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Authentication/ICurrentUserProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IDomainEventDispatcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Event/IDomainEventDispatcher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IFileAppService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/File/IFileAppService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IIdentityService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Authentication/IIdentityService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IJwtTokenGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Authentication/IJwtTokenGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Customers/Commands/CreateCustomer/CreateCustomerCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Customers/Commands/CreateCustomer/CreateCustomerCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/ChangeOrderStatus/ChangeOrderStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/ChangeOrderStatus/ChangeOrderStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/OrderPlacedDomainEventHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/OrderPlacedDomainEventHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Orders/Queries/GetOrderById/GetOrderByIdQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Queries/GetOrderById/GetOrderByIdQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Tokens/Queries/GenerateTokenQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Tokens/Queries/GenerateTokenQueryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Products/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Products/Product.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Products/ProductQuantity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Products/ProductQuantity.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FullCart.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/BackgroundJobs/NumberOfOrdersJob.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/BackgroundJobs/NumberOfOrdersJob.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/DomainEventDispatcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/DomainEventDispatcher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContextInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContextInitializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Security/AuthorizationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Security/AuthorizationService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Security/CurrentUserProvider/CurrentUserProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Security/CurrentUserProvider/CurrentUserProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtTokenGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtTokenGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Services/FileAppService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Services/FileAppService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Services/IdentityService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Services/IdentityService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,33 +95,13 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/369d72e190df45e89562037a676e140bc000/1f/13c51ce3/EntityTypeBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/369d72e190df45e89562037a676e140bc000/41/1adae74d/IUserProvider.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/369d72e190df45e89562037a676e140bc000/a4/63f5cc70/DbContextOptionsBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/84f5a18af2b1435cb86e09ce162e61e435f460/cb/e66d878c/OutputWindow.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/8880b0916c1c466fa286cb9e73c7c93d201420/2d/1e6c167b/PropertyEntry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/8880b0916c1c466fa286cb9e73c7c93d201420/8d/f7ebedce/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/c6f90e6c68e04825a83e9310c4ef45e0b400/09/014491f2/ErrorOr`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/d8c21dc31a9243a28a5a2c213486549cf720/eb/a1f3c898/ActivatorUtilities.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/e52a0cd6cfb045e2976675032d8687587200/11/321c8ae5/UserContextInterceptor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/e52a0cd6cfb045e2976675032d8687587200/a5/c7694ca5/Installer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/6518e12429e640b855e84dbcb556279a6dcdecc0f25132fcbc5510f956f771e7/CallSiteFactory.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/SourcesCache/7e9875aa36e6b2932d99d0606548787862b472f8907e721aea5684f17c814ba2/AsyncRetrySyntax.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/efcore/b254074a09b0021d472383ea15b3bb703eae3ee3/src/EFCore/ChangeTracking/EntityEntry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/efcore/b254074a09b0021d472383ea15b3bb703eae3ee3/src/EFCore/ChangeTracking/Internal/InternalEntityEntry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/efcore/b254074a09b0021d472383ea15b3bb703eae3ee3/src/EFCore/ChangeTracking/PropertyEntry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/libraries/System.Linq/src/System/Linq/Select.SpeedOpt.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/libraries/System.Linq/src/System/Linq/ToCollection.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/libraries/System.Private.CoreLib/src/System/Runtime/CompilerServices/AsyncTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/libraries/System.Private.CoreLib/src/System/Threading/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/5535e31a712343a63f5d7d796cd874e563e5ac14/src/libraries/Microsoft.Extensions.DependencyInjection/src/ServiceLookup/CallSiteValidator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/5535e31a712343a63f5d7d796cd874e563e5ac14/src/libraries/Microsoft.Extensions.DependencyInjection/src/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/5535e31a712343a63f5d7d796cd874e563e5ac14/src/libraries/Microsoft.Extensions.Logging.Abstractions/src/LoggerExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Application/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/955ec549fe664629353c3b5424b6ad6c7dfcec4ab59bae709ab962c228cf45/RuntimeType.CoreCLR.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bd1d5c50194fea68ff3559c160230b0ab50f5acf4ce3061bffd6d62958e2182/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e8de9e72b94bea71dd352fff29e43b59bb174bd87e7b9aff04f21f04c88273c/HashSet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/projects/full-cart/FullCart/Application/Common/Behaviours/AuthorizationBehavior.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/Order.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/OrderItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/OrderItemQuantity.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/private_work/FullCart/FullCart.API/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtTokenGenerator.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -95,40 +118,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.FullCart.API.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "XThreadsFramesViewSplitterKey": "0.38650307",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.stylelint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "rider.code.cleanup.on.save": "true",
-    "rider.code.cleanup.on.save.profile": "Built-in: Reformat & Apply Syntax Style",
-    "settings.editor.selected.configurable": "actions.on.save",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.FullCart.API.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.38650307&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;rider.code.cleanup.on.save&quot;: &quot;true&quot;,
+    &quot;rider.code.cleanup.on.save.profile&quot;: &quot;Built-in: Reformat &amp; Apply Syntax Style&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "sqlserver.localdb"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlserver.localdb&quot;
     ],
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "EditorConfig"
-    ],
-    "rider.external.source.directories": [
-      "C:\\Users\\amr.elshaer\\AppData\\Local\\JetBrains\\Shared\\vAny\\DecompilerCache",
-      "C:\\Users\\amr.elshaer\\AppData\\Local\\JetBrains\\Shared\\vAny\\SourcesCache",
-      "C:\\Users\\amr.elshaer\\AppData\\Local\\Symbols\\src"
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;EditorConfig&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.FullCart.API">
     <configuration name="FullCart.API" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" />
@@ -255,6 +273,7 @@
       <workItem from="1723813477808" duration="13136000" />
       <workItem from="1726059337463" duration="980000" />
       <workItem from="1726060348095" duration="6975000" />
+      <workItem from="1727439907391" duration="17074000" />
     </task>
     <task id="LOCAL-00001" summary="init architecture">
       <created>1706186905525</created>
@@ -394,6 +413,7 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
+    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="init architecture" />
     <MESSAGE value="update AuthorizationBehavior.cs" />
@@ -417,42 +437,55 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs</url>
-          <line>52</line>
+          <line>55</line>
           <properties documentPath="D:\Projects\private_work\FullCart\Application\Orders\Commands\CreateOrder\CreateOrderCommand.cs" containingFunctionPresentation="Method 'Handle'">
             <startOffsets>
-              <option value="1951" />
+              <option value="2062" />
             </startOffsets>
             <endOffsets>
-              <option value="2003" />
+              <option value="2114" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs</url>
-          <line>73</line>
-          <properties documentPath="D:\Projects\private_work\FullCart\Application\Orders\Commands\CreateOrder\CreateOrderCommand.cs" containingFunctionPresentation="Lambda expression inside Method 'Handle'">
-            <startOffsets>
-              <option value="3113" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3179" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs</url>
-          <line>97</line>
+          <line>90</line>
           <properties documentPath="D:\Projects\private_work\FullCart\Application\Orders\Commands\CreateOrder\CreateOrderCommand.cs" containingFunctionPresentation="Method 'Handle'">
             <startOffsets>
-              <option value="4103" />
+              <option value="3976" />
             </startOffsets>
             <endOffsets>
-              <option value="4119" />
+              <option value="3992" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure/Users/Persistence/AdminDataSeeder.cs</url>
+          <line>38</line>
+          <properties documentPath="D:\projects\full-cart\FullCart\Infrastructure\Users\Persistence\AdminDataSeeder.cs" containingFunctionPresentation="Method 'SeedAllAsync'">
+            <startOffsets>
+              <option value="1271" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1272" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure/Users/Persistence/CustomerDataSeeder.cs</url>
+          <line>26</line>
+          <properties documentPath="D:\projects\full-cart\FullCart\Infrastructure\Users\Persistence\CustomerDataSeeder.cs" containingFunctionPresentation="Method 'SeedAllAsync'">
+            <startOffsets>
+              <option value="847" />
+            </startOffsets>
+            <endOffsets>
+              <option value="848" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

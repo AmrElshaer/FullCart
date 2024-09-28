@@ -14,7 +14,7 @@ builder.Services.AddRateLimiter(l =>
 {
     l.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
 
-    l.AddFixedWindowLimiter(policyName: "fixed", options =>
+    l.AddFixedWindowLimiter("fixed", options =>
     {
         options.PermitLimit = 4;
         options.Window = TimeSpan.FromSeconds(12);
@@ -25,7 +25,7 @@ builder.Services.AddRateLimiter(l =>
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: "AllowSpecificOrigin",
+    options.AddPolicy("AllowSpecificOrigin",
         builder =>
         {
             builder.WithOrigins("http://localhost:4200")
@@ -39,13 +39,13 @@ builder.Services.AddSignalR();
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.AddSecurityDefinition(name: "Bearer", new OpenApiSecurityScheme
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "Please enter a valid token",
         Name = "Authorization",
         Type = SecuritySchemeType.Http,
         Scheme = "Bearer",
-        BearerFormat = "JWT",
+        BearerFormat = "JWT"
     });
 
     // Define the security requirement
@@ -57,11 +57,11 @@ builder.Services.AddSwaggerGen(c =>
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer",
-                },
+                    Id = "Bearer"
+                }
             },
             Array.Empty<string>()
-        },
+        }
     });
 });
 
@@ -77,7 +77,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    await app.InitialiseDatabaseAsync();
+    app.InitialiseDatabase();
 }
 
 app.UseSwagger();

@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Reflection;
 using Application.Common.Interfaces;
+using Application.Common.Interfaces.Data;
 using Domain.Brands;
 using Domain.Categories;
 using Domain.Common;
@@ -28,7 +29,9 @@ public abstract class ApplicationIdentityDbContext<TUser, TRole, TKey> : Identit
     where TKey : IEquatable<TKey>
 {
     protected ApplicationIdentityDbContext(DbContextOptions options)
-        : base(options) { }
+        : base(options)
+    {
+    }
 }
 
 public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICartDbContext
@@ -36,7 +39,8 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
     private readonly IMediator _mediator;
     private readonly ICapPublisher _integrationEventPublisher;
 
-    public CartDbContext(DbContextOptions<CartDbContext> options, IMediator mediator, ICapPublisher integrationEventPublisher)
+    public CartDbContext(DbContextOptions<CartDbContext> options, IMediator mediator,
+        ICapPublisher integrationEventPublisher)
         : base(options)
     {
         _mediator = mediator;
@@ -79,22 +83,21 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
 
         // ReSharper disable once PossibleMultipleEnumeration
         if (domainEventEntities.Length == 0 && integrationEventsEntities.ToArray().Length == 0)
-        {
             return await base.SaveChangesAsync(cancellationToken);
-        }
 
         if (Database.CurrentTransaction is not null) // the transaction commit and rollback is managed outside
         {
             await PublishDomainEventsAsync(domainEventEntities, cancellationToken);
             var saveChangesResult = await base.SaveChangesAsync(cancellationToken);
             // ReSharper disable once PossibleMultipleEnumeration
-            await PublishIntegrationEvents(integrationEventsEntities.ToArray(), Database.CurrentTransaction, cancellationToken);
+            await PublishIntegrationEvents(integrationEventsEntities.ToArray(), Database.CurrentTransaction,
+                cancellationToken);
 
             return saveChangesResult;
         }
 
-        await using var transaction = await Database.BeginTransactionAsync(isolationLevel: IsolationLevel.ReadCommitted,
-            cancellationToken: cancellationToken);
+        await using var transaction = await Database.BeginTransactionAsync(IsolationLevel.ReadCommitted,
+            cancellationToken);
 
         try
         {
@@ -103,7 +106,7 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
             await PublishIntegrationEvents(integrationEventsEntities.ToArray(), transaction, cancellationToken);
 
             var result = await base.SaveChangesAsync(cancellationToken);
-         
+
             await transaction.CommitAsync(cancellationToken);
 
             return result;
@@ -116,31 +119,23 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
         }
     }
 
-    private async Task PublishIntegrationEvents(Entity[] integrationEventsEntities, IDbContextTransaction transaction, CancellationToken cancellationToken)
+    private async Task PublishIntegrationEvents(Entity[] integrationEventsEntities, IDbContextTransaction transaction,
+        CancellationToken cancellationToken)
     {
-        if (integrationEventsEntities.Length == 0)
-        {
-            return;
-        }
-        _integrationEventPublisher.Transaction.Value = ActivatorUtilities.CreateInstance<SqlServerCapTransaction>(_integrationEventPublisher.ServiceProvider).Begin(transaction);
+        if (integrationEventsEntities.Length == 0) return;
+        _integrationEventPublisher.Transaction.Value = ActivatorUtilities
+            .CreateInstance<SqlServerCapTransaction>(_integrationEventPublisher.ServiceProvider).Begin(transaction);
 
         foreach (var entity in integrationEventsEntities)
-        {
             while (entity.IntegrationEvents.TryTake(out var integrationEvent))
-            {
-                await _integrationEventPublisher.PublishAsync(integrationEvent.Type, integrationEvent, cancellationToken: cancellationToken);
-            }
-        }
+                await _integrationEventPublisher.PublishAsync(integrationEvent.Type, integrationEvent,
+                    cancellationToken: cancellationToken);
     }
 
     private async Task PublishDomainEventsAsync(Entity[] domainEventEntities, CancellationToken cancellationToken)
     {
         foreach (var entity in domainEventEntities)
-        {
             while (entity.DomainEvents.TryTake(out var domainEvent))
-            {
                 await _mediator.Publish(domainEvent, cancellationToken);
-            }
-        }
     }
 }

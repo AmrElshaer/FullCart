@@ -1,5 +1,10 @@
-﻿using System.Text;
+﻿using System.Reflection;
+using System.Text;
 using Application.Common.Interfaces;
+using Application.Common.Interfaces.Authentication;
+using Application.Common.Interfaces.Data;
+using Application.Common.Interfaces.Event;
+using Application.Common.Interfaces.File;
 using Application.Common.Interfaces.Hubs;
 using Application.Orders.Commands.CreateOrder;
 using Domain.Roles;
@@ -7,13 +12,19 @@ using Domain.Users;
 using DotNetCore.CAP;
 using EFCore.AuditExtensions.SqlServer;
 using Infrastructure.BackgroundJobs;
+using Infrastructure.Brands.Persistence;
+using Infrastructure.Categories.Persistence;
 using Infrastructure.Common;
 using Infrastructure.Common.Persistence;
+using Infrastructure.Common.Persistence.Seeder;
 using Infrastructure.Hubs.OrderHub;
+using Infrastructure.Products.Persistence;
+using Infrastructure.Roles.Persistence;
 using Infrastructure.Security;
 using Infrastructure.Security.CurrentUserProvider;
 using Infrastructure.Security.TokenGenerator;
 using Infrastructure.Services;
+using Infrastructure.Users.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -41,8 +52,6 @@ public static class DependencyInjection
 
     private static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
-        
-         
         services.AddDbContext<CartDbContext>((sp, options) =>
         {
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
@@ -58,9 +67,15 @@ public static class DependencyInjection
             .AddDefaultTokenProviders();
 
         services.AddScoped<ICartDbContext>(provider => provider.GetRequiredService<CartDbContext>());
-        
 
-        services.AddScoped<CartDbContextInitializer>();
+
+        //services.AddScoped<CartDbContextInitializer>();
+        services.Scan(scan => scan
+            .FromAssemblies(Assembly.GetExecutingAssembly())
+            .AddClasses(classes => classes.AssignableTo<IDataSeeder>())
+            .As<IDataSeeder>()
+            .WithScopedLifetime());
+        services.AddScoped<SeederExecutor>();
         var jwtSettings = configuration.GetSection(JwtSettings.Section).Get<JwtSettings>();
         ArgumentNullException.ThrowIfNull(jwtSettings);
 
@@ -102,7 +117,7 @@ public static class DependencyInjection
             x.ServicesStartConcurrently = true;
             x.ServicesStopConcurrently = false;
         });
-        services.AddHostedService<NumberOfOrdersJob>();
+        //services.AddHostedService<NumberOfOrdersJob>();
         services.AddTransient<IIdentityService, IdentityService>();
         services.AddTransient<IFileAppService, FileAppService>();
         services.AddTransient<IDomainEventDispatcher, DomainEventDispatcher>();
@@ -116,10 +131,7 @@ public static class DependencyInjection
 
             capOptions.UseInMemoryMessageQueue();
 
-            capOptions.UseDashboard(dashboardOptions =>
-            {
-                dashboardOptions.PathMatch = "/cap";
-            });
+            capOptions.UseDashboard(dashboardOptions => { dashboardOptions.PathMatch = "/cap"; });
         });
 
         services.Scan(scan =>

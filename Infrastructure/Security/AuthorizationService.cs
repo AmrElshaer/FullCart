@@ -1,4 +1,5 @@
 ﻿using Application.Common.Interfaces;
+using Application.Common.Interfaces.Authentication;
 using Application.Security;
 using ErrorOr;
 using Infrastructure.Security.CurrentUserProvider;
@@ -14,6 +15,7 @@ public class AuthorizationService
     {
         _currentUserProvider = currentUserProvider;
     }
+
     public ErrorOr<Success> AuthorizeCurrentUser<T>(
         IAuthorizeRequest<T> request,
         List<string> requiredRoles)
@@ -21,11 +23,8 @@ public class AuthorizationService
         var currentUser = _currentUserProvider.GetCurrentUser();
 
         if (requiredRoles.Except(currentUser.Roles).Any())
-        {
             return Error.Unauthorized(description: "User is missing required roles for taking this action");
-        }
 
-        
 
         return Result.Success;
     }

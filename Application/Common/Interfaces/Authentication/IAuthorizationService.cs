@@ -1,7 +1,6 @@
 ﻿using Application.Security;
-using ErrorOr;
 
-namespace Application.Common.Interfaces;
+namespace Application.Common.Interfaces.Authentication;
 
 public interface IAuthorizationService
 {

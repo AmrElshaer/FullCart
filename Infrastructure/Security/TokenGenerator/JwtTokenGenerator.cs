@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using System.Text;
 using Application.Common.Interfaces;
+using Application.Common.Interfaces.Authentication;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
@@ -32,10 +33,10 @@ public class JwtTokenGenerator : IJwtTokenGenerator
             new(JwtRegisteredClaimNames.Email, email),
             new(JwtRegisteredClaimNames.Name, email),
             new("id", id.ToString()),
-            new("userType", userType),
+            new("userType", userType)
         };
 
-        roles.ForEach(role => claims.Add(new(ClaimTypes.Role, role)));
+        roles.ForEach(role => claims.Add(new Claim(ClaimTypes.Role, role)));
 
         var token = new JwtSecurityToken(
             _jwtSettings.Issuer,
