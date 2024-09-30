@@ -25,7 +25,7 @@ public class CustomerDataSeeder(ICartDbContext cartDbContext, UserManager<User> 
 
         if (userManager.Users.All(u => u.UserName != customer.UserName))
         {
-            var result = await userManager.CreateAsync(customer, "Customer@1!");
+            await userManager.CreateAsync(customer, "Customer@1!");
 
             if (!string.IsNullOrWhiteSpace(customerRole.Name))
                 await userManager.AddToRolesAsync(customer, new[]

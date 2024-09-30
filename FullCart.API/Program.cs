@@ -6,8 +6,22 @@ using Infrastructure.Common.Persistence;
 using Infrastructure.Hubs.OrderHub;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.OpenApi.Models;
+using OpenTelemetry;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Host.UseSerilog((context, configuration) =>
+    configuration.ReadFrom.Configuration(context.Configuration));
+builder.Services.AddOpenTelemetry()
+    .ConfigureResource(r => r.AddService("full-cart"))
+    .WithTracing(t =>
+    {
+        t.AddHttpClientInstrumentation()
+            .AddAspNetCoreInstrumentation()
+            .AddOtlpExporter();
+    });
 builder.Services.AddControllers();
 
 builder.Services.AddRateLimiter(l =>
@@ -28,10 +42,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigin",
         builder =>
         {
-            builder.WithOrigins("http://localhost:4200")
+            builder.AllowAnyOrigin()
                 .AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowCredentials();
+                .AllowAnyMethod();
         });
 });
 
@@ -86,6 +99,7 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseCors("AllowSpecificOrigin");
+app.UseSerilogRequestLogging();
 app.MapControllers();
 app.MapHub<OrderStatusHub>("/orderStatusHub");
 app.Run();

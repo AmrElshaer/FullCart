@@ -12,15 +12,45 @@
     image: fullcart.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://cart.seq:5341/ingest/otlp/v1/traces
+      - OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
     ports:
-    - 8000:8080
-    - 8001:443
+      - 8000:8080
+      - 8001:443
     build:
       context: .
       dockerfile: FullCart.API/Dockerfile
     restart: on-failure
     depends_on:
       - db
+      - cart.seq
+    networks:
+      - proxybackend
+  report.api:
+    image: cart-report.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://cart.seq:5341/ingest/otlp/v1/traces
+      - OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
+    ports:
+      - 9000:8080
+      - 9001:443
+    build:
+      context: .
+      dockerfile: CartReport.API/Dockerfile
+    restart: on-failure
+    networks:
+      - proxybackend
+  cart.seq:
+    image: datalust/seq:latest
+    container_name: Cart.Seq
+    volumes:
+      - ./.containers/seq:/data
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5341:5341
+      - 8081:80
     networks:
       - proxybackend
   #fullcart.api2:
@@ -39,6 +69,6 @@
   #  networks:
   #    - proxybackend
 networks:
-    proxybackend:
-        name: proxybackend
-        driver: bridge
+  proxybackend:
+    name: proxybackend
+    driver: bridge

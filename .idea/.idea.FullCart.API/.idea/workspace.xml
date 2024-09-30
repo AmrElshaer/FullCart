@@ -4,64 +4,311 @@
     <projectFile profileName="IIS Express">../study/ScallingBackground/ScallingBackground.csproj</projectFile>
     <projectFile profileName="http">../study/ScallingBackground/ScallingBackground.csproj</projectFile>
     <projectFile profileName="https">../study/ScallingBackground/ScallingBackground.csproj</projectFile>
+    <projectFile profileName="IIS Express">CartReport.API/CartReport.API.csproj</projectFile>
+    <projectFile profileName="http">CartReport.API/CartReport.API.csproj</projectFile>
+    <projectFile profileName="https">CartReport.API/CartReport.API.csproj</projectFile>
     <projectFile profileName="FullCart.API">FullCart.API/FullCart.API.csproj</projectFile>
     <projectFile profileName="IIS Express">FullCart.API/FullCart.API.csproj</projectFile>
     <projectFile>ScallingBackground/ScallingBackground.csproj</projectFile>
+    <projectFile profileName="IIS Express">WebApplication1/WebApplication1.csproj</projectFile>
+    <projectFile profileName="http">WebApplication1/WebApplication1.csproj</projectFile>
+    <projectFile profileName="https">WebApplication1/WebApplication1.csproj</projectFile>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Data/IDataSeeder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Brands/Persistence/BrandDataSeeder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Categories/Persistence/CategoryDataSeeder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/Seeder/SeederExecutor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Products/Persistence/ProductDataSeeder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Roles/Persistence/RoleDataSeeder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Users/Persistence/AdminDataSeeder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Users/Persistence/CustomerDataSeeder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Documents/metastore.2.metadata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Documents/metastore.collection.439dd8e5fcee455bb3c1356875d15558.docc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Documents/metastore.collection.95b42f68a1b7457dbc3999ec6697c285.docc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Documents/metastore.flare" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Seq.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfe83555f400.af5c033d96a4468bb0ba356f3cb12ee0.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfe847379700.3bf8175caac845e49488dc9f85676184.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfe859193a00.03f51ebe5284463ba7c2a2c82fb0ac2f.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfe86afadd00.2154b0d3e3aa4fc3bb292677f787ebac.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfe87cdc8000.e7ee75a4af3c45389657ad8cc2e6ef5f.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfe88ebe2300.30da139dc4a140708ebb6856cd359014.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfe8a09fc600.6ced2cece3314d16a68182e322d81042.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfe8b2816900.df8255c268244bfca1b7397b4fdb9664.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfe8c4630c00.46701a7e1c794570bc625810e43d6e1b.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfe8d644af00.296263d4d777463a94302ce9f1730136.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfe8e8265200.de9f82c04af14316968821bfef7336ee.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfe8fa07f500.14678a02068c4caa88329bf6428a76c0.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfe90be99800.ab82943a4b4b4d129ada0d973eb0bb21.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfe91dcb3b00.45859dabd38d46f4b3fe9dd1011b0ce4.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfe92facde00.cb6c6e3e2d6041548ede2e02de6c3034.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfe9418e8100.24b90670d72e48b792584b196bf732fa.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfe953702400.9e017e4c34674f01ba9aa974ebcd0695.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfeb00976c00.749faffaf75441dfb7ce797054523ac0.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfeb12790f00.d7c194f2fbbf405ab023a70e1958c0b4.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfeb245ab200.f7de3db327cb45b48a817dd2c6f364af.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfeb363c5500.ed20a8f26f284568a7d015746cef351b.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfebb367ca00.649d58a10dab405485bd5c6db6e4769e.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfebc5496d00.0429cce903e846fe8c237f0d422165f7.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfebfaee5600.38ddf7f7ff7d432fb791806d53a19330.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfec4274e200.d8839326d25f49538e38f0c6f2cf437f.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfedcbd8e400.8d0b0f5826a24602921c2674825f9347.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfee017dcd00.afa4a39d39ed4d9daf50378445a5ccbb.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfee135f7000.58ac0275c54646f0af91e299922dbf5f.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdfee3722b600.d809de192a144ded93d1d42e2472736a.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdff33e988e00.6a0c2242f9374b96a19ce84dc45084fb.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdff39800bd00.bc4126e6f884405c934f478659c543e3.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdff3f168ec00.c33fa3a1bf9041e2968157e226c1631b.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdff4034a8f00.80127e44ff1845dd80b85d756af838d5.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdff4270dd500.d37ef91a454b45cb8829c44931f23548.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dcdff4c7fc9000.dfe134c76122400b9247c50d8de8bd78.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b39bf41400.57492a46f4854f43b330b28a84af31b6.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b3add5b700.b32448a2f93248288732bb7ee17880e4.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b3e37aa000.de4c8b1feebc4a71b2d335676e149867.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b4191f8900.abbfe72d3c7149f38417742cd64ce9e7.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b42b012c00.dc70a4a957d54480971a4fe9587e765f.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b43ce2cf00.98f6ff3e90a04aecba2d74bd872f1566.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b460a61500.f9429fae36f044159798dd029d0a95d1.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b50194d000.a31ce6f983f64db2a2cf01cf32fe13e2.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b525581600.51bc499d49d940bea0d229b0e74265e6.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b5491b5c00.62960221f6754257907107416df4ea24.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b55afcff00.b38da08d6e774cf999aa56a28a4c5fe3.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b590a1e800.46f46d40bf734ff89abdd7e60fa54ea3.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b60dcd5d00.e925c10775fa4ea0b4f7fe0559e4c4b7.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b63190a300.5991ab96e0f64f2db1807c8286b155c9.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b65553e900.bceef3b3e163490993215ffb957c5c9b.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b679172f00.c13d0ddefdee4603b38279ad71f84ac0.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b68af8d200.53b994d57d8d471ca53e2ffc418e2248.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b69cda7500.070b06e5c3e0433b977d79716e092202.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b6c09dbb00.24d97ea97c8e43abaed1113c8c621b51.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b6e4610100.63ec1b06c1c24a5aa7fd644b48f2646f.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b708244700.d29e64f343954046962d6e154c09e389.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b72be78d00.a2f3142a6a5f4ee7a68eee748ba67352.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b73dc93000.a60d83a7278a4a2cb717f6356a5fa6ff.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b7618c7600.6d7d9b69ba21421d8607c88f39194201.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b7736e1900.8bb2308e1c624bce8a6f59b17bb7c290.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b7854fbc00.1b62be139ce1460d980edcd97985384e.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b7a9130200.a569ff73d9bf4713843bbe9efc1e390f.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b7ccd64800.31720d352224498ab1e66c2dd115dfbf.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b7f0998e00.2435c3fa12794cc684d6dfd010fab885.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b8263e7700.4f9fd73688394e0a947902da0baa277f.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b84a01bd00.13ab544edac342d0a6f48f51957c0cea.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b891884900.5a7aefa866a2477696973d65490f71d9.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0b920956100.3cda9cc125a6470f90f144d1fae170a3.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0ba74547a00.cef5a6a087ac4a7d8c9cd83902a05b48.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0ba9817c000.774347149f844042a7d14f87c20d3d27.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0babbdb0600.315748af87154a8e97fbe07fa8ed23c8.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0badf9e4c00.a6f013a39e10442f840be0cb43de7978.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0bb03619200.c4be54da553848529c0890aedfddf952.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0bb39067b00.27a080726540476f86b45ca37601df14.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0bb5cc9c100.ee0f94e9308e4c81a44215168ee6394d.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0bba4504d00.c1c8b51ec115460880f17ea68a0d7078.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0bbc8139300.e09ab5e60ac94daba80a1677efb393d7.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0bcc26a7d00.3a124af811c346e7bac141e65961c174.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0bce62dc300.9c6eed06b3b74256956506b8fc27be6a.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0bd09f10900.cd7c32f599414aa4994a9ad4a2e7475f.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0bd1bd2ac00.cd8730e429b94f33ac584b919126343c.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0bd2db44f00.6026bfbf8dec43deae7aa3664c692784.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0bd51779500.345baa8defc046d7b26d7808daeb66b4.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0bd753adb00.4c21de22c7014b4889e5b7fcba24181a.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0bd98fe2100.9006c4a50abc4694a9225921318da7e8.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0bdbcc16700.448bd7ce469e46a0a94881424e75aa48.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0bde084ad00.60d193623cf24a0aab4e60514717e7d1.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0bdf2665000.01cca71d22454f72942fd49b06e93780.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0be16299600.e8db3ec0e3344a44979642c01471b908.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0c1eda39b00.9141e6d7126146a2b7e45acea346afba.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0c21166e100.e57dcefed11a449e8bbaaf99172e6933.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0c2352a2700.3fc01f3e2f6441099326a759cb4cd40b.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0c258ed6d00.b37858a93d2c4fc38c31a113250d0578.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0c27cb0b300.668fe346255e4b07bdd5724506a1caf4.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0c2a073f900.140b5476a84d407da48c1f9b5d2b6dc3.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0c2c4373f00.fe78f04e59bb4faaaac72d989ade18b3.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0c2d618e200.ff1bf5a56dbb495abecfdd3d41e9d5d9.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0c2f9dc2800.89f87332da344d3ea2f184a82e5f40d9.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0c31d9f6e00.67aaf3d5c68940b8a30aa0dabed311ec.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0c34162b400.8ce5b5bdc8054739b5fdd1ca35370220.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce0c3f4331200.eb8db535145e43b5a27987367a2ce794.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce125be267a00.0ef7bb7281c846b4907ca0ebaee49a5c.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce125d0081d00.2d572450ff15413098140ed376816d81.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce125f3cb6300.11270befa1294bc1b3035af643746d1a.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce126178ea900.33d8cdc13b534fcb992bd2a95959be07.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1263b51ef00.95014b51f00a46dab0cb32eebb446e24.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1265f153500.ab032fe947dc4967b469af1c3b733eea.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12682d87b00.8c628e83fe944d29b032f18efc6fc95f.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12694ba1e00.ba5ddbe0302249b387791361e6a89d3e.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce126a69bc100.1913987e572b4cb29ad696c9f2d56477.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce126ca5f0700.2f33a83e55d745068ef1580ac9cb8773.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce126dc40aa00.039a1139a5b64094958c79430383beb1.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce126ee224d00.4c357f40319a4a1a97aae247673a9534.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12711e59300.437d49a8005f4d00a7455d3937532c9e.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12735a8d900.3e4d040633ed44af843d7610433efc5f.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce127478a7c00.0e2972f486a447d991a79bdaca71725c.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce127596c1f00.cbf6d67768d84d2796c2b4a10ee0a558.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1276b4dc200.f0789d1f280b4231ad70fb67707b0e22.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1277d2f6500.750a0284c61343758cbca922fa7c28a4.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1278f110800.5542fc7ae2064406895f8016d76b6dfa.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce127b2d44e00.538f6786e9a04860b9ba82883e8f8e6b.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce127d6979400.38a04e2e9acd4f83aca9d24f6daf9f4f.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce127e8793700.3d6c836895a34cf9bd829521caab9aeb.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce127fa5ada00.395d7f3be5ee4cfb86081230f4e99601.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1280c3c7d00.2ccc3f7f2c804e1e895725423f86348c.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1281e1e2000.8e2c96960d544fcfb6d5f2b3ac7617f0.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1282fffc300.5ee3ce75ece74508a282679c33485e87.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12841e16600.a707ce3eb27d44a5a7245362d080afcf.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12865a4ac00.fe79faed258a4942a65de9bdc0cf8ff1.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12877864f00.ab9d67901eed4e2b940a48a80ab3f254.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1288967f200.ba5a42cb29dc40568f23511542cbedd4.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1289b499500.93ad794ebcf84e36b43063db8ce42ca8.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce128bf0cdb00.27ce02d148f14456a865c4fb0f668413.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce128e2d02100.1f3e9e4bfc434f088e144a94e4d688e5.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce128f4b1c400.937ad0e1e896494a93ce0dc1994d4fab.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12918750a00.404c4afdf8184851a585da1743382f99.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1292a56ad00.1136d1b4fc154a9a95ccebd228d3dd3e.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1294e19f300.6eec49c879464723be632d825659b25d.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1295ffb9600.2673bef6744e4e5d91139d6a587940a7.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12971dd3900.dbceaf648bd9482c8e1352566bf84943.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12983bedc00.e5ab6650080e4c63a1d0baa7e39cc039.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12995a07f00.4c8352cd5a594f8b8e1f4001995b8b48.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce129a7822200.5da2536a47e34dfb979e2b163e965457.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce129b963c500.756f05cdb2534b408538a1b155a7e7d4.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce129cb456800.14578cf5eb724df5a562e4ba3cd41ce6.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce129dd270b00.afff4cb3f0224ae4866ceca12159ee05.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce129ef08ae00.e4c882d995704eee83cae6c837bdee0d.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12a12cbf400.a5c4bc343435468b8ce4cb1e13d49dfb.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12a368f3a00.7ebccef41dec4a9ab0198f6725574faf.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12a4870dd00.444edf548eb241bd832aed098e63db02.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12a5a528000.b01363af55da41688fa3a61ce0cd2147.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12a6c342300.dc10ec3f5a7b40f486302c0829b170cc.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12a7e15c600.0260113bf2094798a82b9a7123d6a3f6.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12a8ff76900.c9776433a7d54cadb8559852ee232733.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12ab3baaf00.5085f2aa85754e378a8265e2dc96c2fd.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12ad77df500.ebebb0ee2af0447fbcd92690f4643da9.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12afb413b00.36cc788655f547e9850ce7c2a9b3e9c0.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12b1f048100.46e72ddd5ab543b397e0299e9396c1a8.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12b30e62400.4220b741c09d4bd9b832334786b13667.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12b54a96a00.1f58427f6d2d4ddebe96d6734fbc3045.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12b786cb000.11e9eb36c9b04b9eaf1acc777e0fba44.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12b9c2ff600.25bc80387eab40cf97ba92a168bd0808.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12bae119900.3abbccfaae0a4744851acd87731d63c8.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12bf5982500.111c7baeeda040b3b543ae27713e09ab.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12c0779c800.838c31cc41a147b0af74dbb148c291cd.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12c195b6b00.c387d01818204365bbbd8ab92025527b.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12c3d1eb100.28ffee8ac4d54dcea00a58b8b1d67c8e.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12c4f005400.610ef50e55d5426681701f689f5a5f7e.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12c60e1f700.1be077d4e11a4c31a11492860ae83f23.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12c72c39a00.0cd99869c28c4a93b62f3cf8b5275631.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12c9686e000.b3f6e3eca8ec4861be1be2980fc54a6e.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12ca8688300.b7b6465c6ac442abb3fae01ebd521fd4.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12ccc2bc900.1e61435757e6464180d2eeb549b2d365.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12cefef0f00.f1593efa157248738e1982f05461b575.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12d01d0b200.9096400db595464d85f16f60fb5b2bec.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12d13b25500.609cba4413864e6986c90e27a86dac27.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12d37759b00.4c864ebe819847e8a3112303efb318ac.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12d5b38e100.c7f89d84ea6c4c0db1a4954e4a6f98d9.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12d6d1a8400.b5c8971828834fedb97cd3c4cc003b45.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12d7efc2700.ce413bff81a349b4aa9d561553ccf91f.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12d90ddca00.c17eee6e8bf0404db4ea3e9fb8ebc470.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12da2bf6d00.f8f8e431da364f77878b8d1f3ce2478d.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12db4a11000.a6f3137e4fe44a02891d3021aace8a98.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12dd8645600.1d7ac1ea940648e7b0b2ded873a9253d.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12dfc279c00.76f99509cce04d7a98e2bd8b768a73b5.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12e1feae200.487984ba00ab4464b7c539553ab0c9a4.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12e31cc8500.adb3446e4595465fb69b8f05d1b876bd.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12e43ae2800.aa6d3f609a544f03892d3b3642199064.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12e558fcb00.ed9f8f36d2d14f51b7e08ba80c40a370.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12e67716e00.7c60fd00e20c43acbb937b3d7d727876.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12e79531100.b7f977f7473c492b9e9d28b5ee732f30.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12e8b34b400.5063879d44c7420880bed7da19eda8f2.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12e9d165700.1c3dee692c5a478d9a99de880238eccc.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12eaef7fa00.0ce316191df846bd9358dbce3c217960.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12ec0d99d00.c7020e6224b8490aa8d2af7d82521ccb.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12ed2bb4000.fe0b34a24abb4a11b3d3b15a119ae1b6.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12ee49ce300.1e63733365e448edb4dd0595189b4885.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12ef67e8600.4bd897a715684b229d754fd20ca8b5d1.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12f08602900.f2168f71df834f4d872646f687d9ef7c.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12f1a41cc00.d89c799127ad48738fb34a913533ca71.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12f3e051200.7a557136d67e4b4a89c599af4197f31b.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12f61c85800.8d45a12e7aef4079aa2ed12490892f08.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12f73a9fb00.46e365037df94e228f09c9152a59e486.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12f858b9e00.bb3a3aab23ac4211b39eb6877f3cb653.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12fa94ee400.8396f259eb374d0da9520fcfe7e9d756.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12fcd122a00.9bbb2c5cf8544b29808e4ec33d106c31.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12fdef3cd00.3daa39a3630e46e79fd9b8bd912d7c9f.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce12ff0d57000.bc534891aa894deca62edd6aef6eacb9.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce13002b71300.25dd00168cf54b6c8a71089cd6f1eb06.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1301498b600.f2db63400b0940b392ec9f93b8f389a4.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce130385bfc00.24e5af7ef13f4a4cb8842f2d6a3ad391.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1305c1f4200.2f96b617670940a89e279f142dab6723.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1307fe28800.668f0775b77245aca9abc75ca81343f1.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce130a3a5ce00.73bffd0aac474e22a45a0d77ed3ff96c.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce130c7691400.ba49ed20d55f4ec9b5db83d712719c89.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce130eb2c5a00.f1cfffdd534f40858bf1e47088d56748.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1310eefa000.88fd7b0302d84a54834bef54842994c3.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce13132b2e600.908856a60ec1489d9d6c3c28d0ce4215.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce13156762c00.1bbd44e782a240cf9a9d8c2cfd4b5e37.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1317a397200.afa0bbe5c13542f8b86511933fddb830.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1319dfcb800.aead80f9724e44279d7d857dcae8c2e4.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce131afde5b00.84282c5ccaf74d5cb4bed0031ac17abf.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce131c1bffe00.1e3208a32bcb416888534145242f7483.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce131d3a1a100.a9dbf874d1e24e6aba6c89b2c0ce0b45.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce131e5834400.c841c10677ab4f69ac17e35da96898cd.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce131f764e700.5fbfb5834e3941a9aab93177ba4de60f.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce13209468a00.c14d81910c73419795a6dd70f9ba12bb.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1321b282d00.bfa1db8b48be4392931a6ce0246b4f99.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1322d09d000.95f00bdca68a4d27a6039ef6da7d35b4.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1323eeb7300.e7ca12855c754bebb3cad4119ea07288.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce13262aeb900.16a2e716e10649b689f86f17c1435b3d.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1328671ff00.afb18ebd0159466fab1658f5107bec81.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce132aa354500.6e6a685a98a34b03ac84c9f5d789f44e.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce132cdf88b00.73b2e048c9724f57b6c51c5b0da7a0aa.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce132f1bbd100.afe2d0dbd6ff4d6b95eb61d5c21392b2.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce133157f1700.2eaf4591ad86450bb7840d61be7555f7.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce13339425d00.d7dda4c01b6e4652bac733babe6e7758.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1335d05a300.7f850c6cb2e64413bdb18e449419d325.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1428548ce00.73a183679dc046668ea5049417f1ed6f.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce143a362fe00.b4cb4c2c1a6145c0a3e08f34f45f27d4.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce143b544a100.a647fbad8d7642c598141c7c7957b47f.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce14456335c00.70c11f3a6e3343faa55610d1c4ae45dc.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce14479f6a200.298c2078807a4a89bd73f217b8fa7cce.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1449db9e800.b0a2189d55a24b26aa41ba06ca596b4b.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce144c17d2e00.e17c21323f4d4122a20ad4ee74fe0286.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce144e5407400.6643a158f64b4f658f64c01e76c948cd.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1450903ba00.90d8cdd9a802470bb5a0945fd10bef6c.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1451ae55d00.a2a1c298a593432ebad960181a5cb07b.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1452cc70000.d34f8bccaa1b422e8f3680c3fb8ea541.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1453ea8a300.bd493a6a806d44eea44f07e86a7bef65.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce145626be900.fa9fbb958d734d1d8c078bc48a84c072.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce145862f2f00.21ec1ee187434c7bac1a704737ad8aa6.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce145a9f27500.9fcb06b80ebc44f582ab7509dab7663b.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce145cdb5bb00.1afddd65d02e4a90aa5aac26193df91e.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce145f1790100.53333a4bda2d4577b4db7103365c754f.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce146153c4700.5b2147576ce8406aa051e7b2e8bbd972.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce14638ff8d00.feacb7e521ba49efa1f41c443f030dd1.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce1465cc2d300.7495200ba1554fcc83a6cb8f63512b05.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce14680861900.53ae8d672d714268aa415a367d37f5e9.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce146b62b0200.5881166df2cd4edfa79d541382c61f73.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.08dce146c80ca500.d01a7475a4164378a47f3ca35e43d6b2.tick" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.2.metadata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.collection.21bad75f30524537812cfe31a14bda5b.docc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.containers/seq/Stream/stream.flare" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CartReport.API/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CartReport.API/CartReport.API.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CartReport.API/CartReport.API.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CartReport.API/Controllers/OrderController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CartReport.API/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CartReport.API/Program.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CartReport.API/Properties/launchSettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CartReport.API/appsettings.Development.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CartReport.API/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Brands/Commands/CreateBrand/CreateBrandCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Brands/Commands/CreateBrand/CreateBrandCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Brands/Commands/DeleteBrand/DeleteBrandCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Brands/Commands/DeleteBrand/DeleteBrandCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Brands/Commands/UpdateBrand/UpdateBrandCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Brands/Commands/UpdateBrand/UpdateBrandCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Brands/Queries/GetBrandByIdQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Brands/Queries/GetBrandByIdQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Brands/Queries/GetBrandsListQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Brands/Queries/GetBrandsListQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Categories/Commands/CreateCategory/CreateCategoryCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Categories/Commands/CreateCategory/CreateCategoryCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Categories/Commands/DeleteCategory/DeleteCategoryCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Categories/Commands/DeleteCategory/DeleteCategoryCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Categories/Commands/UpdateCategory/UpdateCategoryCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Categories/Commands/UpdateCategory/UpdateCategoryCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Categories/Queries/GetCategoriesListQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Categories/Queries/GetCategoriesListQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Categories/Queries/GetCategoryByIdQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Categories/Queries/GetCategoryByIdQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Behaviours/AuthorizationBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Behaviours/AuthorizationBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Behaviours/DispatchingIntegrationEventDecorator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Behaviours/DispatchingIntegrationEventDecorator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IAuthorizationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Authentication/IAuthorizationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/ICartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Data/ICartDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/ICurrentUserProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Authentication/ICurrentUserProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IDomainEventDispatcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Event/IDomainEventDispatcher.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IFileAppService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/File/IFileAppService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IIdentityService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Authentication/IIdentityService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IJwtTokenGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Authentication/IJwtTokenGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Customers/Commands/CreateCustomer/CreateCustomerCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Customers/Commands/CreateCustomer/CreateCustomerCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/ChangeOrderStatus/ChangeOrderStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/ChangeOrderStatus/ChangeOrderStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Application.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DependencyInjection.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/OrderPlacedDomainEventHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/OrderPlacedDomainEventHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Orders/Queries/GetOrderById/GetOrderByIdQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Queries/GetOrderById/GetOrderByIdQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Tokens/Queries/GenerateTokenQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Tokens/Queries/GenerateTokenQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Products/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Products/Product.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Products/ProductQuantity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Products/ProductQuantity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API.sln" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FullCart.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/BackgroundJobs/NumberOfOrdersJob.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/BackgroundJobs/NumberOfOrdersJob.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/DomainEventDispatcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/DomainEventDispatcher.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContextInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContextInitializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Security/AuthorizationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Security/AuthorizationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Security/CurrentUserProvider/CurrentUserProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Security/CurrentUserProvider/CurrentUserProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtTokenGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtTokenGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Services/FileAppService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Services/FileAppService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Services/IdentityService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Services/IdentityService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Users/Persistence/CustomerDataSeeder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Users/Persistence/CustomerDataSeeder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +345,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/955ec549fe664629353c3b5424b6ad6c7dfcec4ab59bae709ab962c228cf45/RuntimeType.CoreCLR.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bd1d5c50194fea68ff3559c160230b0ab50f5acf4ce3061bffd6d62958e2182/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e8de9e72b94bea71dd352fff29e43b59bb174bd87e7b9aff04f21f04c88273c/HashSet.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/projects/full-cart/FullCart/Application/Common/Behaviours/AuthorizationBehavior.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/projects/full-cart/FullCart/Application/Orders/Commands/CreateOrder/OrderPlacedDomainEventHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/projects/full-cart/FullCart/Application/Orders/Commands/CreateOrder/OrderPlacedIntegrationEventHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/Order.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/OrderItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/OrderItemQuantity.cs" root0="FORCE_HIGHLIGHTING" />
@@ -148,6 +396,51 @@
   }
 }</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.FullCart.API">
+    <configuration name="CartReport.API: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/CartReport.API/CartReport.API.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
+      <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="CartReport.API: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/CartReport.API/CartReport.API.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
+      <option name="LAUNCH_PROFILE_NAME" value="http" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="CartReport.API: https" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/CartReport.API/CartReport.API.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
+      <option name="LAUNCH_PROFILE_NAME" value="https" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
     <configuration name="FullCart.API" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net6.0" />
@@ -177,6 +470,72 @@
       <method v="2">
         <option name="Build" />
       </method>
+    </configuration>
+    <configuration name="WebApplication1: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebApplication1/WebApplication1.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
+      <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="WebApplication1: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebApplication1/WebApplication1.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
+      <option name="LAUNCH_PROFILE_NAME" value="http" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="WebApplication1: https" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebApplication1/WebApplication1.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
+      <option name="LAUNCH_PROFILE_NAME" value="https" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="CartReport.API/Dockerfile" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="imageTag" value="cartreport.api" />
+          <option name="containerName" value="cartreport.api" />
+          <option name="contextFolderPath" value="D:\projects\full-cart\FullCart" />
+          <option name="portBindings">
+            <list>
+              <DockerPortBindingImpl>
+                <option name="containerPort" value="8080" />
+                <option name="hostIp" value="127.0.0.1" />
+                <option name="hostPort" value="8080" />
+              </DockerPortBindingImpl>
+            </list>
+          </option>
+          <option name="sourceFilePath" value="CartReport.API/Dockerfile" />
+        </settings>
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
+      <method v="2" />
     </configuration>
     <configuration name="FullCart.API/Dockerfile" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
       <deployment type="dockerfile">
@@ -223,8 +582,15 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue=".NET Launch Settings Profile.CartReport.API: IIS Express" />
+      <item itemvalue=".NET Launch Settings Profile.CartReport.API: http" />
+      <item itemvalue=".NET Launch Settings Profile.CartReport.API: https" />
+      <item itemvalue=".NET Launch Settings Profile.WebApplication1: IIS Express" />
+      <item itemvalue=".NET Launch Settings Profile.WebApplication1: http" />
+      <item itemvalue=".NET Launch Settings Profile.WebApplication1: https" />
       <item itemvalue=".NET Launch Settings Profile.FullCart.API" />
       <item itemvalue=".NET Launch Settings Profile.FullCart.API: IIS Express" />
+      <item itemvalue="Docker.CartReport.API/Dockerfile" />
       <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       <item itemvalue="Docker.FullCart.API/Dockerfile" />
     </list>
@@ -273,7 +639,8 @@
       <workItem from="1723813477808" duration="13136000" />
       <workItem from="1726059337463" duration="980000" />
       <workItem from="1726060348095" duration="6975000" />
-      <workItem from="1727439907391" duration="17074000" />
+      <workItem from="1727439907391" duration="28344000" />
+      <workItem from="1727633656728" duration="15729000" />
     </task>
     <task id="LOCAL-00001" summary="init architecture">
       <created>1706186905525</created>
@@ -430,62 +797,24 @@
     <MESSAGE value="add auditing" />
     <MESSAGE value="add signalR for background job" />
     <MESSAGE value="add rate limter" />
-    <option name="LAST_COMMIT_MESSAGE" value="add rate limter" />
+    <MESSAGE value="add iseeder pattern" />
+    <option name="LAST_COMMIT_MESSAGE" value="add iseeder pattern" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs</url>
-          <line>55</line>
+          <line>60</line>
           <properties documentPath="D:\Projects\private_work\FullCart\Application\Orders\Commands\CreateOrder\CreateOrderCommand.cs" containingFunctionPresentation="Method 'Handle'">
             <startOffsets>
-              <option value="2062" />
+              <option value="2248" />
             </startOffsets>
             <endOffsets>
-              <option value="2114" />
+              <option value="2300" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs</url>
-          <line>90</line>
-          <properties documentPath="D:\Projects\private_work\FullCart\Application\Orders\Commands\CreateOrder\CreateOrderCommand.cs" containingFunctionPresentation="Method 'Handle'">
-            <startOffsets>
-              <option value="3976" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3992" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Infrastructure/Users/Persistence/AdminDataSeeder.cs</url>
-          <line>38</line>
-          <properties documentPath="D:\projects\full-cart\FullCart\Infrastructure\Users\Persistence\AdminDataSeeder.cs" containingFunctionPresentation="Method 'SeedAllAsync'">
-            <startOffsets>
-              <option value="1271" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1272" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Infrastructure/Users/Persistence/CustomerDataSeeder.cs</url>
-          <line>26</line>
-          <properties documentPath="D:\projects\full-cart\FullCart\Infrastructure\Users\Persistence\CustomerDataSeeder.cs" containingFunctionPresentation="Method 'SeedAllAsync'">
-            <startOffsets>
-              <option value="847" />
-            </startOffsets>
-            <endOffsets>
-              <option value="848" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

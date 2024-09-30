@@ -23,8 +23,9 @@ public static class InitializerExtensions
         where TContext : DbContext
     {
         using var scope = serviceProvider.CreateScope();
-
+        var logger = scope.ServiceProvider.GetService<ILogger<TContext>>();
         var context = scope.ServiceProvider.GetRequiredService<TContext>();
+        logger.LogInformation(context.Database.GetConnectionString());
         await context.Database.MigrateAsync();
     }
 

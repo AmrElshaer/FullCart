@@ -1,10 +1,6 @@
 ﻿using Application.Common.Behaviours;
 using Application.Common.Extensions;
 using Application.Orders.Commands.CreateOrder;
-using Domain.Common;
-using Domain.Orders.Events;
-using FluentValidation;
-using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application;
@@ -13,6 +9,11 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
+        services.AddHttpClient("ReportAPI", client =>
+        {
+            client.BaseAddress = new Uri("http://report.api:8080");
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+        });
         // services.AddMediatR(options =>
         // {
         //    // options.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly);
@@ -23,7 +24,7 @@ public static class DependencyInjection
         services.AddSingleton<TimeProvider>(TimeProvider.System);
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-       // services.AddScoped(typeof(IPipelineBehavior<,>), typeof(RetryBehavior<,>));
+        // services.AddScoped(typeof(IPipelineBehavior<,>), typeof(RetryBehavior<,>));
         services.AddValidatorsFromAssemblyContaining(typeof(DependencyInjection));
         services.AddScoped<IMediator, Mediator>();
 
@@ -46,10 +47,7 @@ public static class DependencyInjection
         {
             var cur = toCheck.IsGenericType ? toCheck.GetGenericTypeDefinition() : toCheck;
 
-            if (generic == cur)
-            {
-                return true;
-            }
+            if (generic == cur) return true;
 
             toCheck = toCheck.BaseType;
         }

@@ -1,22 +1,20 @@
 ﻿using Application.Common.Interfaces.Data;
 using Domain.Orders.Events;
 using Domain.Payments;
+using Microsoft.Extensions.Logging;
 
 namespace Application.Orders.Commands.CreateOrder;
 
-public class OrderPlacedDomainEventHandler : INotificationHandler<OrderPlacedEvent>
+public class OrderPlacedDomainEventHandler(
+    ICartDbContext cartDbContext,
+    IHttpClientFactory httpClientFactory,
+    ILogger<OrderPlacedDomainEventHandler> logger)
+    : INotificationHandler<OrderPlacedEvent>
 {
-    private readonly ICartDbContext _cartDbContext;
-
-    public OrderPlacedDomainEventHandler(ICartDbContext cartDbContext)
-    {
-        _cartDbContext = cartDbContext;
-    }
-
     public async Task Handle(OrderPlacedEvent notification, CancellationToken cancellationToken)
     {
         var newPayment = new Payment(notification.OrderId);
 
-        await _cartDbContext.Payments.AddAsync(newPayment, cancellationToken);
+        await cartDbContext.Payments.AddAsync(newPayment, cancellationToken);
     }
 }
