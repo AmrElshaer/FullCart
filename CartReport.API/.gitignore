@@ -489,3 +489,6 @@ containers
 
 .idea/seq
 .idea/.idea
+.containers/*
+.idea/.idea.FullCart.API/.idea/*
+/.containers/seq/Documents/*
