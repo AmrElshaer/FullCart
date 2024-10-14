@@ -483,3 +483,7 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+.idea/.idea.FullCart.API/
+.idea/.idea.FullCart.API/.idea
+.idea/.idea.FullCart.API/*
+.idea/.idea.FullCart.API/.idea/*

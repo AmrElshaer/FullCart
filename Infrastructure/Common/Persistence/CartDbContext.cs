@@ -4,6 +4,7 @@ using Application.Common.Interfaces;
 using Application.Common.Interfaces.Data;
 using Domain.Brands;
 using Domain.Categories;
+using Domain.Comments;
 using Domain.Common;
 using Domain.Orders;
 using Domain.Payments;
@@ -60,6 +61,7 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
     public DbSet<Product> Products { get; set; } = default!;
 
     public DbSet<Payment> Payments { get; set; } = default!;
+    public DbSet<Comment> Comments { get; set; } = default!;
 
     public new DatabaseFacade Database => base.Database;
 
@@ -72,7 +74,7 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        var domainEventEntities = ChangeTracker.Entries<Entity>()
+        var domainEventEntities = ChangeTracker.Entries<BaseEntity>()
             .Select(po => po.Entity)
             .Where(po => po.DomainEvents.Any())
             .ToArray();
@@ -80,7 +82,7 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
         var integrationEventsEntities = ChangeTracker.Entries<Entity>()
             .Select(po => po.Entity)
             .Where(po => po.IntegrationEvents.Any());
-
+     
         // ReSharper disable once PossibleMultipleEnumeration
         if (domainEventEntities.Length == 0 && integrationEventsEntities.ToArray().Length == 0)
             return await base.SaveChangesAsync(cancellationToken);
@@ -132,7 +134,7 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
                     cancellationToken: cancellationToken);
     }
 
-    private async Task PublishDomainEventsAsync(Entity[] domainEventEntities, CancellationToken cancellationToken)
+    private async Task PublishDomainEventsAsync(BaseEntity[] domainEventEntities, CancellationToken cancellationToken)
     {
         foreach (var entity in domainEventEntities)
             while (entity.DomainEvents.TryTake(out var domainEvent))

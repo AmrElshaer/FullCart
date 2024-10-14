@@ -4,6 +4,7 @@ using Infrastructure.Common.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(CartDbContext))]
-    partial class CartDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241012143410_AddComments")]
+    partial class AddComments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,6 +89,8 @@ namespace Infrastructure.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Orders", (string)null);
+
+                    b.HasAnnotation("AuditExtensions:Order", "{\"Name\":\"AuditExtensions:Order\",\"Table\":{\"Name\":\"Orders_Audit\",\"Columns\":[{\"Type\":\"Text\",\"Name\":\"Id\",\"Nullable\":false,\"AuditedEntityKey\":true,\"MaxLength\":null},{\"Type\":\"Text\",\"Name\":\"OldData\",\"Nullable\":true,\"AuditedEntityKey\":false,\"MaxLength\":null},{\"Type\":\"Text\",\"Name\":\"NewData\",\"Nullable\":true,\"AuditedEntityKey\":false,\"MaxLength\":null},{\"Type\":\"Text\",\"Name\":\"OperationType\",\"Nullable\":false,\"AuditedEntityKey\":false,\"MaxLength\":6},{\"Type\":\"Text\",\"Name\":\"User\",\"Nullable\":false,\"AuditedEntityKey\":false,\"MaxLength\":255},{\"Type\":\"DateTime\",\"Name\":\"Timestamp\",\"Nullable\":false,\"AuditedEntityKey\":false,\"MaxLength\":null}],\"Index\":{\"Name\":null}},\"Trigger\":{\"Name\":\"Audit__Orders_Orders_Audit\",\"TableName\":\"Orders\",\"AuditTableName\":\"Orders_Audit\",\"KeyProperties\":[{\"ColumnName\":\"Id\",\"ColumnType\":\"Text\",\"MaxLength\":null}],\"UpdateOptimisationThreshold\":100,\"NoKeyChanges\":false}}");
                 });
 
             modelBuilder.Entity("Domain.Payments.Payment", b =>

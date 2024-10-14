@@ -6,12 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Orders.Events
-{
-    public  class OrderPlacedEvent : DomainEvent
-    {
-        public Guid OrderId { get; init; }
+namespace Domain.Orders.Events;
 
-        public Guid CustomerId { get; init; }
-    }
+public class OrderPlacedEvent : DomainEvent
+{
+    public required OrderId OrderId { get; init; }
+
+    public Guid CustomerId { get; init; }
 }

@@ -20,7 +20,8 @@ public class GetOrderByIdQueryHandler : IRequestHandler<GetOrderByIdQuery, Error
 
     public async Task<ErrorOr<Order>> Handle(GetOrderByIdQuery request, CancellationToken cancellationToken)
     {
-        var order = await _cartDbContext.Orders.FirstOrDefaultAsync(o => o.Id == request.OrderId, cancellationToken);
+        var order = await _cartDbContext.Orders.FirstOrDefaultAsync(o => o.Id == OrderId.Create(request.OrderId),
+            cancellationToken);
 
         if (order is null) return Error.NotFound($"not found order with id {request.OrderId}");
 

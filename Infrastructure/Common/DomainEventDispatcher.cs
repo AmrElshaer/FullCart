@@ -19,7 +19,7 @@ internal class DomainEventDispatcher : IDomainEventDispatcher
 
     private async Task PublishDomainEventsAsync()
     {
-        var domainEventEntities = _cartDbContext.ChangeTracker.Entries<Entity>()
+        var domainEventEntities = _cartDbContext.ChangeTracker.Entries<BaseEntity>()
             .Select(po => po.Entity)
             .Where(po => po.DomainEvents.Any())
             .ToArray();

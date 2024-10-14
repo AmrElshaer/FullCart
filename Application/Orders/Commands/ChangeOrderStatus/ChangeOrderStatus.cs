@@ -23,7 +23,7 @@ public class ChangeOrderStatus
 
         public async Task<ErrorOr<Guid>> Handle(Command request, CancellationToken cancellationToken)
         {
-            var order = await _cartDbContext.Orders.FirstOrDefaultAsync(o => o.Id == request.OrderId
+            var order = await _cartDbContext.Orders.FirstOrDefaultAsync(o => o.Id == OrderId.Create(request.OrderId)
                 , cancellationToken);
 
             if (order is null) return Error.NotFound($"Order with id {request.OrderId} not found");
@@ -31,7 +31,7 @@ public class ChangeOrderStatus
             order.ChangeOrderStatus(request.OrderStatus);
             await _cartDbContext.SaveChangesAsync(cancellationToken);
 
-            return order.Id;
+            return order.Id.Value;
         }
     }
 }

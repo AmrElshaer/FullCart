@@ -2,12 +2,13 @@
 
 namespace Domain.Orders.Events;
 
-public class OrderStatusChangeIntegrationEvent:IntegrationEvent
+public class OrderStatusChangeIntegrationEvent : IntegrationEvent
 {
-    public Guid OrderId { get; }
+    public OrderId OrderId { get; }
 
     public OrderStatus OrderStatus { get; }
-    public OrderStatusChangeIntegrationEvent(Guid orderId,OrderStatus orderStatus)
+
+    public OrderStatusChangeIntegrationEvent(OrderId orderId, OrderStatus orderStatus)
     {
         OrderId = orderId;
         OrderStatus = orderStatus;

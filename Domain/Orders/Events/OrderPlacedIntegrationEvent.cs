@@ -4,9 +4,9 @@ namespace Domain.Orders.Events;
 
 public class OrderPlacedIntegrationEvent : IntegrationEvent
 {
-    public Guid OrderId { get; }
+    public OrderId OrderId { get; }
 
-    public OrderPlacedIntegrationEvent(Guid orderId)
+    public OrderPlacedIntegrationEvent(OrderId orderId)
     {
         OrderId = orderId;
         Type = IntegrationEventConstants.OrderConstant.OrderPlaced;

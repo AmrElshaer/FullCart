@@ -3,19 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Common;
 
-public abstract class BaseEntity<TId>: IComparable, IComparable<BaseEntity<TId>>
+public abstract class BaseEntity<TId>: BaseEntity,IComparable, IComparable<BaseEntity<TId>>
     where TId : IComparable<TId>
 {
     
     public  TId Id { get; protected set; } = default!;
-
-    private readonly ConcurrentQueue<DomainEvent> _domainEvents = new();
-    private readonly ConcurrentQueue<IntegrationEvent> _integrationEvents = new();
-
-    [NotMapped]
-    public IProducerConsumerCollection<DomainEvent> DomainEvents => _domainEvents;
-    [NotMapped]
-    public IProducerConsumerCollection<IntegrationEvent> IntegrationEvents => _integrationEvents;
+    
     protected BaseEntity()
     {
     }
@@ -78,6 +71,20 @@ public abstract class BaseEntity<TId>: IComparable, IComparable<BaseEntity<TId>>
     public virtual int CompareTo(object? other)
     {
         return CompareTo(other as BaseEntity<TId>);
+    }
+}
+public abstract class BaseEntity
+{
+
+    private readonly ConcurrentQueue<DomainEvent> _domainEvents = new();
+    private readonly ConcurrentQueue<IntegrationEvent> _integrationEvents = new();
+
+    [NotMapped]
+    public IProducerConsumerCollection<DomainEvent> DomainEvents => _domainEvents;
+    [NotMapped]
+    public IProducerConsumerCollection<IntegrationEvent> IntegrationEvents => _integrationEvents;
+    protected BaseEntity()
+    {
     }
     protected void AddDomainEvent(DomainEvent domainEvent)
     {

@@ -1,10 +1,11 @@
-﻿using Domain.Common;
+﻿using Domain.Comments;
+using Domain.Common;
 using Domain.Orders.Events;
 using Domain.Users;
 
 namespace Domain.Orders;
 
-public class Order:Entity
+public class Order : BaseEntity<OrderId>
 {
     public OrderStatus Status { get; private set; }
 
@@ -22,31 +23,41 @@ public class Order:Entity
 
     private Order()
     {
-        
     }
 
-    public Order(Guid id,Guid customerId,IReadOnlyList<OrderItem> items,DateTimeOffset creationDate)
+    private readonly List<CommentId> _commentIds = new();
+
+    public IReadOnlyCollection<CommentId> CommentIds => _commentIds;
+
+    public Order(Guid customerId, IReadOnlyList<OrderItem> items, DateTimeOffset creationDate)
     {
-        Id = id;
+        Id = OrderId.CreateUniqueId();
         Status = OrderStatus.Pending;
         TotalPrice = items.Sum(i => i.ProductPrice.Price);
         CustomerId = customerId;
         CreationDate = creationDate;
-       _items.AddRange(items);
+        _items.AddRange(items);
         AddDomainEvent(new OrderPlacedEvent()
         {
-            OrderId = id,
-            CustomerId = customerId,
+            OrderId = Id,
+            CustomerId = customerId
         });
-        AddIntegrationEvent(new OrderPlacedIntegrationEvent(id));
-       
+        AddIntegrationEvent(new OrderPlacedIntegrationEvent(Id));
     }
-    public  string ToOrderTrackingGroupId() =>
-        $"{Id}:{CustomerId}";
+
+    public void AddComments(CommentId commentId)
+    {
+        _commentIds.Add(commentId);
+    }
+
+    public string ToOrderTrackingGroupId()
+    {
+        return $"{Id}:{CustomerId}";
+    }
 
     public void ChangeOrderStatus(OrderStatus requestOrderStatus)
     {
-        this.Status = requestOrderStatus;
-        AddIntegrationEvent(new OrderStatusChangeIntegrationEvent(Id,Status));
+        Status = requestOrderStatus;
+        AddIntegrationEvent(new OrderStatusChangeIntegrationEvent(Id, Status));
     }
 }

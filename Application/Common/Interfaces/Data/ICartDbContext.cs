@@ -1,5 +1,6 @@
 ﻿using Domain.Brands;
 using Domain.Categories;
+using Domain.Comments;
 using Domain.Orders;
 using Domain.Payments;
 using Domain.Products;
@@ -20,6 +21,7 @@ public interface ICartDbContext
     DbSet<Order> Orders { get; set; }
     DbSet<Product> Products { get; set; }
     DbSet<Payment> Payments { get; set; }
+    DbSet<Comment> Comments { get; set; }
     DatabaseFacade Database { get; }
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

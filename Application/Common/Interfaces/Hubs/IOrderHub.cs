@@ -4,6 +4,5 @@ namespace Application.Common.Interfaces.Hubs;
 
 public interface IOrderHub
 {
-  
-    void SendOrderStatusChanged(Guid notificationOrderId, OrderStatus notificationOrderStatus);
+    void SendOrderStatusChanged(OrderId notificationOrderId, OrderStatus notificationOrderStatus);
 }

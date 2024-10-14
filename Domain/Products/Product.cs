@@ -24,7 +24,6 @@ public class Product : Entity
 
     public ProductQuantity ProductQuantity { get; private set; } = default!;
 
-
     private Product()
     {
     }

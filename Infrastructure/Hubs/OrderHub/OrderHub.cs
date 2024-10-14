@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace Infrastructure.Hubs.OrderHub;
 
-public class OrderHub:IOrderHub
+public class OrderHub : IOrderHub
 {
     private readonly IHubContext<OrderStatusHub, IOrderStatusHub> _orderStatusHub;
 
@@ -12,8 +12,9 @@ public class OrderHub:IOrderHub
     {
         _orderStatusHub = orderStatusHub;
     }
-    public void SendOrderStatusChanged(Guid orderId,OrderStatus orderStatus)
+
+    public void SendOrderStatusChanged(OrderId orderId, OrderStatus orderStatus)
     {
-        _orderStatusHub.Clients.Groups(orderId.ToString()).OrderStatusChanged(orderStatus);
+        _orderStatusHub.Clients.Groups(orderId.Value.ToString()).OrderStatusChanged(orderStatus);
     }
 }

@@ -45,14 +45,12 @@ public class CreateOrder
         public async Task<ErrorOr<Guid>> Handle(Command request, CancellationToken cancellationToken)
         {
             var orderItems = await CreateOrderItems(request.Items, cancellationToken);
-            _db.Database.ExecuteSqlRaw(
-                "UPDATE dbo.Products SET Value = 100 WHERE Id = '34CCA2AE-2964-446E-B238-4839B86642BC'");
             if (orderItems.IsError)
                 return orderItems.Errors;
 
             var user = _currentUserProvider.GetCurrentUser();
             var userId = user.Id;
-            var order = new Order(Guid.NewGuid(), userId, orderItems.Value, _timeProvider.GetUtcNow());
+            var order = new Order(userId, orderItems.Value, _timeProvider.GetUtcNow());
             await _db.Orders.AddAsync(order, cancellationToken);
             var retryPolicy = Policy
                 .Handle<DbUpdateConcurrencyException>()
@@ -88,7 +86,7 @@ public class CreateOrder
             // Execute the save operation with the retry policy
             await retryPolicy.ExecuteAsync(async () => { await _db.SaveChangesAsync(cancellationToken); });
 
-            return order.Id;
+            return order.Id.Value;
         }
 
         private async Task<ErrorOr<IReadOnlyList<OrderItem>>> CreateOrderItems(

@@ -1,11 +1,11 @@
 ﻿using Domain.Common;
+using Domain.Orders;
 
-namespace Domain.Payments.Events
+namespace Domain.Payments.Events;
+
+public class PaymentCreatedEvent : DomainEvent
 {
-    public class PaymentCreatedEvent : DomainEvent
-    {
-        public Guid PaymentId { get; init; }
+    public Guid PaymentId { get; init; }
 
-        public Guid OrderId { get; init; }
-    }
+    public required OrderId OrderId { get; init; }
 }
