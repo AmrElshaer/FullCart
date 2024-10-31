@@ -81,31 +81,30 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
 
         var integrationEventsEntities = ChangeTracker.Entries<Entity>()
             .Select(po => po.Entity)
-            .Where(po => po.IntegrationEvents.Any());
-     
-        // ReSharper disable once PossibleMultipleEnumeration
-        if (domainEventEntities.Length == 0 && integrationEventsEntities.ToArray().Length == 0)
+            .Where(po => po.IntegrationEvents.Any())
+            .ToList();
+  
+        if (domainEventEntities.Length == 0 && integrationEventsEntities.Count == 0)
             return await base.SaveChangesAsync(cancellationToken);
 
-        if (Database.CurrentTransaction is not null) // the transaction commit and rollback is managed outside
+        if (Database.CurrentTransaction is not null) 
         {
             await PublishDomainEventsAsync(domainEventEntities, cancellationToken);
             var saveChangesResult = await base.SaveChangesAsync(cancellationToken);
-            // ReSharper disable once PossibleMultipleEnumeration
-            await PublishIntegrationEvents(integrationEventsEntities.ToArray(), Database.CurrentTransaction,
-                cancellationToken);
+            _integrationEventPublisher.Transaction = ActivatorUtilities.CreateInstance<SqlServerCapTransaction>(_integrationEventPublisher.ServiceProvider);
+            _integrationEventPublisher.Transaction.DbTransaction = Database.CurrentTransaction;
+            await PublishIntegrationEvents(integrationEventsEntities.ToArray(), cancellationToken);
 
             return saveChangesResult;
         }
 
-        await using var transaction = await Database.BeginTransactionAsync(IsolationLevel.ReadCommitted,
-            cancellationToken);
+        await using var transaction = await Database.BeginTransactionAsync(_integrationEventPublisher,cancellationToken:cancellationToken);
 
         try
         {
             await PublishDomainEventsAsync(domainEventEntities, cancellationToken);
             // ReSharper disable once PossibleMultipleEnumeration
-            await PublishIntegrationEvents(integrationEventsEntities.ToArray(), transaction, cancellationToken);
+            await PublishIntegrationEvents(integrationEventsEntities.ToArray(), cancellationToken);
 
             var result = await base.SaveChangesAsync(cancellationToken);
 
@@ -121,13 +120,10 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
         }
     }
 
-    private async Task PublishIntegrationEvents(Entity[] integrationEventsEntities, IDbContextTransaction transaction,
+    private async Task PublishIntegrationEvents(Entity[] integrationEventsEntities,
         CancellationToken cancellationToken)
     {
         if (integrationEventsEntities.Length == 0) return;
-        _integrationEventPublisher.Transaction.Value = ActivatorUtilities
-            .CreateInstance<SqlServerCapTransaction>(_integrationEventPublisher.ServiceProvider).Begin(transaction);
-
         foreach (var entity in integrationEventsEntities)
             while (entity.IntegrationEvents.TryTake(out var integrationEvent))
                 await _integrationEventPublisher.PublishAsync(integrationEvent.Type, integrationEvent,

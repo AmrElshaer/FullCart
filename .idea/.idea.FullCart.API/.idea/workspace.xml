@@ -19,39 +19,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Application/Comments/Commands/CreateComment/CreateCommentCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Orders/EventHandlers/OrderCommentCreatedEventHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Comments/Comment.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Comments/CommentId.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Comments/Events/CommentCreated.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Orders/OrderId.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FullCart.API/Controllers/CommentController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Comments/Persistence/CommentConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20241012143410_AddComments.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20241012143410_AddComments.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20241014040906_CommentMigration.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20241014040906_CommentMigration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/Data/ICartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Data/ICartDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/Hubs/IOrderHub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Hubs/IOrderHub.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/ChangeOrderStatus/ChangeOrderStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/ChangeOrderStatus/ChangeOrderStatus.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Orders/Queries/GetOrderById/GetOrderByIdQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Queries/GetOrderById/GetOrderByIdQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Common/BaseEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Common/BaseEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Common/ValueObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Common/ValueObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Orders/Events/OrderPlacedEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Orders/Events/OrderPlacedEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Orders/Events/OrderPlacedIntegrationEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Orders/Events/OrderPlacedIntegrationEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Orders/Events/OrderStatusChangeIntegrationEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Orders/Events/OrderStatusChangeIntegrationEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Orders/Order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Orders/Order.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Payments/Events/PaymentCreatedEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Payments/Events/PaymentCreatedEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Payments/Payment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Payments/Payment.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Products/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Products/Product.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/DomainEventDispatcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/DomainEventDispatcher.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Hubs/OrderHub/OrderHub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Hubs/OrderHub/OrderHub.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/CartDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/CartDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Orders/Persistence/OrderConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Orders/Persistence/OrderConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +34,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="f/distributed-tracing" />
+        <entry key="$PROJECT_DIR$" value="feature/refactor-domain-dispatching" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -87,14 +57,15 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24372012c6c94138bf3f496e104366ffc8f918/5f/44fbf689/IComparable`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/369d72e190df45e89562037a676e140bc000/4b/6c07f18e/EntityTypeBuilderExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/278aa25f4fe60e5b7835856ff30e7ee2387ed8fcbaf674a98df1145829e11a6/ICapTransaction.SqlServer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/955ec549fe664629353c3b5424b6ad6c7dfcec4ab59bae709ab962c228cf45/RuntimeType.CoreCLR.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9a6b1457cbcf17db31a383ba49ef9bcc786cf3ef77146d997eee499b27a46d/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bd1d5c50194fea68ff3559c160230b0ab50f5acf4ce3061bffd6d62958e2182/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c4a76f5a5c5dae7ddfbd627d15d8b326ede414316a32d8d71b8885bf903b15/IDbContextTransaction.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e8de9e72b94bea71dd352fff29e43b59bb174bd87e7b9aff04f21f04c88273c/HashSet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/Order.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/OrderItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/OrderItemQuantity.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/projects/full-cart/FullCart/Infrastructure/Common/Persistence/CartDbContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Security/TokenGenerator/JwtTokenGenerator.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -459,19 +430,6 @@
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs</url>
-          <line>75</line>
-          <properties documentPath="D:\projects\full-cart\FullCart\Infrastructure\Common\Persistence\CartDbContext.cs" containingFunctionPresentation="Method 'SaveChangesAsync'">
-            <startOffsets>
-              <option value="2459" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2460" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/OrderPlacedDomainEventHandler.cs</url>
           <line>16</line>
           <properties documentPath="D:\projects\full-cart\FullCart\Application\Orders\Commands\CreateOrder\OrderPlacedDomainEventHandler.cs" containingFunctionPresentation="Method 'Handle'">
@@ -483,19 +441,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/Comments/Commands/CreateComment/CreateCommentCommand.cs</url>
-          <line>18</line>
-          <properties documentPath="D:\projects\full-cart\FullCart\Application\Comments\Commands\CreateComment\CreateCommentCommand.cs" containingFunctionPresentation="Method 'Handle'">
-            <startOffsets>
-              <option value="600" />
-            </startOffsets>
-            <endOffsets>
-              <option value="601" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
