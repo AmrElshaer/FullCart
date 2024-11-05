@@ -19,39 +19,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Application/Comments/Commands/CreateComment/CreateCommentCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Orders/EventHandlers/OrderCommentCreatedEventHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Comments/Comment.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Comments/CommentId.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Comments/Events/CommentCreated.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Orders/OrderId.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FullCart.API/Controllers/CommentController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Comments/Persistence/CommentConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20241012143410_AddComments.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20241012143410_AddComments.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20241014040906_CommentMigration.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20241014040906_CommentMigration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/Data/ICartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Data/ICartDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/Hubs/IOrderHub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/Hubs/IOrderHub.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/ChangeOrderStatus/ChangeOrderStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/ChangeOrderStatus/ChangeOrderStatus.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Orders/Queries/GetOrderById/GetOrderByIdQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Queries/GetOrderById/GetOrderByIdQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Common/BaseEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Common/BaseEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Common/ValueObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Common/ValueObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Orders/Events/OrderPlacedEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Orders/Events/OrderPlacedEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Orders/Events/OrderPlacedIntegrationEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Orders/Events/OrderPlacedIntegrationEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Orders/Events/OrderStatusChangeIntegrationEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Orders/Events/OrderStatusChangeIntegrationEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Orders/Order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Orders/Order.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Payments/Events/PaymentCreatedEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Payments/Events/PaymentCreatedEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Payments/Payment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Payments/Payment.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Products/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Products/Product.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/DomainEventDispatcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/DomainEventDispatcher.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Hubs/OrderHub/OrderHub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Hubs/OrderHub/OrderHub.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/CartDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/CartDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Orders/Persistence/OrderConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Orders/Persistence/OrderConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,6 +243,7 @@
       <workItem from="1728742141238" duration="6829000" />
       <workItem from="1728844734963" duration="5546000" />
       <workItem from="1728923443623" duration="5484000" />
+      <workItem from="1730786610445" duration="1734000" />
     </task>
     <task id="LOCAL-00001" summary="init architecture">
       <created>1706186905525</created>
@@ -410,7 +383,6 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
-    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="init architecture" />
     <MESSAGE value="update AuthorizationBehavior.cs" />

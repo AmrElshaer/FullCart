@@ -54,7 +54,8 @@ public static class DependencyInjection
     {
         services.AddDbContext<CartDbContext>((sp, options) =>
         {
-            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
+            var connectionString = configuration.GetConnectionString("DefaultConnection")!;
+            options.UseSqlServer(connectionString)
                 .UseSqlServerAudit();
             //  .AddInterceptors(sp.GetRequiredService<PublishDomainEventsInterceptor>());
 
