@@ -1,10 +1,11 @@
-using System.Text;
 using System.Threading.RateLimiting;
 using Application;
 using Infrastructure;
 using Infrastructure.Common.Persistence;
 using Infrastructure.Hubs.OrderHub;
 using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.FeatureManagement;
+using Microsoft.FeatureManagement.FeatureFilters;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -69,7 +70,8 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddInfrastructure(builder.Configuration)
     .AddApplication();
-
+builder.Services.AddFeatureManagement()
+    .AddFeatureFilter<PercentageFilter>();
 var app = builder.Build();
 app.UseRateLimiter();
 

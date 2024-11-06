@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using System.Text;
-using Application.Common.Interfaces;
 using Application.Common.Interfaces.Authentication;
 using Application.Common.Interfaces.Data;
 using Application.Common.Interfaces.Event;
@@ -11,20 +10,14 @@ using Domain.Roles;
 using Domain.Users;
 using DotNetCore.CAP;
 using EFCore.AuditExtensions.SqlServer;
-using Infrastructure.BackgroundJobs;
-using Infrastructure.Brands.Persistence;
-using Infrastructure.Categories.Persistence;
 using Infrastructure.Common;
 using Infrastructure.Common.Persistence;
 using Infrastructure.Common.Persistence.Seeder;
 using Infrastructure.Hubs.OrderHub;
-using Infrastructure.Products.Persistence;
-using Infrastructure.Roles.Persistence;
 using Infrastructure.Security;
 using Infrastructure.Security.CurrentUserProvider;
 using Infrastructure.Security.TokenGenerator;
 using Infrastructure.Services;
-using Infrastructure.Users.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -91,7 +84,7 @@ public static class DependencyInjection
                 options.SaveToken = true;
                 options.RequireHttpsMetadata = false;
 
-                options.TokenValidationParameters = new TokenValidationParameters()
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
@@ -137,7 +130,7 @@ public static class DependencyInjection
 
         services.Scan(scan =>
         {
-            scan.FromAssemblies(typeof(OrderPlacedIntegrationEventHandler).Assembly)
+            scan.FromAssemblies(typeof(CreateOrderCommand).Assembly)
                 .AddClasses(filter => filter.AssignableTo<ICapSubscribe>())
                 .AsSelf()
                 .WithTransientLifetime();
