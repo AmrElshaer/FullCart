@@ -17,22 +17,22 @@ public static class DependencyInjection
         //     options.AddOpenBehavior(typeof(ValidationBehavior<,>));
         // });
         services.AddSingleton(TimeProvider.System);
+        services.AddScoped(typeof(IPipelineBehavior<,>), typeof(RequestLoggingPipelineBehavior<,>));
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(BenchmarkBehavior<,>));
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-        services.AddScoped(typeof(IPipelineBehavior<,>), typeof(FeatureFlagBehavior<,>));
+        //  services.AddScoped(typeof(IPipelineBehavior<,>), typeof(FeatureFlagBehavior<,>));
         // services.AddScoped(typeof(IPipelineBehavior<,>), typeof(RetryBehavior<,>));
         services.AddValidatorsFromAssemblyContaining(typeof(DependencyInjection));
         services.AddScoped<IMediator, Mediator>();
-
         services.Scan(scan =>
         {
             scan.FromAssembliesOf(typeof(CreateOrderCommand))
-                .RegisterHandlers(typeof(IRequestHandler<>))
-                .RegisterHandlers(typeof(IRequestHandler<,>))
+                .RegisterMediatorHandler(typeof(IRequestHandler<>))
+                .RegisterMediatorHandler(typeof(IRequestHandler<,>))
                 .RegisterHandlers(typeof(INotificationHandler<>));
         });
-
+        services.Decorate(typeof(IRequestHandler<,>), typeof(AlternativeHandlerDecorator<,>));
         services.Decorate(typeof(INotificationHandler<>), typeof(DispatchingIntegrationEventDecorator<>));
 
         return services;

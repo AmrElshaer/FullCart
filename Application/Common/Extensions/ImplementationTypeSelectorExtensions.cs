@@ -11,7 +11,8 @@ public static class ImplementationTypeSelectorExtensions
     {
         _decorators = new HashSet<Type>(new[]
         {
-            typeof(DispatchingIntegrationEventDecorator<>)
+            typeof(DispatchingIntegrationEventDecorator<>),
+            typeof(AlternativeHandlerDecorator<,>)
         });
     }
 
@@ -21,6 +22,19 @@ public static class ImplementationTypeSelectorExtensions
                 c.AssignableTo(type)
                     .Where(t => !_decorators.Contains(t))
             )
+            .UsingRegistrationStrategy(RegistrationStrategy.Append)
+            .AsImplementedInterfaces()
+            .WithScopedLifetime();
+    }
+    public static IImplementationTypeSelector RegisterMediatorHandler(this IImplementationTypeSelector selector,Type type)
+    {
+        return selector.AddClasses(classes => classes
+                .AssignableTo(type)
+                .Where(type =>
+                    !_decorators.Contains(type) &&
+                    !type.GetInterfaces()
+                        .Any(i => i.IsGenericType &&
+                                 i.GetGenericTypeDefinition() == typeof(IAlternativeHandler<,>))))
             .UsingRegistrationStrategy(RegistrationStrategy.Append)
             .AsImplementedInterfaces()
             .WithScopedLifetime();

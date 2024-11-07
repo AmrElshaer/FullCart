@@ -1,44 +1,11 @@
-﻿services:
-  db:
-    image: mcr.microsoft.com/mssql/server:2019-latest
+﻿version: '3.4'
+
+services:
+  seq:
+    image: datalust/seq:latest
+    container_name: seq
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=1Secure*Password1
     ports:
-      - "5433:1433"
-    networks:
-      - proxybackend
-  fullcart.api:
-    image: fullcart.api
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-    - 8000:8080
-    - 8001:443
-    build:
-      context: .
-      dockerfile: FullCart.API/Dockerfile
-    restart: on-failure
-    depends_on:
-      - db
-    networks:
-      - proxybackend
-  #fullcart.api2:
-  #  image: fullcart.api2
-  #  environment:
-  #    - ASPNETCORE_ENVIRONMENT=Development
-  #  ports:
-  #  - 9000:8080
-  #  - 9001:443
-  #  build:
-  #    context: .
-  #    dockerfile: FullCart.API/Dockerfile
-  #  restart: on-failure
-  #  depends_on:
-  #    - db
-  #  networks:
-  #    - proxybackend
-networks:
-    proxybackend:
-        name: proxybackend
-        driver: bridge
+      - 5341:5341
+      - 8081:80

@@ -3,25 +3,30 @@ using Application.Common.Interfaces.Data;
 using Domain.Orders;
 using Domain.Products;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
-namespace Application.Orders.Commands.CreateOrderV2;
+namespace Application.Orders.Commands.CreateOrder.CreateOrderV2;
 
-public class CreateOrderCommandHandlerV2 : IRequestHandler<CreateOrderCommandV2, ErrorOr<Guid>>
+public class CreateOrderCommandHandlerV2 : IAlternativeHandler<CreateOrderCommand, ErrorOr<CreateOrderResponse>>
 {
     private readonly ICurrentUserProvider _currentUserProvider;
     private readonly ICartDbContext _db;
     private readonly TimeProvider _timeProvider;
+    private readonly ILogger<CreateOrderCommandHandlerV2> _logger;
 
     public CreateOrderCommandHandlerV2(ICartDbContext db, ICurrentUserProvider currentUserProvider,
-        TimeProvider timeProvider)
+        TimeProvider timeProvider,ILogger<CreateOrderCommandHandlerV2> logger)
     {
         _db = db;
         _currentUserProvider = currentUserProvider;
         _timeProvider = timeProvider;
+        _logger = logger;
     }
 
-    public async Task<ErrorOr<Guid>> Handle(CreateOrderCommandV2 request, CancellationToken cancellationToken)
+    public async Task<ErrorOr<CreateOrderResponse>> Handle(CreateOrderCommand request,
+        CancellationToken cancellationToken)
     {
+        _logger.LogInformation("Create Order CreateOrderCommandHandlerV2");
         var orderItems = await CreateOrderItems(request.Items, cancellationToken);
         if (orderItems.IsError)
             return orderItems.Errors;
@@ -30,7 +35,7 @@ public class CreateOrderCommandHandlerV2 : IRequestHandler<CreateOrderCommandV2,
         var userId = user.Id;
         var order = new Order(userId, orderItems.Value, _timeProvider.GetUtcNow());
         await _db.Orders.AddAsync(order, cancellationToken);
-        return order.Id.Value;
+        return new CreateOrderResponse { OrderId = order.Id.Value };
     }
 
     private async Task<ErrorOr<IReadOnlyList<OrderItem>>> CreateOrderItems(

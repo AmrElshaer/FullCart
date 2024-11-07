@@ -18,26 +18,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Application/Common/Attributes/FeatureFlagAttribute.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Common/Behaviours/BenchmarkBehavior.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Common/Behaviours/FeatureFlagBehavior.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Common/Enums/FeatureFlags.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommandHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommandValidator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrderV2/CreateOrderCommandHandlerV2.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrderV2/CreateOrderCommandV2.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrderV2/CreateOrderCommandValidatorV2.cs" afterDir="false" />
+    <list default="true" id="bce1125b-f76f-48a2-bb94-8910d360d5b6" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/Application/Common/Behaviours/AlternativeHandlerDecorator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Common/Behaviours/RequestLoggingPipelineBehavior.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Common/Interfaces/IAlternativeHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FullCart.API/Middlewares/RequestContextLoggingMiddleware.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullCart.API/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Application.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Attributes/FeatureFlagAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Attributes/FeatureFlagAttribute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Behaviours/FeatureFlagBehavior.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Extensions/ImplementationTypeSelectorExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Extensions/ImplementationTypeSelectorExtensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DependencyInjection.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/OrderPlacedDomainEventHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/OrderPlacedIntegrationEventHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FullCart.API/Controllers/OrderController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Controllers/OrderController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrderV2/CreateOrderCommandHandlerV2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderV2/CreateOrderCommandHandlerV2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrderV2/CreateOrderCommandV2.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Orders/Commands/CreateOrderV2/CreateOrderCommandValidatorV2.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/FullCart.API.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FullCart.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FullCart.API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/FullCart.API/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +51,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="f/distributed-tracing" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -71,8 +72,14 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c6f90e6c68e04825a83e9310c4ef45e0b400/dc/878d439f/ErrorOr`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7415982338a3ccbd2a7a4eb483af627bda727e356b86bb32c5d4f6998f9c/IRequestHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/88bb5beb59c295f74cef77e1c9f9a0c2d15b51d3958356a01bea2f41025339/ServiceCollectionExtensions.Decoration.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a1e830db66f4537520b48f395e1d155c5280a87c9832c95b2e918185764c773/INotificationHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c7da56581ee7b20208f09e80b735961e4d5d7b9e5562bfdec94a75c57b391/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/projects/personal_projects/full-cart/FullCart/Application/Categories/Commands/CreateCategory/CreateCategoryCommand.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/projects/personal_projects/full-cart/FullCart/Application/DependencyInjection.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/projects/personal_projects/full-cart/FullCart/Application/DependencyInjection.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/Order.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/OrderItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Orders/OrderItemQuantity.cs" root0="FORCE_HIGHLIGHTING" />
@@ -99,8 +106,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "XThreadsFramesViewSplitterKey": "0.38650307",
-    "git-widget-placeholder": "master",
+    "XThreadsFramesViewSplitterKey": "0.46341464",
+    "git-widget-placeholder": "feature/feature-flag-refactoring",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.stylelint": "true",
     "node.js.detected.package.tslint": "true",
@@ -383,7 +390,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716750951413</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="update">
+      <option name="closed" value="true" />
+      <created>1730920072190</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1730920072190</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -402,13 +417,13 @@
     <MESSAGE value="update ignore file" />
     <MESSAGE value="add idea folder in ignore" />
     <MESSAGE value="migraiton payment" />
-    <MESSAGE value="update" />
     <MESSAGE value="update integration events" />
     <MESSAGE value="update orderItem relationship" />
     <MESSAGE value="add auditing" />
     <MESSAGE value="add signalR for background job" />
     <MESSAGE value="add rate limter" />
-    <option name="LAST_COMMIT_MESSAGE" value="add rate limter" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -418,12 +433,6 @@
           <line>38</line>
           <properties documentPath="D:\projects\full-cart\FullCart\Infrastructure\Users\Persistence\AdminDataSeeder.cs" containingFunctionPresentation="Method 'SeedAllAsync'" />
           <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Infrastructure/Users/Persistence/CustomerDataSeeder.cs</url>
-          <line>26</line>
-          <properties documentPath="D:\projects\full-cart\FullCart\Infrastructure\Users\Persistence\CustomerDataSeeder.cs" containingFunctionPresentation="Method 'SeedAllAsync'" />
-          <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Infrastructure/Common/Persistence/CartDbContext.cs</url>
@@ -443,32 +452,6 @@
           <line>18</line>
           <properties documentPath="D:\projects\full-cart\FullCart\Application\Comments\Commands\CreateComment\CreateCommentCommand.cs" containingFunctionPresentation="Method 'Handle'" />
           <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/Common/Behaviours/FeatureFlagBehavior.cs</url>
-          <line>27</line>
-          <properties documentPath="C:\projects\personal_projects\full-cart\FullCart\Application\Common\Behaviours\FeatureFlagBehavior.cs" containingFunctionPresentation="Method 'Handle'">
-            <startOffsets>
-              <option value="932" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1005" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/Orders/Commands/CreateOrder/CreateOrderCommandHandler.cs</url>
-          <line>24</line>
-          <properties documentPath="C:\projects\personal_projects\full-cart\FullCart\Application\Orders\Commands\CreateOrder\CreateOrderCommandHandler.cs" containingFunctionPresentation="Method 'Handle'">
-            <startOffsets>
-              <option value="857" />
-            </startOffsets>
-            <endOffsets>
-              <option value="858" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="46" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

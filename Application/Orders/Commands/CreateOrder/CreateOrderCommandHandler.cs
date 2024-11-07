@@ -3,26 +3,31 @@ using Application.Common.Interfaces.Data;
 using Domain.Orders;
 using Domain.Products;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Polly;
 
 namespace Application.Orders.Commands.CreateOrder;
 
-public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, ErrorOr<Guid>>
+public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, ErrorOr<CreateOrderResponse>>
 {
-    private readonly ICartDbContext _db;
     private readonly ICurrentUserProvider _currentUserProvider;
+    private readonly ICartDbContext _db;
     private readonly TimeProvider _timeProvider;
+    private readonly ILogger<CreateOrderCommandHandler> _logger;
 
     public CreateOrderCommandHandler(ICartDbContext db, ICurrentUserProvider currentUserProvider,
-        TimeProvider timeProvider)
+        TimeProvider timeProvider,ILogger<CreateOrderCommandHandler> logger)
     {
         _db = db;
         _currentUserProvider = currentUserProvider;
         _timeProvider = timeProvider;
+        _logger = logger;
     }
 
-    public async Task<ErrorOr<Guid>> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
+    public async Task<ErrorOr<CreateOrderResponse>> Handle(CreateOrderCommand request,
+        CancellationToken cancellationToken)
     {
+        _logger.LogInformation("Create Order CreateOrderCommandHandler");
         var orderItems = await CreateOrderItems(request.Items, cancellationToken);
         if (orderItems.IsError)
             return orderItems.Errors;
@@ -65,7 +70,7 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, Err
         // Execute the save operation with the retry policy
         await retryPolicy.ExecuteAsync(async () => { await _db.SaveChangesAsync(cancellationToken); });
 
-        return order.Id.Value;
+        return new CreateOrderResponse { OrderId = order.Id.Value };
     }
 
     private async Task<ErrorOr<IReadOnlyList<OrderItem>>> CreateOrderItems(

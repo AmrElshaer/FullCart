@@ -1,5 +1,6 @@
 using System.Threading.RateLimiting;
 using Application;
+using FullCart.API.Middlewares;
 using Infrastructure;
 using Infrastructure.Common.Persistence;
 using Infrastructure.Hubs.OrderHub;
@@ -7,8 +8,11 @@ using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.FeatureManagement;
 using Microsoft.FeatureManagement.FeatureFilters;
 using Microsoft.OpenApi.Models;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Host.UseSerilog((context, loggerConfig) =>
+    loggerConfig.ReadFrom.Configuration(context.Configuration));
 builder.Services.AddControllers();
 
 builder.Services.AddRateLimiter(l =>
@@ -73,6 +77,8 @@ builder.Services.AddInfrastructure(builder.Configuration)
 builder.Services.AddFeatureManagement()
     .AddFeatureFilter<PercentageFilter>();
 var app = builder.Build();
+app.UseSerilogRequestLogging();
+app.UseRequestContextLogging();
 app.UseRateLimiter();
 
 if (app.Environment.IsDevelopment())
