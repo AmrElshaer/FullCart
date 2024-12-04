@@ -52,6 +52,11 @@ public static class DependencyInjection
 
     private static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddDbContext<PaymentDbContext>((sp, options) =>
+        {
+            var connectionString = configuration.GetConnectionString("DefaultConnection")!;
+            options.UseSqlServer(connectionString);
+        });
         services.AddDbContext<CartDbContext>((sp, options) =>
         {
             var connectionString = configuration.GetConnectionString("DefaultConnection")!;
@@ -63,12 +68,13 @@ public static class DependencyInjection
                 .EnableDetailedErrors()
                 .EnableSensitiveDataLogging();
         });
+        services.AddScoped<DbContext>((sp)=>sp.GetService<CartDbContext>()!);
         services.AddIdentity<User, Role>()
             .AddEntityFrameworkStores<CartDbContext>()
             .AddDefaultTokenProviders();
 
         services.AddScoped<ICartDbContext>(provider => provider.GetRequiredService<CartDbContext>());
-
+        services.AddScoped<IPaymentDbContext>(provider => provider.GetRequiredService<PaymentDbContext>());
 
         //services.AddScoped<CartDbContextInitializer>();
         services.Scan(scan => scan
@@ -119,6 +125,9 @@ public static class DependencyInjection
             x.ServicesStopConcurrently = false;
         });
         //services.AddHostedService<NumberOfOrdersJob>();
+        
+        services.AddScoped<IDomainEventsAccessor, DomainEventsAccessor>();
+        services.AddScoped<IUnitOfWork,UnitOfWork>();
         services.AddTransient<IIdentityService, IdentityService>();
         services.AddTransient<IFileAppService, FileAppService>();
         services.AddTransient<IDomainEventDispatcher, DomainEventDispatcher>();

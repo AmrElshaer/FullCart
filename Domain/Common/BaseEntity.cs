@@ -94,6 +94,14 @@ public abstract class BaseEntity
     {
         _integrationEvents.Enqueue(integrationEvent);
     }
+    public void ClearDomainEvents()
+    {
+        _domainEvents.Clear();
+    }
+    public void ClearIntegrationEvents()
+    {
+        _integrationEvents.Clear();
+    }
     
 }
 

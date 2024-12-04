@@ -20,6 +20,7 @@ public static class DependencyInjection
         //     options.AddOpenBehavior(typeof(AuthorizationBehavior<,>));
         //     options.AddOpenBehavior(typeof(ValidationBehavior<,>));
         // });
+       
         services.AddSingleton<TimeProvider>(TimeProvider.System);
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
@@ -35,7 +36,8 @@ public static class DependencyInjection
                 .RegisterHandlers(typeof(INotificationHandler<>));
         });
 
-        services.Decorate(typeof(INotificationHandler<>), typeof(DispatchingIntegrationEventDecorator<>));
+        services.Decorate(typeof(INotificationHandler<>), typeof(DomainEventsDispatcherDecorator<>));
+        services.Decorate(typeof(IRequestHandler<,>),typeof(UnitOfWorkDecorator<,>));
 
         return services;
     }

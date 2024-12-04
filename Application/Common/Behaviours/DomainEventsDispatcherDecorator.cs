@@ -1,16 +1,14 @@
-﻿using Application.Common.Interfaces;
-using Application.Common.Interfaces.Event;
-using MediatR;
+﻿using Application.Common.Interfaces.Event;
 
 namespace Application.Common.Behaviours;
 
-public class DispatchingIntegrationEventDecorator<TNotification> : INotificationHandler
+public class DomainEventsDispatcherDecorator<TNotification> : INotificationHandler
     <TNotification> where TNotification : INotification
 {
     private readonly INotificationHandler<TNotification> _inner;
     private readonly IDomainEventDispatcher _domainEventDispatcher;
 
-    public DispatchingIntegrationEventDecorator(INotificationHandler<TNotification> inner,
+    public DomainEventsDispatcherDecorator(INotificationHandler<TNotification> inner,
         IDomainEventDispatcher domainEventDispatcher)
     {
         _inner = inner;

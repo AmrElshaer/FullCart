@@ -72,54 +72,55 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
         base.OnModelCreating(builder);
     }
 
-    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-    {
-        var domainEventEntities = ChangeTracker.Entries<BaseEntity>()
-            .Select(po => po.Entity)
-            .Where(po => po.DomainEvents.Any())
-            .ToArray();
-
-        var integrationEventsEntities = ChangeTracker.Entries<Entity>()
-            .Select(po => po.Entity)
-            .Where(po => po.IntegrationEvents.Any());
-     
-        // ReSharper disable once PossibleMultipleEnumeration
-        if (domainEventEntities.Length == 0 && integrationEventsEntities.ToArray().Length == 0)
-            return await base.SaveChangesAsync(cancellationToken);
-
-        if (Database.CurrentTransaction is not null) // the transaction commit and rollback is managed outside
-        {
-            await PublishDomainEventsAsync(domainEventEntities, cancellationToken);
-            var saveChangesResult = await base.SaveChangesAsync(cancellationToken);
-            // ReSharper disable once PossibleMultipleEnumeration
-            await PublishIntegrationEvents(integrationEventsEntities.ToArray(), Database.CurrentTransaction,
-                cancellationToken);
-
-            return saveChangesResult;
-        }
-
-        await using var transaction = await Database.BeginTransactionAsync(IsolationLevel.ReadCommitted,
-            cancellationToken);
-
-        try
-        {
-            await PublishDomainEventsAsync(domainEventEntities, cancellationToken);
-            // ReSharper disable once PossibleMultipleEnumeration
-            await PublishIntegrationEvents(integrationEventsEntities.ToArray(), transaction, cancellationToken);
-
-            var result = await base.SaveChangesAsync(cancellationToken);
-
-            await transaction.CommitAsync(cancellationToken);
-
-            return result;
-        }
-        catch (Exception)
-        {
-            await transaction.RollbackAsync(cancellationToken);
-
-            throw;
-        }
-    }
+    // public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    // {
+    //     var domainEventEntities = ChangeTracker.Entries<BaseEntity>()
+    //         .Select(po => po.Entity)
+    //         .Where(po => po.DomainEvents.Any())
+    //         .ToArray();
+    //
+    //     var integrationEventsEntities = ChangeTracker.Entries<Entity>()
+    //         .Select(po => po.Entity)
+    //         .Where(po => po.IntegrationEvents.Any());
+    //  
+    //     // ReSharper disable once PossibleMultipleEnumeration
+    //     if (domainEventEntities.Length == 0 && integrationEventsEntities.ToArray().Length == 0)
+    //         return await base.SaveChangesAsync(cancellationToken);
+    //
+    //     if (Database.CurrentTransaction is not null) // the transaction commit and rollback is managed outside
+    //     {
+    //         await PublishDomainEventsAsync(domainEventEntities, cancellationToken);
+    //         var saveChangesResult = await base.SaveChangesAsync(cancellationToken);
+    //         // ReSharper disable once PossibleMultipleEnumeration
+    //         await PublishIntegrationEvents(integrationEventsEntities.ToArray(), Database.CurrentTransaction,
+    //             cancellationToken);
+    //
+    //         return saveChangesResult;
+    //     }
+    //     
+    //
+    //     await using var transaction = await Database.BeginTransactionAsync(IsolationLevel.ReadCommitted,
+    //         cancellationToken);
+    //
+    //     try
+    //     {
+    //         await PublishDomainEventsAsync(domainEventEntities, cancellationToken);
+    //         // ReSharper disable once PossibleMultipleEnumeration
+    //         await PublishIntegrationEvents(integrationEventsEntities.ToArray(), transaction, cancellationToken);
+    //
+    //         var result = await base.SaveChangesAsync(cancellationToken);
+    //
+    //         await transaction.CommitAsync(cancellationToken);
+    //
+    //         return result;
+    //     }
+    //     catch (Exception)
+    //     {
+    //         await transaction.RollbackAsync(cancellationToken);
+    //
+    //         throw;
+    //     }
+    // }
 
     private async Task PublishIntegrationEvents(Entity[] integrationEventsEntities, IDbContextTransaction transaction,
         CancellationToken cancellationToken)

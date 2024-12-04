@@ -13,7 +13,7 @@ public class CreateOrder
     public record CreateOrderItemRequest(Guid ProductId, int Quantity);
 
     [Authorize(Roles = Roles.Customer)]
-    public record Command(IReadOnlyList<CreateOrderItemRequest> Items) : IAuthorizeRequest<ErrorOr<Guid>>;
+    public record Command(IReadOnlyList<CreateOrderItemRequest> Items) : IAuthorizeddCommand<ErrorOr<Guid>>;
 
     internal class Validator : AbstractValidator<Command>
     {
@@ -51,41 +51,7 @@ public class CreateOrder
             var user = _currentUserProvider.GetCurrentUser();
             var userId = user.Id;
             var order = new Order(userId, orderItems.Value, _timeProvider.GetUtcNow());
-            await _db.Orders.AddAsync(order, cancellationToken);
-            var retryPolicy = Policy
-                .Handle<DbUpdateConcurrencyException>()
-                .RetryAsync(5, async (exception, retryCount) =>
-                {
-                    foreach (var entry in ((DbUpdateConcurrencyException)exception).Entries)
-                        if (entry.Entity is ProductQuantity)
-                        {
-                            var originValues = entry.OriginalValues;
-                            var productId = (Guid)originValues["ProductId"];
-                            var orderItem = orderItems.Value.FirstOrDefault(oi => oi.ProductId == productId);
-
-                            var databaseValues = await entry.GetDatabaseValuesAsync(cancellationToken);
-
-                            if (databaseValues == null)
-                                throw new Exception("The record you attempted to update was deleted by another user.");
-
-                            var databaseQuantity = (int)databaseValues[nameof(ProductQuantity.Value)];
-                            var newQuantity = databaseQuantity - orderItem!.Quantity.Quantity;
-
-                            if (newQuantity < 0) throw new Exception("Insufficient product quantity.");
-
-                            entry.CurrentValues[nameof(ProductQuantity.Value)] = newQuantity;
-                            entry.OriginalValues.SetValues(databaseValues);
-                        }
-                        else
-                        {
-                            var databaseValues = await entry.GetDatabaseValuesAsync(cancellationToken);
-                            entry.OriginalValues.SetValues(databaseValues);
-                        }
-                });
-
-            // Execute the save operation with the retry policy
-            await retryPolicy.ExecuteAsync(async () => { await _db.SaveChangesAsync(cancellationToken); });
-
+            await _db.Orders.AddAsync(order, cancellationToken); 
             return order.Id.Value;
         }
 

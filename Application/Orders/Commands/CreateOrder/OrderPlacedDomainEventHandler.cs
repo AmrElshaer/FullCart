@@ -6,17 +6,17 @@ namespace Application.Orders.Commands.CreateOrder;
 
 public class OrderPlacedDomainEventHandler : INotificationHandler<OrderPlacedEvent>
 {
-    private readonly ICartDbContext _cartDbContext;
+    private readonly IPaymentDbContext _paymentDbContext;
 
-    public OrderPlacedDomainEventHandler(ICartDbContext cartDbContext)
+    public OrderPlacedDomainEventHandler(IPaymentDbContext paymentDbContext)
     {
-        _cartDbContext = cartDbContext;
+        _paymentDbContext = paymentDbContext;
     }
 
     public async Task Handle(OrderPlacedEvent notification, CancellationToken cancellationToken)
     {
         var newPayment = new Payment(notification.OrderId);
 
-        await _cartDbContext.Payments.AddAsync(newPayment, cancellationToken);
+        await _paymentDbContext.Payments.AddAsync(newPayment, cancellationToken);
     }
 }

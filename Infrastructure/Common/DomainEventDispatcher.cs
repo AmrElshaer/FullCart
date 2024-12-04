@@ -9,28 +9,24 @@ namespace Infrastructure.Common;
 internal class DomainEventDispatcher : IDomainEventDispatcher
 {
     private readonly IMediator _publisher;
-    private readonly CartDbContext _cartDbContext;
+    private readonly IDomainEventsAccessor _domainEventsAccessor;
 
-    public DomainEventDispatcher(IMediator publisher, CartDbContext cartDbContext)
+    public DomainEventDispatcher(IMediator publisher, IDomainEventsAccessor domainEventsAccessor)
     {
         _publisher = publisher;
-        _cartDbContext = cartDbContext;
+        _domainEventsAccessor = domainEventsAccessor;
     }
 
-    private async Task PublishDomainEventsAsync()
-    {
-        var domainEventEntities = _cartDbContext.ChangeTracker.Entries<BaseEntity>()
-            .Select(po => po.Entity)
-            .Where(po => po.DomainEvents.Any())
-            .ToArray();
-
-        foreach (var entity in domainEventEntities)
-            while (entity.DomainEvents.TryTake(out var domainEvent))
-                await _publisher.Publish(domainEvent);
-    }
 
     public async Task Dispatch()
     {
-        await PublishDomainEventsAsync();
+         var domainEvents = _domainEventsAccessor.GetAllDomainEvents();
+         _domainEventsAccessor.ClearAllDomainEvents();
+
+         foreach (var domainEvent in domainEvents)
+         {
+             await _publisher.Publish(domainEvent);
+         }
+         
     }
 }

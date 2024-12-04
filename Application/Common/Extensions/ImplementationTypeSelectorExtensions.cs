@@ -11,7 +11,8 @@ public static class ImplementationTypeSelectorExtensions
     {
         _decorators = new HashSet<Type>(new[]
         {
-            typeof(DispatchingIntegrationEventDecorator<>)
+            typeof(UnitOfWorkDecorator<,>),
+            typeof(DomainEventsDispatcherDecorator<>)
         });
     }
 
