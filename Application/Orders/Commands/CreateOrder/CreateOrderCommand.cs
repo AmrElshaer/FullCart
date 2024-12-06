@@ -1,10 +1,9 @@
-﻿using Application.Common.Interfaces.Authentication;
-using Application.Common.Interfaces.Data;
-using Application.Security;
+﻿using BuildingBlocks.Application.Common.Errors;
+using BuildingBlocks.Application.Common.Interfaces.Authentication;
+using BuildingBlocks.Application.Security;
 using Domain.Orders;
 using Domain.Products;
 using Microsoft.EntityFrameworkCore;
-using Polly;
 
 namespace Application.Orders.Commands.CreateOrder;
 
@@ -31,8 +30,8 @@ public class CreateOrder
 
     internal class Handler : IRequestHandler<Command, ErrorOr<Guid>>
     {
-        private readonly ICartDbContext _db;
         private readonly ICurrentUserProvider _currentUserProvider;
+        private readonly ICartDbContext _db;
         private readonly TimeProvider _timeProvider;
 
         public Handler(ICartDbContext db, ICurrentUserProvider currentUserProvider, TimeProvider timeProvider)
@@ -51,7 +50,7 @@ public class CreateOrder
             var user = _currentUserProvider.GetCurrentUser();
             var userId = user.Id;
             var order = new Order(userId, orderItems.Value, _timeProvider.GetUtcNow());
-            await _db.Orders.AddAsync(order, cancellationToken); 
+            await _db.Orders.AddAsync(order, cancellationToken);
             return order.Id.Value;
         }
 

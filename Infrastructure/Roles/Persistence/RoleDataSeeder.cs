@@ -1,4 +1,4 @@
-﻿using Application.Common.Interfaces.Data;
+﻿using BuildingBlocks.Application.Common.Interfaces.Data;
 using Domain.Roles;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

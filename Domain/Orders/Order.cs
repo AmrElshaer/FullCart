@@ -1,5 +1,6 @@
-﻿using Domain.Comments;
-using Domain.Common;
+﻿using BuildingBlocks.Domain.Common;
+using Contracts.Events;
+using Domain.Comments;
 using Domain.Orders.Events;
 using Domain.Users;
 
@@ -7,27 +8,13 @@ namespace Domain.Orders;
 
 public class Order : BaseEntity<OrderId>
 {
-    public OrderStatus Status { get; private set; }
-
-    public decimal TotalPrice { get; private set; }
+    private readonly List<CommentId> _commentIds = new();
 
     private readonly List<OrderItem> _items = new();
-
-    public IReadOnlyCollection<OrderItem> Items => _items;
-
-    public Guid CustomerId { get; private set; }
-
-    public DateTimeOffset CreationDate { get; private set; }
-
-    public Customer Customer { get; set; } = default!;
 
     private Order()
     {
     }
-
-    private readonly List<CommentId> _commentIds = new();
-
-    public IReadOnlyCollection<CommentId> CommentIds => _commentIds;
 
     public Order(Guid customerId, IReadOnlyList<OrderItem> items, DateTimeOffset creationDate)
     {
@@ -37,13 +24,27 @@ public class Order : BaseEntity<OrderId>
         CustomerId = customerId;
         CreationDate = creationDate;
         _items.AddRange(items);
-        AddDomainEvent(new OrderPlacedEvent()
+        AddDomainEvent(new OrderPlacedEvent
         {
-            OrderId = Id,
+            OrderId = Id.Value,
             CustomerId = customerId
         });
         AddIntegrationEvent(new OrderPlacedIntegrationEvent(Id));
     }
+
+    public OrderStatus Status { get; private set; }
+
+    public decimal TotalPrice { get; private set; }
+
+    public IReadOnlyCollection<OrderItem> Items => _items;
+
+    public Guid CustomerId { get; }
+
+    public DateTimeOffset CreationDate { get; private set; }
+
+    public Customer Customer { get; set; } = default!;
+
+    public IReadOnlyCollection<CommentId> CommentIds => _commentIds;
 
     public void AddComments(CommentId commentId)
     {

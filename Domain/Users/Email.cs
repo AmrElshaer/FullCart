@@ -1,5 +1,5 @@
 ﻿using System.Text.RegularExpressions;
-using Domain.Common;
+using BuildingBlocks.Domain.Common;
 using ErrorOr;
 
 namespace Domain.Users;

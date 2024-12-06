@@ -1,5 +1,5 @@
-﻿using Application.Common.Interfaces.Data;
-using Bogus;
+﻿using Application.Common.Interfaces;
+using BuildingBlocks.Application.Common.Interfaces.Data;
 using Domain.Brands;
 using Microsoft.EntityFrameworkCore;
 

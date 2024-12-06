@@ -1,24 +1,16 @@
-﻿using System.Data;
-using System.Reflection;
+﻿using System.Reflection;
 using Application.Common.Interfaces;
-using Application.Common.Interfaces.Data;
 using Domain.Brands;
 using Domain.Categories;
 using Domain.Comments;
-using Domain.Common;
 using Domain.Orders;
-using Domain.Payments;
 using Domain.Products;
 using Domain.Roles;
 using Domain.Users;
-using DotNetCore.CAP;
-using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.Common.Persistence;
 
@@ -37,15 +29,9 @@ public abstract class ApplicationIdentityDbContext<TUser, TRole, TKey> : Identit
 
 public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICartDbContext
 {
-    private readonly IMediator _mediator;
-    private readonly ICapPublisher _integrationEventPublisher;
-
-    public CartDbContext(DbContextOptions<CartDbContext> options, IMediator mediator,
-        ICapPublisher integrationEventPublisher)
+    public CartDbContext(DbContextOptions<CartDbContext> options)
         : base(options)
     {
-        _mediator = mediator;
-        _integrationEventPublisher = integrationEventPublisher;
     }
 
     public DbSet<Admin> Admins { get; set; } = default!;
@@ -59,8 +45,6 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
     public DbSet<Order> Orders { get; set; } = default!;
 
     public DbSet<Product> Products { get; set; } = default!;
-
-    public DbSet<Payment> Payments { get; set; } = default!;
     public DbSet<Comment> Comments { get; set; } = default!;
 
     public new DatabaseFacade Database => base.Database;
@@ -122,23 +106,23 @@ public class CartDbContext : ApplicationIdentityDbContext<User, Role, Guid>, ICa
     //     }
     // }
 
-    private async Task PublishIntegrationEvents(Entity[] integrationEventsEntities, IDbContextTransaction transaction,
-        CancellationToken cancellationToken)
-    {
-        if (integrationEventsEntities.Length == 0) return;
-        _integrationEventPublisher.Transaction.Value = ActivatorUtilities
-            .CreateInstance<SqlServerCapTransaction>(_integrationEventPublisher.ServiceProvider).Begin(transaction);
-
-        foreach (var entity in integrationEventsEntities)
-            while (entity.IntegrationEvents.TryTake(out var integrationEvent))
-                await _integrationEventPublisher.PublishAsync(integrationEvent.Type, integrationEvent,
-                    cancellationToken: cancellationToken);
-    }
-
-    private async Task PublishDomainEventsAsync(BaseEntity[] domainEventEntities, CancellationToken cancellationToken)
-    {
-        foreach (var entity in domainEventEntities)
-            while (entity.DomainEvents.TryTake(out var domainEvent))
-                await _mediator.Publish(domainEvent, cancellationToken);
-    }
+    // private async Task PublishIntegrationEvents(Entity[] integrationEventsEntities, IDbContextTransaction transaction,
+    //     CancellationToken cancellationToken)
+    // {
+    //     if (integrationEventsEntities.Length == 0) return;
+    //     _integrationEventPublisher.Transaction.Value = ActivatorUtilities
+    //         .CreateInstance<SqlServerCapTransaction>(_integrationEventPublisher.ServiceProvider).Begin(transaction);
+    //
+    //     foreach (var entity in integrationEventsEntities)
+    //         while (entity.IntegrationEvents.TryTake(out var integrationEvent))
+    //             await _integrationEventPublisher.PublishAsync(integrationEvent.Type, integrationEvent,
+    //                 cancellationToken: cancellationToken);
+    // }
+    //
+    // private async Task PublishDomainEventsAsync(BaseEntity[] domainEventEntities, CancellationToken cancellationToken)
+    // {
+    //     foreach (var entity in domainEventEntities)
+    //         while (entity.DomainEvents.TryTake(out var domainEvent))
+    //             await _mediator.Publish(domainEvent, cancellationToken);
+    // }
 }

@@ -1,4 +1,4 @@
-﻿using Domain.Common;
+﻿using BuildingBlocks.Domain.Common;
 
 namespace Domain.Brands;
 

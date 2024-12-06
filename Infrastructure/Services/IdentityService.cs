@@ -1,6 +1,5 @@
 ﻿using Application.Common.Interfaces;
-using Application.Common.Interfaces.Authentication;
-using Application.Common.models;
+using BuildingBlocks.Application.Common.models;
 using Domain.Users;
 using ErrorOr;
 using Microsoft.AspNetCore.Identity;

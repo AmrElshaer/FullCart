@@ -12,4 +12,9 @@
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.26"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\BuildingBlocks.Domain\BuildingBlocks.Domain.csproj"/>
+        <ProjectReference Include="..\Contracts\Contracts.csproj"/>
+    </ItemGroup>
+
 </Project>

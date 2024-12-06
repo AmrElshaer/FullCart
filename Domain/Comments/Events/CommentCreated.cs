@@ -1,4 +1,4 @@
-﻿using Domain.Common;
+﻿using BuildingBlocks.Domain.Common;
 using Domain.Orders;
 
 namespace Domain.Comments.Events;

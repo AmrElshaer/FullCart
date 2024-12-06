@@ -1,5 +1,4 @@
-﻿using Application.Common.Interfaces.Data;
-using Application.Security;
+﻿using BuildingBlocks.Application.Security;
 using Domain.Orders;
 using Microsoft.EntityFrameworkCore;
 

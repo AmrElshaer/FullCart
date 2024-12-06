@@ -1,5 +1,4 @@
-﻿using Application.Common.Interfaces.Data;
-using Domain.Comments.Events;
+﻿using Domain.Comments.Events;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Orders.EventHandlers;

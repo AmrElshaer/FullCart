@@ -1,14 +1,10 @@
-﻿using Application.Security;
-using Domain.Roles;
-using ErrorOr;
-using FluentValidation;
-using MediatR;
+﻿using BuildingBlocks.Application.Security;
 using Microsoft.AspNetCore.Http;
 
 namespace Application.Brands.Commands.CreateBrand;
 
 [Authorize(Roles = Roles.Admin)]
-public record CreateBrandCommand(string Name,IFormFile Image):IRequest<ErrorOr<Guid>>;
+public record CreateBrandCommand(string Name, IFormFile Image) : IRequest<ErrorOr<Guid>>;
 
 public class CreateBrandCommandValidator : AbstractValidator<CreateBrandCommand>
 {
@@ -20,8 +16,8 @@ public class CreateBrandCommandValidator : AbstractValidator<CreateBrandCommand>
 
         RuleFor(x => x.Image)
             .Must(BeAValidImage).WithMessage("Image is required and must be a valid file.");
-
     }
+
     private static bool BeAValidImage(IFormFile? image)
     {
         if (image == null)

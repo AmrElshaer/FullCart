@@ -1,10 +1,6 @@
-﻿using Application.Common.Enums;
-using Application.Common.Interfaces;
-using Application.Common.Interfaces.Data;
-using Application.Common.Interfaces.File;
+﻿using Application.Common.Interfaces.File;
+using BuildingBlocks.Application.Common.Enums;
 using Domain.Categories;
-using ErrorOr;
-using MediatR;
 
 namespace Application.Categories.Commands.UpdateCategory;
 

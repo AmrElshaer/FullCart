@@ -1,7 +1,4 @@
-﻿using Application.Common.Interfaces.Data;
-using Domain.Roles;
-using Domain.Users;
-using Infrastructure.Common.Persistence.Seeder;
+﻿using BuildingBlocks.Infrastucture.Common.Persistence.Seeder;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;

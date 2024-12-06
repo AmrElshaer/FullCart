@@ -1,10 +1,5 @@
-﻿using Application.Common.Behaviours;
-using Application.Common.Extensions;
-using Application.Orders.Commands.CreateOrder;
-using Domain.Common;
-using Domain.Orders.Events;
-using FluentValidation;
-using MediatR;
+﻿using BuildingBlocks.Application.Common.Behaviours;
+using BuildingBlocks.Application.Common.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application;
@@ -20,24 +15,24 @@ public static class DependencyInjection
         //     options.AddOpenBehavior(typeof(AuthorizationBehavior<,>));
         //     options.AddOpenBehavior(typeof(ValidationBehavior<,>));
         // });
-       
-        services.AddSingleton<TimeProvider>(TimeProvider.System);
+
+        services.AddSingleton(TimeProvider.System);
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-       // services.AddScoped(typeof(IPipelineBehavior<,>), typeof(RetryBehavior<,>));
+        // services.AddScoped(typeof(IPipelineBehavior<,>), typeof(RetryBehavior<,>));
         services.AddValidatorsFromAssemblyContaining(typeof(DependencyInjection));
         services.AddScoped<IMediator, Mediator>();
 
         services.Scan(scan =>
         {
-            scan.FromAssembliesOf(typeof(OrderPlacedDomainEventHandler))
+            scan.FromAssembliesOf(typeof(AssemblyInfo))
                 .RegisterHandlers(typeof(IRequestHandler<>))
                 .RegisterHandlers(typeof(IRequestHandler<,>))
                 .RegisterHandlers(typeof(INotificationHandler<>));
         });
 
         services.Decorate(typeof(INotificationHandler<>), typeof(DomainEventsDispatcherDecorator<>));
-        services.Decorate(typeof(IRequestHandler<,>),typeof(UnitOfWorkDecorator<,>));
+        services.Decorate(typeof(IRequestHandler<,>), typeof(UnitOfWorkDecorator<,>));
 
         return services;
     }
@@ -48,10 +43,7 @@ public static class DependencyInjection
         {
             var cur = toCheck.IsGenericType ? toCheck.GetGenericTypeDefinition() : toCheck;
 
-            if (generic == cur)
-            {
-                return true;
-            }
+            if (generic == cur) return true;
 
             toCheck = toCheck.BaseType;
         }

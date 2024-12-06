@@ -1,5 +1,5 @@
-﻿using Domain.Comments.Events;
-using Domain.Common;
+﻿using BuildingBlocks.Domain.Common;
+using Domain.Comments.Events;
 using Domain.Orders;
 
 namespace Domain.Comments;

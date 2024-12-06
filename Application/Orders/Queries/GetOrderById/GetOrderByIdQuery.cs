@@ -1,8 +1,4 @@
-﻿using Application.Common.Interfaces;
-using Application.Common.Interfaces.Data;
-using Domain.Orders;
-using ErrorOr;
-using MediatR;
+﻿using Domain.Orders;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Orders.Queries.GetOrderById;

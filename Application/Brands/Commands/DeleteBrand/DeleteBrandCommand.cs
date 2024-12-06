@@ -1,9 +1,4 @@
-﻿using Application.Common.Interfaces;
-using Application.Common.Interfaces.Data;
-using Application.Security;
-using Domain.Roles;
-using ErrorOr;
-using MediatR;
+﻿using BuildingBlocks.Application.Security;
 
 namespace Application.Brands.Commands.DeleteBrand;
 

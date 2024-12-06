@@ -1,6 +1,5 @@
-﻿using Application.Common.Enums;
-using Application.Common.Interfaces;
-using Application.Common.Interfaces.File;
+﻿using Application.Common.Interfaces.File;
+using BuildingBlocks.Application.Common.Enums;
 using Microsoft.AspNetCore.Http;
 
 namespace Infrastructure.Services;

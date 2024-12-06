@@ -1,26 +1,23 @@
-﻿using Application.Security;
-using Domain.Roles;
-using ErrorOr;
-using FluentValidation;
-using MediatR;
+﻿using BuildingBlocks.Application.Security;
 using Microsoft.AspNetCore.Http;
 
 namespace Application.Categories.Commands.UpdateCategory;
 
 [Authorize(Roles = Roles.Admin)]
-public record UpdateCategoryCommand(Guid Id,string Name,IFormFile Image):IRequest<ErrorOr<Guid>>;
+public record UpdateCategoryCommand(Guid Id, string Name, IFormFile Image) : IRequest<ErrorOr<Guid>>;
 
 public class UpdateCategoryCommandValidator : AbstractValidator<UpdateCategoryCommand>
 {
     public UpdateCategoryCommandValidator()
     {
-          RuleFor(x => x.Name)
-                .NotEmpty().WithMessage("Name is required.")
-                .MaximumLength(100).WithMessage("Name cannot exceed 100 characters.");
-        
-            RuleFor(x => x.Image)
-                .Must(BeAValidImage).WithMessage("Image is required and must be a valid file.");
+        RuleFor(x => x.Name)
+            .NotEmpty().WithMessage("Name is required.")
+            .MaximumLength(100).WithMessage("Name cannot exceed 100 characters.");
+
+        RuleFor(x => x.Image)
+            .Must(BeAValidImage).WithMessage("Image is required and must be a valid file.");
     }
+
     private static bool BeAValidImage(IFormFile? image)
     {
         if (image == null)
@@ -38,6 +35,4 @@ public class UpdateCategoryCommandValidator : AbstractValidator<UpdateCategoryCo
 
         return false;
     }
-
-
 }

@@ -1,10 +1,6 @@
 ﻿using System.Linq.Expressions;
-using Application.Common.Interfaces;
-using Application.Common.Interfaces.Data;
-using Application.Security;
+using BuildingBlocks.Application.Security;
 using Domain.Brands;
-using Domain.Roles;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Brands.Queries;

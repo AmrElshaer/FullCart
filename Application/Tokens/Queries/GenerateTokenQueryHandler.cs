@@ -1,16 +1,13 @@
-﻿using Application.Common.Interfaces;
-using Application.Common.Interfaces.Authentication;
+﻿using BuildingBlocks.Application.Common.Interfaces.Authentication;
 using Domain.Users;
-using ErrorOr;
-using MediatR;
 
 namespace Application.Tokens.Queries;
 
 public class GenerateTokenQueryHandler : IRequestHandler<GenerateTokenQuery
     , ErrorOr<GenerateTokenResponse>>
 {
-    private readonly IJwtTokenGenerator _jwtTokenGenerator;
     private readonly IIdentityService _identityService;
+    private readonly IJwtTokenGenerator _jwtTokenGenerator;
 
     public GenerateTokenQueryHandler(IJwtTokenGenerator jwtTokenGenerator, IIdentityService identityService)
     {

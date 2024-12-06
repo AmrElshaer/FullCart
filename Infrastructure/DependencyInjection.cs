@@ -1,30 +1,22 @@
 ﻿using System.Reflection;
 using System.Text;
 using Application.Common.Interfaces;
-using Application.Common.Interfaces.Authentication;
-using Application.Common.Interfaces.Data;
 using Application.Common.Interfaces.Event;
-using Application.Common.Interfaces.File;
 using Application.Common.Interfaces.Hubs;
 using Application.Orders.Commands.CreateOrder;
+using BuildingBlocks.Application.Common.Interfaces;
+using BuildingBlocks.Application.Common.Interfaces.Authentication;
+using BuildingBlocks.Application.Common.Interfaces.Data;
+using BuildingBlocks.Infrastucture.Common;
+using BuildingBlocks.Infrastucture.Common.CurrentUserProvider;
+using BuildingBlocks.Infrastucture.Common.Persistence.Seeder;
 using Domain.Roles;
 using Domain.Users;
 using DotNetCore.CAP;
 using EFCore.AuditExtensions.SqlServer;
-using Infrastructure.BackgroundJobs;
-using Infrastructure.Brands.Persistence;
-using Infrastructure.Categories.Persistence;
-using Infrastructure.Common;
 using Infrastructure.Common.Persistence;
-using Infrastructure.Common.Persistence.Seeder;
 using Infrastructure.Hubs.OrderHub;
-using Infrastructure.Products.Persistence;
-using Infrastructure.Roles.Persistence;
-using Infrastructure.Security;
-using Infrastructure.Security.CurrentUserProvider;
 using Infrastructure.Security.TokenGenerator;
-using Infrastructure.Services;
-using Infrastructure.Users.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -52,11 +44,11 @@ public static class DependencyInjection
 
     private static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<PaymentDbContext>((sp, options) =>
-        {
-            var connectionString = configuration.GetConnectionString("DefaultConnection")!;
-            options.UseSqlServer(connectionString);
-        });
+        // services.AddDbContext<PaymentDbContext>((sp, options) =>
+        // {
+        //     var connectionString = configuration.GetConnectionString("DefaultConnection")!;
+        //     options.UseSqlServer(connectionString);
+        // });
         services.AddDbContext<CartDbContext>((sp, options) =>
         {
             var connectionString = configuration.GetConnectionString("DefaultConnection")!;
@@ -68,13 +60,13 @@ public static class DependencyInjection
                 .EnableDetailedErrors()
                 .EnableSensitiveDataLogging();
         });
-        services.AddScoped<DbContext>((sp)=>sp.GetService<CartDbContext>()!);
+        services.AddScoped<DbContext>(sp => sp.GetService<CartDbContext>()!);
         services.AddIdentity<User, Role>()
             .AddEntityFrameworkStores<CartDbContext>()
             .AddDefaultTokenProviders();
 
         services.AddScoped<ICartDbContext>(provider => provider.GetRequiredService<CartDbContext>());
-        services.AddScoped<IPaymentDbContext>(provider => provider.GetRequiredService<PaymentDbContext>());
+        // services.AddScoped<IPaymentDbContext>(provider => provider.GetRequiredService<PaymentDbContext>());
 
         //services.AddScoped<CartDbContextInitializer>();
         services.Scan(scan => scan
@@ -97,7 +89,7 @@ public static class DependencyInjection
                 options.SaveToken = true;
                 options.RequireHttpsMetadata = false;
 
-                options.TokenValidationParameters = new TokenValidationParameters()
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
@@ -125,11 +117,10 @@ public static class DependencyInjection
             x.ServicesStopConcurrently = false;
         });
         //services.AddHostedService<NumberOfOrdersJob>();
-        
+
         services.AddScoped<IDomainEventsAccessor, DomainEventsAccessor>();
-        services.AddScoped<IUnitOfWork,UnitOfWork>();
-        services.AddTransient<IIdentityService, IdentityService>();
-        services.AddTransient<IFileAppService, FileAppService>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
+
         services.AddTransient<IDomainEventDispatcher, DomainEventDispatcher>();
         services.AddCap(capOptions =>
         {

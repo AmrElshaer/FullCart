@@ -1,10 +1,4 @@
-﻿using Application.Common.Interfaces;
-using Application.Common.Interfaces.Authentication;
-using Application.Common.Interfaces.Data;
-using Domain.Roles;
-using Domain.Users;
-using ErrorOr;
-using MediatR;
+﻿using Domain.Users;
 
 namespace Application.Customers.Commands.CreateCustomer;
 

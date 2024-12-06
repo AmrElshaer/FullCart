@@ -1,6 +1,6 @@
-﻿using Domain.Brands;
+﻿using BuildingBlocks.Domain.Common;
+using Domain.Brands;
 using Domain.Categories;
-using Domain.Common;
 
 namespace Domain.Products;
 

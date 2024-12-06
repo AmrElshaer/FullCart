@@ -1,4 +1,5 @@
-﻿using Application.Common.Interfaces.Data;
+﻿using Application.Common.Interfaces;
+using BuildingBlocks.Application.Common.Interfaces.Data;
 using Domain.Roles;
 using Domain.Users;
 using Infrastructure.Roles.Persistence;

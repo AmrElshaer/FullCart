@@ -1,5 +1,4 @@
-﻿using Application.Common.Interfaces.Data;
-using Domain.Comments;
+﻿using Domain.Comments;
 using Domain.Orders;
 
 namespace Application.Comments.Commands.CreateComment;
