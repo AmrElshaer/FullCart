@@ -6,6 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
     <ItemGroup>
+        <PackageReference Include="Autofac" Version="8.1.1"/>
+        <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="10.0.0"/>
         <PackageReference Include="DotNetCore.CAP" Version="6.2.1"/>
         <PackageReference Include="ErrorOr" Version="1.9.0"/>
         <PackageReference Include="FluentValidation" Version="11.9.0"/>
@@ -17,6 +19,6 @@
         <PackageReference Include="Scrutor" Version="4.2.2"/>
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\BuildingBlocks.Domain\BuildingBlocks.Domain.csproj" />
+        <ProjectReference Include="..\BuildingBlocks.Domain\BuildingBlocks.Domain.csproj"/>
     </ItemGroup>
 </Project>

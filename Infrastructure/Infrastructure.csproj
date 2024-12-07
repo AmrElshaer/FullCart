@@ -14,6 +14,7 @@
         <PackageReference Include="DotNetCore.CAP.Dashboard" Version="6.2.1"/>
         <PackageReference Include="DotNetCore.CAP.SqlServer" Version="6.2.1"/>
         <PackageReference Include="EFCore.AuditExtensions.SqlServer" Version="1.0.0"/>
+        <PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" Version="12.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.26"/>
         <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.26"/>
         <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0"/>

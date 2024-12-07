@@ -28,7 +28,7 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
 
         if (user.IsError) return user.Errors;
         var customer = new Customer(user.Value.Id, address.Value);
-        await _dbContext.Customers.AddAsync(customer, cancellationToken);
+       // await _dbContext.Customers.AddAsync(customer, cancellationToken);
         await _dbContext.SaveChangesAsync(cancellationToken);
 
         return customer.Id;

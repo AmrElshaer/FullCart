@@ -16,7 +16,7 @@ public static class DependencyInjection
         //     options.AddOpenBehavior(typeof(ValidationBehavior<,>));
         // });
 
-        services.AddSingleton(TimeProvider.System);
+
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
         // services.AddScoped(typeof(IPipelineBehavior<,>), typeof(RetryBehavior<,>));
@@ -35,19 +35,5 @@ public static class DependencyInjection
         services.Decorate(typeof(IRequestHandler<,>), typeof(UnitOfWorkDecorator<,>));
 
         return services;
-    }
-
-    private static bool IsSubclassOfRawGeneric(Type generic, Type? toCheck)
-    {
-        while (toCheck != null && toCheck != typeof(object))
-        {
-            var cur = toCheck.IsGenericType ? toCheck.GetGenericTypeDefinition() : toCheck;
-
-            if (generic == cur) return true;
-
-            toCheck = toCheck.BaseType;
-        }
-
-        return false;
     }
 }

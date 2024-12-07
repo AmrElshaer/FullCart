@@ -2,7 +2,7 @@
 using BuildingBlocks.Infrastucture.Common.Persistence.Seeder;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Common.Persistence;
+namespace BuildingBlocks.Infrastucture.Common.Persistence;
 
 public static class InitializerExtensions
 {

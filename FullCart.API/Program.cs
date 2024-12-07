@@ -1,21 +1,23 @@
 using System.Text;
 using System.Threading.RateLimiting;
-using Application;
 using Application.Common.Interfaces;
-using Application.Common.Interfaces.File;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using BuildingBlocks.Application.Common.Interfaces.Authentication;
 using BuildingBlocks.Infrastucture.Common.CurrentUserProvider;
+using Domain.Roles;
+using Domain.Users;
+using EFCore.AuditExtensions.SqlServer;
 using FullCart.API.Modules.Order;
-using Infrastructure;
+using FullCart.API.UserAccessModule.Infrastructure;
 using Infrastructure.Common;
-using Infrastructure.Common.Persistence;
 using Infrastructure.Hubs.OrderHub;
 using Infrastructure.Security.TokenGenerator;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -81,6 +83,7 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.TryAddScoped<ICurrentUserProvider, CurrentUserProvider>();
+
 var jwtSettings = builder.Configuration.GetSection(JwtSettings.Section).Get<JwtSettings>();
 builder.Services.AddAuthentication(options =>
     {
@@ -102,14 +105,23 @@ builder.Services.AddAuthentication(options =>
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret))
         };
     });
-builder.Services.AddTransient<IIdentityService, IdentityService>();
-builder.Services.AddTransient<IFileAppService, FileAppService>();
-builder.Services.AddScoped<IAuthorizationService, AuthorizationService>();
-builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection(JwtSettings.Section));
 
-builder.Services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
-builder.Services.AddInfrastructure(builder.Configuration)
-    .AddApplication();
+builder.Services.AddDbContext<UserAccessDbContext>((sp, options) =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
+    options.UseSqlServer(connectionString)
+        .UseSqlServerAudit();
+    
+
+    options.LogTo(Console.WriteLine, LogLevel.Information)
+        .EnableDetailedErrors()
+        .EnableSensitiveDataLogging();
+});
+builder.Services.AddIdentity<User, Role>()
+    .AddEntityFrameworkStores<UserAccessDbContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.AddScoped<IIdentityService, IdentityService>();
 // Use Autofac as the DI container
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
@@ -119,15 +131,14 @@ builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
     containerBuilder.RegisterModule(new OrderAutoFacModule());
 });
 var app = builder.Build();
-// var container = app.Services.GetAutofacRoot();
-InitializeModules(app.Configuration);
+var container = app.Services.GetAutofacRoot();
+InitializeModules(app.Configuration, container);
 app.UseRateLimiter();
 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.InitialiseDatabase();
 }
 
 app.UseSwagger();
@@ -140,7 +151,10 @@ app.MapControllers();
 app.MapHub<OrderStatusHub>("/orderStatusHub");
 app.Run();
 
-void InitializeModules(IConfiguration appConfiguration)
+void InitializeModules(IConfiguration appConfiguration, ILifetimeScope container)
 {
-    OrdersStartup.Initialize(appConfiguration);
+    var httpContextAccessor = container.Resolve<IHttpContextAccessor>();
+    var x = httpContextAccessor.HttpContext?.User.Identity;
+    var identityService = container.Resolve<IIdentityService>();
+    OrdersStartup.Initialize(appConfiguration, httpContextAccessor,identityService);
 }
