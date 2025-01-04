@@ -28,7 +28,7 @@ public class CreateBrandCommandHandler : IRequestHandler<CreateBrandCommand, Err
         var fileName = await _fileAppService.UploadFileAsync(FileType.Image, request.Image);
         var brandFileName = BrandFileName.Create(fileName);
 
-        if (brandName.IsError) return brandFileName.Errors;
+        if (brandFileName.IsError) return brandFileName.Errors;
 
         var brand = new Brand(Guid.NewGuid(),
             brandName.Value,
