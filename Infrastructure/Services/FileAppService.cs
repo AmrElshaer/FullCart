@@ -9,6 +9,7 @@ public class FileAppService : IFileAppService
 {
     public Task<string> UploadFileAsync(FileType type, IFormFile file)
     {
+        ArgumentNullException.ThrowIfNull(file);
         return Task.FromResult($"{type}-{Guid.NewGuid()}");
     }
 

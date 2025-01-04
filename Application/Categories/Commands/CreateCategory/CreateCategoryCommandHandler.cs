@@ -8,7 +8,7 @@ using MediatR;
 
 namespace Application.Categories.Commands.CreateCategory;
 
-public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, ErrorOr<Guid>>
+internal class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, ErrorOr<Guid>>
 {
     private readonly ICartDbContext _dbContext;
     private readonly IFileAppService _fileAppService;
@@ -28,7 +28,7 @@ public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryComman
         var fileName = await _fileAppService.UploadFileAsync(FileType.Image, request.Image);
         var categoryFileName = CategoryFileName.Create(fileName);
 
-        if (categoryName.IsError) return categoryFileName.Errors;
+        if (categoryFileName.IsError) return categoryFileName.Errors;
 
         var category = new Category(Guid.NewGuid(),
             categoryName.Value,
