@@ -25,6 +25,8 @@ using Infrastructure.Security.CurrentUserProvider;
 using Infrastructure.Security.TokenGenerator;
 using Infrastructure.Services;
 using Infrastructure.Users.Persistence;
+using Medallion.Threading;
+using Medallion.Threading.SqlServer;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -47,14 +49,19 @@ public static class DependencyInjection
             .AddAuthorization()
             .AddAuthentication(configuration)
             .AddPersistence(configuration)
-            .AddServices(configuration);
+            .AddServices(configuration)
+            .AddBackgroundJobs();
     }
 
     private static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
+        var connectionString = configuration.GetConnectionString("DefaultConnection")!;
+        services.AddSingleton<IDistributedLockProvider>(_ => new SqlDistributedSynchronizationProvider(connectionString));
+        services.AddSingleton<ISqlConnectionFactory>(provider => new SqlConnectionFactory(connectionString));
         services.AddDbContext<CartDbContext>((sp, options) =>
         {
-            var connectionString = configuration.GetConnectionString("DefaultConnection")!;
+          
+           
             options.UseSqlServer(connectionString)
                 .UseSqlServerAudit();
             //  .AddInterceptors(sp.GetRequiredService<PublishDomainEventsInterceptor>());
@@ -100,6 +107,7 @@ public static class DependencyInjection
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret))
                 };
             });
+        
         return services;
     }
 
@@ -153,6 +161,12 @@ public static class DependencyInjection
 
         services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
 
+        return services;
+    }
+
+    private static IServiceCollection AddBackgroundJobs(this IServiceCollection services)
+    {
+        services.AddHostedService<DistributedLockTestJob>();
         return services;
     }
 }
