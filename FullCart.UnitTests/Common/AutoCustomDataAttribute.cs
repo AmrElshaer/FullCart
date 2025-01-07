@@ -1,19 +1,16 @@
-﻿using AutoFixture;
-using AutoFixture.AutoNSubstitute;
+﻿using System.Reflection;
+using AutoFixture;
 using AutoFixture.Xunit2;
-using Microsoft.AspNetCore.Http;
 
 namespace FullCart.UnitTests.Common;
 
 internal sealed class AutoCustomDataAttribute() : AutoDataAttribute(() =>
 {
     var fixture = new Fixture();
-
-    fixture.Register<IFormFile>(() => new MockFormFile(
-        fileName: "test-file.jpg",
-        contentType: "image/jpeg",
-        length: 1024
-    ));
-    fixture.Customize(new AutoNSubstituteCustomization());
+    var customizations = Assembly.GetExecutingAssembly().GetTypes()
+        .Where(type => typeof(IFixtureCustomization).IsAssignableFrom(type) && !type.IsAbstract && !type.IsInterface)
+        .Select(type => Activator.CreateInstance(type) as IFixtureCustomization)
+        .ToList();
+    foreach (var customization in customizations) customization?.Customize(fixture);
     return fixture;
 });

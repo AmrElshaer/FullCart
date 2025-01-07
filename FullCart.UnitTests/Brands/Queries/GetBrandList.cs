@@ -14,15 +14,18 @@ public class GetBrandList
     
     [Theory, AutoCustomData]
     public async Task GetBrandList_ReturnsCorrectBrands(
-        ICartDbContext dbContext,
+        [Frozen] ICartDbContext dbContext,
         GetBrandsListQueryHandler handler,
         GetBrandsListQuery query,
-        [Greedy] List<Brand> brands)
+        DbSet<Brand> brands)
     {
-       
-        dbContext.Brands.ToListAsync().Returns(Task.FromResult(brands));
+        // Arrange
+        dbContext.Brands.Returns(brands);
+        // Act
         var result= await handler.Handle(query, CancellationToken.None);
-        result.Should().BeEquivalentTo(brands);
-        
+        // Assert
+        result.Count.Should().Be(brands.Count());
+        var expectedResult = brands.Select(GetBrandsListResponse.MapTo()).ToList();
+        result.Should().BeEquivalentTo(expectedResult, options => options.ComparingByMembers<Brand>()); 
     }
 }
